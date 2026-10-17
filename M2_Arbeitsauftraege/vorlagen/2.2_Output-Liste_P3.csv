@@ -1,0 +1,6 @@
+﻿Nr;Anschluss alt (TXT);Bauteil;Name (einfach);Was passiert sichtbar?;Wann EIN?;Wann AUS / wie lange?;Voraussetzung;Ruhezustand;Darf nie passieren;Spannung;Neue Schnittstelle (Vorschlag);Status;Offene Frage
+1;M1;Motor Förderband;Band;Band läuft Richtung Auswurf;Werkstück an Lichtschranke I1;Werkstück steht vor dem Ventil seiner Farbe (Impulse gezählt);–;AUS;endlos laufen ohne Werkstück;9 V;Motor Driver HAT (Waveshare);VORSCHLAG;Nur eine Drehrichtung? Geschwindigkeit fest?
+2;O5;Magnetventil Auswurf weiß;Ventil weiß;;Werkstück weiß steht vor Ventil 1, Band steht;nach kurzem Stoß – Dauer: ?;Kompressor hat Druck;AUS;zwei Ventile gleichzeitig;9 V;Relais Automation HAT;VORSCHLAG;
+3;O6;Magnetventil Auswurf rot;Ventil rot;;Werkstück rot steht vor Ventil 2, Band steht;nach kurzem Stoß – Dauer: ?;Kompressor hat Druck;AUS;zwei Ventile gleichzeitig;9 V;Relais Automation HAT;VORSCHLAG;
+4;O7;Magnetventil Auswurf blau;Ventil blau;;Werkstück blau steht vor Ventil 3, Band steht;nach kurzem Stoß – Dauer: ?;Kompressor hat Druck;AUS;zwei Ventile gleichzeitig;9 V;Relais Automation HAT;VORSCHLAG;
+5;O8;Kompressor;Kompressor;erzeugt Druckluft für die Ventile;OFFEN: vor dem Ausschleusen oder dauerhaft?;OFFEN;–;AUS;;9 V;Relais oder Dauerversorgung (OFFEN);OFFEN;4 Lasten (3 Ventile + Kompressor), aber nur 3 Relais am Automation HAT

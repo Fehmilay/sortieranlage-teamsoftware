@@ -1,0 +1,7 @@
+﻿Nr;Zustand;Was passiert hier? (Alltagssprache);Weiter, wenn … (Input aus 2.1);Outputs EIN (aus 2.2);Outputs AUS;Nächster Zustand;Zeitlimit / Fehler, wenn …;Meldung an Peakboard (aus 2.4);Status
+1;BEREIT;Anlage wartet auf ein Werkstück;I1 unterbrochen;M1;–;FÖRDERN;–;status = BEREIT;VORSCHLAG
+2;FÖRDERN;"Band transportiert; Farbsensor misst, kleinster Messwert wird gemerkt";I3 unterbrochen;(M1 bleibt an);–;ZÄHLEN;"kein Impuls C1 länger als 2 s → band_blockiert; I3 nicht nach 10 s → timeout_auswurf; Farbe nicht erkannt → unbekannte_farbe";status = FOERDERN;VORSCHLAG
+3;ZÄHLEN;"Farbe steht fest; Impulse C1 zählen bis zum Ventil der Farbe; Kompressor baut Druck auf";Impulszahl für die Farbe erreicht;O8;M1 (bei Erreichen);AUSSCHLEUSEN;kein Impuls länger als 2 s → band_blockiert;status = ZAEHLEN;VORSCHLAG
+4;AUSSCHLEUSEN;Ventil der erkannten Farbe kurz öffnen;Stoßzeit vorbei;O5 / O6 / O7 (kurz);Ventil, danach O8;PRÜFEN;–;status = AUSSCHLEUSEN;VORSCHLAG
+5;PRÜFEN;Ausgang prüfen: Lichtschranke Auswurf wieder frei?;I3 frei;–;–;BEREIT (Zyklus +1);I3 nach 1 s noch belegt → auswurf_nicht_frei;zyklen, farbe/letzte, farbe/anzahl;VORSCHLAG
+6;FEHLER;"alles aus; Fehler melden; Bediener nimmt Werkstück heraus";Fehler quittiert (wie? OFFEN);–;alle;BEREIT;–;fehler (aktiv = ja);VORSCHLAG

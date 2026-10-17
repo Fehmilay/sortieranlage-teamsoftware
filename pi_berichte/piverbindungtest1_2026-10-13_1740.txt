@@ -1,0 +1,93 @@
+﻿piverbindungtest1 - 13.10.2026 17:40:39 - Laptop: DESKTOP-LGUI3RH
+
+=== 1/6 Netzwerk des Laptops
+  Adapter 'VMware Network Adapter VMnet8': IP 192.168.27.1/24  Gateway -
+  Adapter 'VMware Network Adapter VMnet1': IP 192.168.192.1/24  Gateway -
+  Adapter 'WLAN': IP 192.168.1.187/24  Gateway 192.168.1.1
+  [OK]     Laptop ist im Netz: 192.168.1.187/24
+
+=== 2/6 Raspberry Pi suchen
+  Name 'hsnrrp1' nicht gefunden
+  Name 'hsnrrp1.local' nicht gefunden
+  Name 'hsnrpi1' gefunden -> 192.168.1.103
+  [OK]     Pi gefunden: hsnrpi1 (192.168.1.103)
+
+=== 3/6 Ping
+  [OK]     Pi antwortet auf Ping (Mittel 2 ms, 3/3 Antworten)
+
+=== 4/6 Dienste am Pi (Ports)
+  [OK]     SSH-Dienst (Port 22) erreichbar
+  [INFO]   MQTT-Broker (Port 1883): laeuft noch nicht (wird spaeter eingerichtet, kein Fehler)
+
+=== 5/6 Anmeldung am Pi + Pruefbericht + Selbsttest
+
+  >>> Jetzt fragt ssh nach dem PASSWORT fuer admin@192.168.1.103.
+  >>> Passwort eintippen und Enter druecken. Beim Tippen erscheinen KEINE Zeichen - das ist normal.
+
+  | Pi-Bericht Sortieranlage – 2026-06-18 05:07:34 (Uhrzeit des Pi, ohne Internet ggf. falsch)
+  | 
+  | == System
+  | Host: hsnrpi1  Benutzer: admin  Ordner: /home/admin/sortieranlage_test
+  | PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+  | VERSION_CODENAME=trixie
+  | Architektur: aarch64  Kernel: 6.18.34+rpt-rpi-v8
+  | Raspberry Pi 4 Model B Rev 1.4
+  | Python 3.13.5
+  | /dev/mmcblk0p2   14G  6.6G  6.6G  51% /
+  | 
+  | == Netzwerk (IP-Adressen fuer Netzwerkplan/Peakboard)
+  | eth0             UP             192.168.1.103/24 fe80::dea6:32ff:fecc:d1fe/64 
+  | wlan0            UP             192.168.1.180/24 fe80::dea6:32ff:fecc:d200/64 
+  | Gateway: 192.168.1.1
+  | [OFFEN] kein Internet (erwartet im Anlagennetz)
+  | <Verbindung>:802-3-ethernet:eth0
+  | <Verbindung>:802-11-wireless:wlan0
+  | <Verbindung>:loopback:lo
+  | 
+  | == Rechte
+  | [OFFEN] sudo verlangt Passwort -> Installationen manuell (siehe README)
+  | 
+  | == Automation HAT / I2C
+  | [OK]    I2C aktiv: /dev/i2c-20 /dev/i2c-21 
+  | [OFFEN] i2c-tools nicht installiert
+  | [OFFEN] Python-Modul automationhat fehlt (nur fuer Hardware-Modus noetig)
+  | 
+  | == MQTT-Broker (Mosquitto)
+  | [OFFEN] mosquitto nicht installiert
+  | Dienst mosquitto: inactive
+  | [OFFEN] Port 1883 lauscht nicht
+  | 
+  | == Selbsttest Steuerung (Simulation, ohne Hardware)
+  | ERROR process FEHLER band_blockiert: Kein Impuls am Taster C1 trotz laufendem Band
+  | ERROR process FEHLER unbekannte_farbe: Farbe nicht erkannt (Messwert 0.97)
+  | 3 Farben                 OK    Zyklen=3 Fehler=0 Anzahl={'weiss': 1, 'rot': 1, 'blau': 1} falsch=[]
+  | 6 gemischt               OK    Zyklen=6 Fehler=0 Anzahl={'weiss': 2, 'rot': 2, 'blau': 2} falsch=[]
+  | Fehler Band blockiert    OK    Zyklen=2 Fehler=1 Anzahl={'weiss': 1, 'rot': 0, 'blau': 1} falsch=[]
+  | Fehler unbek. Farbe      OK    Zyklen=2 Fehler=1 Anzahl={'weiss': 1, 'rot': 0, 'blau': 1} falsch=[]
+  | SELBSTTEST BESTANDEN
+  | 
+  | == Ende
+  | Bericht: /home/admin/sortieranlage_test/pi_bericht.txt
+  [OK]     Anmeldung am Pi erfolgreich, Code nach ~/sortieranlage_test kopiert
+  [OK]     Selbsttest der Steuerung auf dem Pi (Simulation): BESTANDEN
+
+=== 6/6 ZUSAMMENFASSUNG
+  [OK]     Schritt 1: Laptop ist im Netz: 192.168.1.187/24
+  [OK]     Schritt 2: Pi gefunden: hsnrpi1 (192.168.1.103)
+  [OK]     Schritt 3: Pi antwortet auf Ping (Mittel 2 ms, 3/3 Antworten)
+  [OK]     Schritt 4: SSH-Dienst (Port 22) erreichbar
+  [OK]     Schritt 5: Anmeldung am Pi erfolgreich, Code nach ~/sortieranlage_test kopiert
+  [OK]     Schritt 6: Selbsttest der Steuerung auf dem Pi (Simulation): BESTANDEN
+
+  Hinweise vom Pi (kein Fehler des Tests, sondern noch einzurichten):
+   - kein Internet (erwartet im Anlagennetz)
+   - sudo verlangt Passwort -> Installationen manuell (siehe README)
+   - i2c-tools nicht installiert
+   - Python-Modul automationhat fehlt (nur fuer Hardware-Modus noetig)
+   - mosquitto nicht installiert
+   - Port 1883 lauscht nicht
+
+  ERGEBNIS: ALLES GRUEN - Verbindung steht, Steuerung laeuft auf dem Pi (Simulation).
+  Naechster Schritt: einmal  .\laptop\01_ssh_schluessel_einrichten.ps1 -PiHost 192.168.1.103  (dann kann Claude ohne Passwort weitermachen).
+  Bericht gespeichert: C:\Users\apc-fehmikubi\Desktop\projektmanagement\pi_berichte\piverbindungtest1_2026-10-13_1740.txt
+  Pi-IP fuer die Doku (Netzwerkplan): 192.168.1.103

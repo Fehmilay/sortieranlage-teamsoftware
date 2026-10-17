@@ -1,0 +1,7 @@
+{
+  "sortieranlage/status":       {"zustand": "FOERDERN", "modus": "sim", "zeit": "2026-10-13T17:07:17"},
+  "sortieranlage/zyklen":       {"wert": 1, "zeit": "2026-10-13T17:07:17"},
+  "sortieranlage/farbe/letzte": {"wert": "rot", "zeit": "2026-10-13T17:07:17"},
+  "sortieranlage/farbe/anzahl": {"weiss": 0, "rot": 1, "blau": 0, "zeit": "2026-10-13T17:07:17"},
+  "sortieranlage/fehler":       {"aktiv": true, "code": "band_blockiert", "text": "Kein Impuls am Taster C1 trotz laufendem Band", "anzahl": 1, "zeit": "2026-10-13T17:07:17"}
+}

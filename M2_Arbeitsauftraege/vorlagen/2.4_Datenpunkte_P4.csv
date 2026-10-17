@@ -1,0 +1,8 @@
+﻿Nr;Datenpunkt;Bedeutung;Topic;Beispiel-Nachricht (JSON);Werte / Bereich;Wann gesendet?;Woher (Zustand aus 2.3);Anzeige auf Peakboard;Muss / Kann;Status
+1;Anlagenzustand;Was macht die Anlage gerade?;sortieranlage/status;"{""zustand"": ""FOERDERN"", ""modus"": ""sim"", ""zeit"": ""2026-10-20T10:15:00""}";BEREIT, FOERDERN, ZAEHLEN, AUSSCHLEUSEN, PRUEFEN, FEHLER, AUS;bei jedem Zustandswechsel;alle Zustände;Text + Ampelfarbe;Muss;VORSCHLAG
+2;Zykluszahl;Wie viele Werkstücke wurden fertig sortiert?;sortieranlage/zyklen;"{""wert"": 12, ""zeit"": ""…""}";ganze Zahl ab 0;nach PRÜFEN;PRÜFEN;große Zahl;Muss;VORSCHLAG
+3;Letzte Farbe;Welche Farbe hatte das letzte Werkstück?;sortieranlage/farbe/letzte;"{""wert"": ""rot"", ""zeit"": ""…""}";weiss, rot, blau;nach PRÜFEN;ZÄHLEN / PRÜFEN;farbige Kachel;Muss;VORSCHLAG
+4;Anzahl je Farbe;Wie viele weiße/rote/blaue wurden sortiert?;sortieranlage/farbe/anzahl;"{""weiss"": 4, ""rot"": 5, ""blau"": 3, ""zeit"": ""…""}";ganze Zahlen ab 0;nach PRÜFEN;PRÜFEN;Balken oder 3 Zähler;Muss;VORSCHLAG
+5;Fehler;Gibt es einen Fehler? Welchen?;sortieranlage/fehler;"{""aktiv"": true, ""code"": ""band_blockiert"", ""text"": ""Kein Impuls …"", ""anzahl"": 1, ""zeit"": ""…""}";code: band_blockiert, timeout_auswurf, unbekannte_farbe, auswurf_nicht_frei, leer;bei Fehler und bei Quittierung;FEHLER;rote Meldung, wenn aktiv;Muss;VORSCHLAG
+6;(Idee) Farbsensor-Messwert;Rohwert für die Kalibrierung;?;;0 … 1 (normiert);?;FÖRDERN;nur Technik-Ansicht;Kann;OFFEN
+7;(Idee) Zykluszeit;Wie lange dauert ein Werkstück?;?;;Sekunden;nach PRÜFEN;PRÜFEN;Zahl;Kann;OFFEN

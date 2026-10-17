@@ -1,0 +1,8 @@
+﻿Nr;Anschluss alt (TXT);Bauteil;Name (einfach);Signalart;Ruhezustand (kein Werkstück);Aktiv, wenn …;Wann im Ablauf?;Wie oft / wie schnell?;Bedeutung für die Software;Im Projektumfang?;Spannung / Pegel;Quelle;Status;Offene Frage
+1;I1;Fototransistor + Lampe (Lichtschranke) vor dem Farbsensor;Lichtschranke Eingang;digital (an/aus);;Werkstück unterbricht den Lichtstrahl;Anfang: Werkstück wird eingelegt;1x pro Werkstück;startet den Zyklus (Band an);ja;OFFEN;"9V-Handbuch Belegungsplan; Excel Anhang 7 B2";VORSCHLAG;
+2;I2;Farbsensor (misst Reflexion von rotem Licht);Farbsensor;analog (Zahlenwert);;Werkstück liegt unter dem Sensor;während das Werkstück vorbeifährt;laufend;Farbe weiß/rot/blau über Schwellwerte erkennen;ja;OFFEN (Wertebereich?);9V-Handbuch Belegungsplan;VORSCHLAG;Welche Werte liefert er je Farbe?
+3;I3;Fototransistor + Lampe (Lichtschranke) vor dem Auswurf;Lichtschranke Auswurf;digital (an/aus);;;;;ab hier Impulse bis zum richtigen Ventil zählen;ja;OFFEN;9V-Handbuch Belegungsplan;VORSCHLAG;
+4;C1;Impulstaster am Förderband;Impulszähler / Wegmessung;Zähleingang (schnelles an/aus);;;solange das Band läuft;;"Position des Werkstücks; kein Impuls = Band steht oder blockiert";ja;OFFEN;9V-Handbuch Belegungsplan;VORSCHLAG;Wie viele Impulse pro Sekunde?
+5;I6;Lichtschranke Lagerstelle weiß;Füllstand weiß;digital (an/aus);;;;;;zunächst nein;OFFEN;"9V-Handbuch; Projektauftrag";OFFEN;
+6;I7;Lichtschranke Lagerstelle rot;Füllstand rot;digital (an/aus);;;;;;zunächst nein;OFFEN;"9V-Handbuch; Projektauftrag";OFFEN;
+7;I8;Lichtschranke Lagerstelle blau;Füllstand blau;digital (an/aus);;;;;;zunächst nein;OFFEN;"9V-Handbuch; Projektauftrag";OFFEN;

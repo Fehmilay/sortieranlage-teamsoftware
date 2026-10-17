@@ -1,0 +1,18 @@
+Werkzeuge, mit denen Claude die Excel-Blätter erzeugt (XML direkt im xlsx, weil openpyxl fehlt und Bilder gefährden würde).
+Alle Skripte legen vorher eine Sicherung an (2. Argument). Aufrufe (im Ordner werkzeuge\excel, weil die Skripte sich gegenseitig importieren):
+
+Stand 15.10.2026 nachmittags – Team: P1 Rushit (Leitung, keine Gantt-Aufgaben), P2, P3, P4, P5 Hassan, P6 Dogukan.
+Namen von P2–P4: in gantt_team.py (TEAM) und karten_team.py (TEAM) eintragen ODER direkt im Gantt-Blatt in der Team-Tabelle.
+
+  python gantt_team.py <projekt>\quellen\Gantt.html <drive.html> <xlsx> <backup.xlsx>
+      Gantt-Blatt „GANTT ab 15.10 (krit. Pfad)“ + Netzplan/kritischer Pfad, Spalten Kürzel/Name (SVERWEIS auf Team-Tabelle)
+      (Aufgaben/Dauern/Vorgänger/Verantwortliche oben in AUFGABEN ändern)
+      Achtung: hängt bei jedem Lauf neue Zellformate an styles.xml an – harmlos, aber nicht unnötig oft laufen lassen.
+      gantt.py = alte Fassung ohne Namen (nicht mehr verwenden).
+  python karten_bauen.py <projekt>\quellen\Arbeitskarten.html <drive.html> <xlsx> <backup.xlsx>
+      Blatt „ARBEITSKARTEN“ (Daten: karten_daten.py + karten_peakboard.py, Verteilung auf P2–P6: karten_team.py)
+  python anhang10_v7.py <xlsx> <backup.xlsx> <projekt>\M2_Arbeitsauftraege\vorlagen
+      Anhang 10 + Blätter M2 2.1–2.4 (Blatt 2.3 heißt jetzt „M2 2.3 Ablaufmodell (Hassan)“)
+  python lies_mich_v3.py <xlsx> <backup.xlsx>
+      Blatt „LIES MICH - Einfach erklaert“ (ersetzt vorhandenes Blatt)
+PDF: Chrome headless --print-to-pdf aus quellen\*.html. Excel-Blattnamen max. 31 Zeichen!

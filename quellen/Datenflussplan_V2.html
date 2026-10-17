@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Datenflussplan V2</title>
+<style>
+@page { size: 1900px 1340px; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1900px; height: 1340px; background: #fff; font-family: "Segoe UI", Arial, sans-serif; color: #1a1a1a; }
+.abs { position: absolute; }
+.kopf { left: 26px; top: 26px; width: 1848px; height: 80px; background: #1f4e79; color: #fff; border-radius: 10px;
+        font-size: 25px; font-weight: 700; padding: 0 20px; text-align: center; display: flex; align-items: center; justify-content: center; }
+.rahmen { border: 2px dashed; border-radius: 14px; }
+.rA { left: 26px; top: 128px; width: 1848px; height: 262px; border-color: #c55a11; background: #fffaf6; }
+.rB { left: 26px; top: 408px; width: 1848px; height: 766px; border-color: #1f4e79; background: #fbfdff; }
+.rPi { left: 712px; top: 466px; width: 672px; height: 690px; border: 2px solid #bf9000; border-radius: 12px; background: #fffdf3; }
+.ph { font-size: 21px; font-weight: 700; }
+.ph small { font-weight: 400; font-size: 16px; color: #444; }
+.sp { font-size: 20px; font-weight: 700; color: #1f4e79; text-align: center; }
+.b { border: 2.5px solid #1f3d5c; border-radius: 12px; display: flex; flex-direction: column; align-items: center;
+     justify-content: center; text-align: center; font-size: 16.5px; line-height: 1.45; padding: 8px 12px; }
+.b b { font-size: 17px; display: block; }
+.liste code { display: block; }
+.lap { background: #fbe5d6; border-color: #c55a11; }
+.grau { background: #ececec; }
+.hell { background: #f6f6f6; border-color: #999; color: #555; font-size: 14.5px; }
+.hat { background: #f8cbad; }
+.pi { background: #fff2cc; }
+.pi2 { background: #fffbea; }
+.pb { background: #dbe9f6; }
+.nr { display: block; margin-left: auto; margin-right: auto; background: #c55a11; color: #fff; border-radius: 50%; width: 26px; height: 26px; line-height: 26px;
+      font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+code { font-family: Consolas, monospace; font-size: 14.5px; }
+.lbl { font-size: 15px; color: #1f4e79; background: #fff; padding: 0 4px; }
+.lblo { font-size: 15px; color: #c55a11; background: #fffaf6; padding: 0 4px; }
+.fuss { font-size: 15px; color: #333; text-align: center; width: 1900px; left: 0; line-height: 1.6; }
+.or { color: #c55a11; }
+</style></head><body>
+
+<div class="abs kopf">Datenflussplan V2 – einmalige Laptop-Anbindung → autonomer Betrieb: Sensorik → Raspberry Pi / Python → Aktorik → MQTT → Peakboard</div>
+
+<!-- Phase A -->
+<div class="abs rahmen rA"></div>
+<div class="abs ph or" style="left:50px;top:140px">Phase A – einmalige Laptop-Anbindung (Inbetriebnahme) <small>· Laptop nur einmal im Anlagen-WLAN, danach getrennt</small></div>
+
+<div class="abs b lap" style="left:50px;top:190px;width:250px;height:170px"><div><span class="nr">1</span>Entwickler-Laptop<br>Windows · VS Code<br>Ordner <code>projektmanagement</code><br>Code + Selbsttest lokal</div></div>
+<div class="abs b lap" style="left:360px;top:190px;width:250px;height:170px"><div><span class="nr">2</span>WLAN der Anlage<br>(TP-Link bzw. Pi-WLAN)<br>SSID/Passwort:<br>von Prof. Kampker</div></div>
+<div class="abs b lap" style="left:670px;top:190px;width:250px;height:170px"><div><span class="nr">3</span><code>01_ssh_schluessel_<br>einrichten.ps1</code><br>einmal Passwort (Mensch),<br>danach SSH-Schlüssel</div></div>
+<div class="abs b lap" style="left:980px;top:190px;width:250px;height:170px"><div><span class="nr">4</span><code>02_einspielen.ps1</code><br>scp: <code>sortieranlage/*.py</code>,<br><code>pi_setup.sh</code>, Dienst,<br>Broker-Konfiguration</div></div>
+<div class="abs b lap" style="left:1290px;top:190px;width:250px;height:170px"><div><span class="nr">5</span><code>pi_setup.sh</code> (Pi)<br>Prüfen · Mosquitto ·<br>systemd-Autostart ·<br>Selbsttest</div></div>
+<div class="abs b lap" style="left:1600px;top:190px;width:250px;height:170px"><div><span class="nr">6</span><code>pi_bericht.txt</code><br>zurück auf den Laptop<br>(IPs, Broker, I2C/HAT)<br>→ Laptop trennen</div></div>
+
+<!-- Phase B -->
+<div class="abs rahmen rB"></div>
+<div class="abs ph" style="left:50px;top:418px;color:#1f4e79">Phase B – Dauerbetrieb ohne Laptop</div>
+<div class="abs sp" style="left:50px;top:452px;width:340px">1 Sensorik</div>
+<div class="abs sp" style="left:452px;top:452px;width:230px">2 I/O-Schicht (HATs)</div>
+<div class="abs sp" style="left:1430px;top:452px;width:420px">4 Vernetzung / Anzeige</div>
+<div class="abs rPi"></div>
+<div class="abs sp" style="left:712px;top:474px;width:672px">3 Raspberry Pi „hsnrpi1“ · Python 3 · Start per systemd</div>
+
+<div class="abs b grau" style="left:50px;top:510px;width:340px;height:100px"><div>Lichtschranke vor Farbsensor (I1)<br>Farbsensor analog (I2)</div></div>
+<div class="abs b grau" style="left:50px;top:630px;width:340px;height:100px"><div>Lichtschranke Auswurf (I3)<br>Impulstaster Förderweg (C1)</div></div>
+<div class="abs b hell" style="left:50px;top:750px;width:340px;height:80px"><div>Lagerstellen-Lichtschranken I6–I8<br>(laut Auftrag zunächst nicht im Umfang)</div></div>
+<div class="abs b grau" style="left:50px;top:880px;width:340px;height:160px"><div>Aktorik (9 V)<br>Förderband-Motor M1<br>Ventile Auswurf weiß/rot/blau (O5–O7)<br>Kompressor (O8)</div></div>
+
+<div class="abs b hat" style="left:440px;top:510px;width:230px;height:220px"><div>Automation HAT<br>(Eingänge)<br>Digital / Analog<br><small>Kanäle: OFFEN</small></div></div>
+<div class="abs b hat" style="left:440px;top:880px;width:230px;height:160px"><div>Automation HAT (Relais)<br>+ Motor Driver HAT<br>Trennung 9 V / GPIO</div></div>
+
+<div class="abs b pi" style="left:735px;top:520px;width:300px;height:110px"><div><b>inputs.py</b>Sensorwerte lesen<br>(Sim oder HAT)</div></div>
+<div class="abs b pi2" style="left:1060px;top:520px;width:300px;height:110px"><div><b>main.py · config.py</b>I/O-Zuordnung, Schwellwerte,<br>Timeouts · Aktorik-Sperre</div></div>
+<div class="abs b pi" style="left:735px;top:670px;width:300px;height:150px"><div><b>process.py</b><b>Zustandslogik</b>BEREIT → FÖRDERN → ZÄHLEN →<br>AUSSCHLEUSEN → PRÜFEN<br>Timeouts → FEHLER</div></div>
+<div class="abs b pi" style="left:1060px;top:670px;width:300px;height:150px"><div><b>mqtt_client.py</b>Zustand · Zyklen · Farbe ·<br>Fehler als JSON (retain)<br>ohne pip-Pakete</div></div>
+<div class="abs b pi" style="left:735px;top:880px;width:300px;height:110px"><div><b>outputs.py</b>Motor, Ventile,<br>Kompressor ansteuern</div></div>
+<div class="abs b pb" style="left:1060px;top:880px;width:300px;height:110px"><div><b>Mosquitto-Broker</b>auf dem Pi · Port 1883<br>(VORSCHLAG)</div></div>
+<div class="abs b pi2" style="left:735px;top:1030px;width:300px;height:105px"><div><b>simulation.py · selbsttest.py</b>Simulation ohne Hardware<br>(Standard) inkl. Fehlerfällen</div></div>
+<div class="abs b pi2" style="left:1060px;top:1030px;width:300px;height:105px"><div><b>systemd: sortieranlage.service</b>startet main.py beim Booten<br><code>log.txt</code> · <code>pi_bericht.txt</code></div></div>
+
+<div class="abs b pb liste" style="left:1430px;top:510px;width:420px;height:150px;font-size:15px;align-items:flex-start;text-align:left"><div><b>MQTT-Topics (JSON, VORSCHLAG)</b>
+<code>sortieranlage/status</code><code>sortieranlage/zyklen</code><code>sortieranlage/farbe/letzte</code><code>sortieranlage/farbe/anzahl</code><code>sortieranlage/fehler</code></div></div>
+<div class="abs b pb" style="left:1430px;top:720px;width:420px;height:150px"><div><b>Peakboard Box</b><b>Zustand · Zykluszahl ·<br>Farbe · Fehler/Status</b>MQTT-Subscriber · IP: OFFEN</div></div>
+<div class="abs b grau" style="left:1430px;top:960px;width:420px;height:100px"><div>Bildschirm (HDMI)</div></div>
+
+<svg class="abs" style="left:0;top:0" width="1900" height="1340">
+  <defs>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f4e79"/></marker>
+    <marker id="mo" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c55a11"/></marker>
+    <marker id="mg" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#888"/></marker>
+    <marker id="mk" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+  </defs>
+  <g stroke="#c55a11" stroke-width="3" fill="none" marker-end="url(#mo)">
+    <line x1="300" y1="275" x2="356" y2="275"/><line x1="610" y1="275" x2="666" y2="275"/>
+    <line x1="920" y1="275" x2="976" y2="275"/><line x1="1230" y1="275" x2="1286" y2="275"/>
+    <line x1="1540" y1="275" x2="1596" y2="275"/>
+    <path d="M1415,360 C1415,420 1300,420 1300,462" stroke-dasharray="9 6"/>
+  </g>
+  <g stroke="#1f4e79" stroke-width="3" fill="none" marker-end="url(#m)">
+    <line x1="390" y1="560" x2="436" y2="580"/><line x1="390" y1="680" x2="436" y2="660"/>
+    <line x1="670" y1="575" x2="731" y2="575"/>
+    <line x1="885" y1="630" x2="885" y2="666"/>
+    <line x1="1035" y1="745" x2="1056" y2="745"/>
+    <line x1="885" y1="820" x2="885" y2="876"/>
+    <line x1="735" y1="935" x2="674" y2="935"/>
+    <line x1="440" y1="960" x2="394" y2="960"/>
+    <line x1="1210" y1="820" x2="1210" y2="876"/>
+    <path d="M1360,935 C1400,935 1395,800 1426,800"/>
+  </g>
+  <line x1="1060" y1="575" x2="1039" y2="575" stroke="#888" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#mg)"/>
+  <line x1="1640" y1="870" x2="1640" y2="956" stroke="#444" stroke-width="3" marker-end="url(#mk)"/>
+</svg>
+
+<div class="abs lblo" style="left:1310px;top:388px">installiert &amp; startet einmalig</div>
+<div class="abs lbl" style="left:672px;top:548px">Signale</div>
+<div class="abs lbl" style="left:893px;top:636px">Ereignisse</div>
+<div class="abs lbl" style="left:1012px;top:716px">Daten</div>
+<div class="abs lbl" style="left:893px;top:838px">Befehle</div>
+<div class="abs lbl" style="left:398px;top:930px">9 V</div>
+<div class="abs lbl" style="left:1218px;top:838px">publish</div>
+<div class="abs lbl" style="left:1366px;top:868px;line-height:1.2">subscribe<br>:1883</div>
+<div class="abs lbl" style="left:1650px;top:902px">HDMI</div>
+
+<div class="abs fuss" style="top:1186px">
+<span class="or">Fehlerfälle (Abnahme): band_blockiert (kein Impuls C1) · timeout_auswurf · unbekannte_farbe · auswurf_nicht_frei → alle Aktoren AUS, Meldung auf <code>sortieranlage/fehler</code>, Quittierung → BEREIT</span><br>
+Sicherheit: Aktorik bleibt gesperrt (<code>HARDWARE_FREIGEGEBEN = False</code>), bis I/O-Liste und Verdrahtung bestätigt sind – erst Simulation, dann Einzeltests. Steuerung läuft weiter, auch wenn MQTT/Peakboard ausfällt.<br>
+Status: Signale/Ablauf BESTÄTIGT (9V-Handbuch) · Topics, Broker auf dem Pi, Zustände VORSCHLAG · HAT-Kanäle, IPs, Projektordner, Farb-Schwellwerte OFFEN<br>
+<span style="color:#666">Team Software · Projektmanagement (IoT und Digitalisierung) WS 26/27 · Hochschule Niederrhein · Modernisierung fischertechnik-Sortieranlage · Version 2 · Stand 13.10.2026</span>
+</div>
+</body></html>

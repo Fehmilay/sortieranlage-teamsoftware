@@ -1,0 +1,18 @@
+# systemd-Dienst: Steuerung startet nach dem Booten ohne Laptop.
+# Platzhalter __DIR__/__USER__ ersetzt pi_setup.sh --autostart.
+# Phase 1 (jetzt): Dauer-Simulation in Echtzeit -> Peakboard-Dashboard kann ohne Anlage aufgebaut werden.
+# Phase 2 (nach Freigabe der I/O-Liste): ExecStart auf "--modus hardware" umstellen.
+[Unit]
+Description=Sortieranlage Steuerung (fischertechnik, Raspberry Pi)
+After=network-online.target mosquitto.service
+Wants=network-online.target
+
+[Service]
+User=__USER__
+WorkingDirectory=__DIR__
+ExecStart=/usr/bin/python3 __DIR__/main.py --dauer --echtzeit
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

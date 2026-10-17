@@ -1,0 +1,8 @@
+# Zugangsdaten – NIE hochladen
+.env
+*.env
+# Python
+__pycache__/
+*.pyc
+# Office-Sperrdateien
+~$*

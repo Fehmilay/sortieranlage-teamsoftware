@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Arbeitsaufträge M2</title>
+<style>
+@page { size: A4; margin: 14mm 14mm 16mm 14mm; }
+* { box-sizing: border-box; }
+body { font-family: "Segoe UI", Arial, sans-serif; font-size: 10.5pt; line-height: 1.45; color: #1a1a1a; margin: 0; }
+h1 { background: #1f4e79; color: #fff; font-size: 17pt; margin: 0 0 4px; padding: 10px 14px; border-radius: 6px; }
+.unter { color: #444; margin: 0 0 12px; font-size: 10pt; }
+h2 { color: #1f4e79; font-size: 13.5pt; border-bottom: 2px solid #1f4e79; padding-bottom: 2px; margin: 18px 0 8px; }
+h3 { font-size: 11pt; margin: 10px 0 4px; color: #1f3d5c; }
+table { border-collapse: collapse; width: 100%; margin: 4px 0 8px; font-size: 9.5pt; }
+th, td { border: 1px solid #b7c4d3; padding: 4px 6px; vertical-align: top; text-align: left; }
+th { background: #dbe9f6; }
+.auftrag { page-break-before: always; }
+.kopfzeile { display: flex; gap: 10px; align-items: center; margin: 0 0 6px; }
+.pill { background: #c55a11; color: #fff; border-radius: 14px; padding: 2px 12px; font-weight: 700; font-size: 11pt; }
+.box { border: 1px solid #b7c4d3; border-left: 5px solid #1f4e79; background: #f6f9fc; padding: 6px 10px; margin: 6px 0; border-radius: 4px; }
+.warn { border-left-color: #c00000; background: #fff4f4; }
+.ok { border-left-color: #2e7d32; background: #f3faf3; }
+ol { margin: 4px 0 6px 0; padding-left: 22px; } ol li { margin-bottom: 4px; }
+ul { margin: 4px 0 6px 0; padding-left: 20px; }
+.check li { list-style: none; margin-left: -18px; } .check li::before { content: "☐  "; }
+code { font-family: Consolas, monospace; font-size: 9.5pt; background: #eef2f6; padding: 0 3px; border-radius: 3px; }
+.name { display: inline-block; min-width: 150px; border-bottom: 1px solid #555; }
+.klein { font-size: 9pt; color: #555; }
+.fuss { margin-top: 14px; font-size: 8.5pt; color: #666; border-top: 1px solid #ccc; padding-top: 4px; }
+</style></head><body>
+
+<h1>M2 Input-/Output-Analyse – Arbeitsaufträge bis zum Regelmeeting am 20.10.2026</h1>
+<p class="unter">Team Software · Modernisierung fischertechnik-Sortieranlage · To-Dos 2.1–2.4 aus Anhang 4 · Stand 13.10.2026 · für Einsteiger geschrieben, keine Vorkenntnisse nötig</p>
+
+<div class="box"><b>Ziel der Woche:</b> Am 20.10. wissen wir für jedes Bauteil der Sortierstrecke, <b>welches Signal es liefert</b> bzw. <b>was es tun soll</b>, <b>in welcher Reihenfolge</b> die Anlage arbeitet und <b>welche Daten</b> später auf dem Peakboard-Bildschirm erscheinen. Das ist die Grundlage, damit ab M3 programmiert werden kann.</div>
+
+<h2>Wer macht was?</h2>
+<table>
+<tr><th>To-Do</th><th>Wer</th><th>Name</th><th>Ergebnis (Datei)</th><th>Entwurf teilen bis</th><th>Fertig bis</th></tr>
+<tr><td><b>2.1</b> Input-Liste: Welcher Sensor liefert welches Signal und wann?</td><td>P2</td><td><span class="name"></span></td><td><code>2.1_Input-Liste_P2</code></td><td>Do 15.10.</td><td>Sa 17.10.</td></tr>
+<tr><td><b>2.2</b> Output-Liste: Welcher Aktor soll wann wie angesteuert werden?</td><td>P3</td><td><span class="name"></span></td><td><code>2.2_Output-Liste_P3</code></td><td>Do 15.10.</td><td>Sa 17.10.</td></tr>
+<tr><td><b>2.3</b> Ablauf-/Logikmodell: Input → Verarbeitung → Output</td><td>P1</td><td><span class="name"></span></td><td><code>2.3_Ablaufmodell_P1</code> + Skizze</td><td>Fr 16.10.</td><td>So 18.10.</td></tr>
+<tr><td><b>2.4</b> Datenpunkte für Zustand, Zykluszahl, Farbe, Fehler</td><td>P4</td><td><span class="name"></span></td><td><code>2.4_Datenpunkte_P4</code> + Bildschirm-Skizze</td><td>Fr 16.10.</td><td>Mo 19.10.</td></tr>
+</table>
+<p class="klein">Die Abhängigkeiten aus Anhang 4 (2.3 braucht 2.1 + 2.2, 2.4 braucht 2.3) sind in einer Woche nur zu schaffen, wenn alle <b>gleichzeitig mit dem vorbefüllten Entwurf</b> starten und sich früh abstimmen. Deshalb gibt es feste Übergabetermine.</p>
+
+<h2>Zeitplan</h2>
+<table>
+<tr><th>Tag</th><th>Was passiert</th></tr>
+<tr><td>Di 13.10.</td><td>Aufgaben verteilt. Jeder öffnet seine Vorlage und liest seinen Auftrag (30 min).</td></tr>
+<tr><td>Mi 14.10.</td><td>P2/P3: Handbuch + Fotos auswerten, Liste ausfüllen. P1/P4: Vorschlag lesen, Fragen notieren.</td></tr>
+<tr><td>Do 15.10.</td><td>P2 und P3 teilen ihren <b>Entwurf</b> in der Gruppe (auch wenn noch Lücken drin sind – Lücken = OFFEN).</td></tr>
+<tr><td>Fr 16.10.</td><td><b>Abstimmung 20 min</b> (online, alle 4): Passen Inputs, Outputs und Ablauf zusammen? Fragen-Liste ergänzen.</td></tr>
+<tr><td>Sa 17.10.</td><td>P2/P3 fertig. P1 baut das Ablaufmodell fertig.</td></tr>
+<tr><td>So 18.10.</td><td>P1 fertig → an P4. P4 prüft, ob jeder Zustand einen Datenpunkt hat.</td></tr>
+<tr><td>Mo 19.10.</td><td>P4 fertig. Alle Dateien in den Gruppenordner. Ab hier: Prüfung 2.5 (P5 bzw. Softwareleitung).</td></tr>
+<tr><td>Di 20.10.</td><td>Regelmeeting: jeder stellt sein Ergebnis in 3–5 min vor. Offene Fragen an Prof. Kampker.</td></tr>
+</table>
+
+<h2>Regeln für alle</h2>
+<ul>
+<li><b>Nichts raten.</b> Was ihr nicht sicher wisst, steht als <b>OFFEN</b> in der Tabelle und kommt auf die Fragen-Liste. Status: <b>BESTÄTIGT</b> = steht in einer Quelle · <b>VORSCHLAG</b> = unser Entwurf · <b>OFFEN</b> = unbekannt.</li>
+<li><b>An der Anlage nichts umstecken oder verkabeln</b> und keine Motoren/Ventile selbst schalten. 9-V-Teile kommen nie direkt an den Raspberry Pi. Beobachten und fotografieren ist erlaubt.</li>
+<li><b>Quelle angeben</b> (z. B. „9V-Handbuch S. …“, „Foto vom 06.10.“, „beobachtet am …“).</li>
+<li><b>Vorlagen öffnen:</b> Datei im Ordner <code>M2_Arbeitsauftraege\vorlagen</code> doppelklicken → öffnet sich in Excel → sofort <i>Datei › Speichern unter › Excel-Arbeitsmappe (.xlsx)</i>. Leere Zellen sind eure Aufgabe, gefüllte Zellen sind ein Vorschlag zum Prüfen.</li>
+<li><b>Gemeinsame Fragen-Liste</b> im Gruppenchat führen: „Frage – wer fragt – an wen (Hardware-Team / Prof. Kampker)“.</li>
+</ul>
+
+<h2>Wo finde ich was?</h2>
+<table>
+<tr><th>Quelle</th><th>Wo</th><th>Wofür</th></tr>
+<tr><td>9V-Handbuch mit Belegungsplan</td><td>Moodle-Kurs; Zusammenfassung in der Excel, Blatt „Anhang 9 - Kursmaterial“</td><td>welche Anschlüsse (I1, M1, …) es gibt</td></tr>
+<tr><td>I/O-Zuordnung Sortierstrecke</td><td>Excel, Blatt „Anhang 7 - Datenfluss+Netz“, Tabelle B2 (ab Zeile 98)</td><td>Startpunkt für 2.1 und 2.2</td></tr>
+<tr><td>Ablauf der Sortierung</td><td>Excel, Blatt „KI-Kontext“, Zeile „ABLAUF SORTIERUNG“</td><td>Startpunkt für 2.3</td></tr>
+<tr><td>Datenflussplan V2</td><td><code>Datenflussplan_V2_13-10-2026.pdf</code></td><td>Gesamtbild</td></tr>
+<tr><td>MQTT-Vorschlag</td><td><code>peakboard\MQTT_Schnittstelle.md</code> und Excel Anhang 7, Abschnitt A2</td><td>Startpunkt für 2.4</td></tr>
+<tr><td>Fotos der Anlage</td><td>Excel „Anhang“ / „Anhang 5“ und eure Handys (06.10.)</td><td>Bauteile erkennen</td></tr>
+</table>
+
+<!-- ================= 2.1 ================= -->
+<div class="auftrag">
+<div class="kopfzeile"><span class="pill">P2</span><h2 style="margin:0;border:0">To-Do 2.1 – Input-Liste (Sensoren)</h2></div>
+<div class="box"><b>Deine Frage:</b> Welcher Sensor meldet <b>was</b>, <b>wann</b> und <b>wie sieht das Signal aus</b>, wenn nichts los ist bzw. wenn ein Werkstück kommt?<br>
+<b>Vorlage:</b> <code>vorlagen\2.1_Input-Liste_P2.csv</code> – die 7 Eingänge (I1, I2, I3, C1, I6–I8) sind schon eingetragen.</div>
+
+<h3>Kurz erklärt</h3>
+<ul>
+<li><b>Lichtschranke</b> (Fototransistor + kleine Lampe gegenüber): meldet „frei“ oder „unterbrochen“ → <b>digital</b> (nur an/aus).</li>
+<li><b>Farbsensor</b>: leuchtet rot auf das Werkstück und misst, wie viel Licht zurückkommt → <b>analog</b> (eine Zahl; weiß reflektiert viel, blau wenig).</li>
+<li><b>Impulstaster</b>: wird vom laufenden Band immer wieder gedrückt → jeder Druck = ein <b>Impuls</b>. Zählt man sie, weiß man, wie weit das Band gefahren ist.</li>
+</ul>
+
+<h3>Schritt für Schritt</h3>
+<ol>
+<li>Vorlage öffnen und als <code>2.1_Input-Liste_P2.xlsx</code> speichern.</li>
+<li>Excel öffnen, Blatt „Anhang 7 - Datenfluss+Netz“, Tabelle B2 lesen. Vergleiche: Stimmen Anschluss, Bauteil und Signalart mit der Vorlage? Abweichungen notieren.</li>
+<li>Im 9V-Handbuch den <b>Belegungsplan der Sortierstrecke</b> suchen. Für jeden Eingang die Seite als Quelle eintragen. Was dort bestätigt ist → Status <b>BESTÄTIGT</b>.</li>
+<li>Auf den Fotos (oder im Handbuch-Bild) jeden Sensor an der Anlage <b>finden</b> und in einer Spalte oder im Kommentar beschreiben, wo er sitzt („erste Lichtschranke direkt am Einlegeplatz“ …).</li>
+<li>Spalte <b>„Ruhezustand“</b> und <b>„Aktiv, wenn …“</b> ausfüllen: Was meldet der Sensor ohne Werkstück, was mit Werkstück? Wenn ihr den elektrischen Wert (Spannung) nicht kennt, schreibt nur „frei / unterbrochen“ und bei Spannung <b>OFFEN</b>.</li>
+<li>Spalte <b>„Wann im Ablauf?“</b>: Lege die Sensoren in die Reihenfolge, in der ein Werkstück an ihnen vorbeikommt: I1 → I2 → I3 → (C1 die ganze Zeit). Tipp: Zeichne das Band auf ein Blatt und male die Sensoren ein (Foto davon beilegen).</li>
+<li>Spalte <b>„Wie oft / wie schnell?“</b>: Für C1 schätzen, wie viele Impulse pro Sekunde kommen (beim nächsten Anlagentermin per Handy-Video zählen; bis dahin OFFEN).</li>
+<li>Für I6–I8: nur prüfen, dass sie richtig beschrieben sind. Sie sind laut Auftrag <b>zunächst nicht im Umfang</b>.</li>
+<li>Fragen in die Gruppenliste, z. B.: „Welche Spannung liefern die Fototransistoren?“, „Welchen Wertebereich hat der Farbsensor?“ (an Hardware-Team / Prof. Kampker).</li>
+<li><b>Do 15.10.</b> Entwurf teilen, Fr Abstimmung, <b>Sa 17.10.</b> fertig.</li>
+</ol>
+<h3>Fertig, wenn …</h3>
+<ul class="check">
+<li>alle 7 Eingänge eine Zeile haben und keine Zelle leer ist (unbekannt = OFFEN)</li>
+<li>jeder Eingang eine Bedeutung für die Software hat („startet Band“, „Farbe erkennen“ …)</li>
+<li>die Reihenfolge im Ablauf klar ist und eine Skizze des Bandes mit Sensoren existiert</li>
+<li>offene Fragen auf der Gruppenliste stehen</li>
+</ul>
+</div>
+
+<!-- ================= 2.2 ================= -->
+<div class="auftrag">
+<div class="kopfzeile"><span class="pill">P3</span><h2 style="margin:0;border:0">To-Do 2.2 – Output-Liste (Aktoren)</h2></div>
+<div class="box"><b>Deine Frage:</b> Welches Teil soll sich <b>wann</b> bewegen, <b>wie lange</b>, unter welcher <b>Voraussetzung</b> – und was darf <b>nie</b> passieren?<br>
+<b>Vorlage:</b> <code>vorlagen\2.2_Output-Liste_P3.csv</code> – die 5 Ausgänge (M1, O5, O6, O7, O8) sind schon eingetragen.</div>
+
+<h3>Kurz erklärt</h3>
+<ul>
+<li><b>M1 Motor</b> treibt das Förderband an.</li>
+<li><b>O5/O6/O7 Magnetventile</b>: öffnen kurz die Druckluft → ein kleiner Zylinder schiebt das Werkstück vom Band in die Rutsche seiner Farbe (weiß / rot / blau).</li>
+<li><b>O8 Kompressor</b>: erzeugt die Druckluft. Ohne Druck bewegt sich kein Zylinder.</li>
+<li><b>Aktor</b> = Teil, das etwas tut. Die Software schaltet ihn nur über Relais/Treiber (nie direkt), weil er mit 9 V läuft.</li>
+</ul>
+
+<h3>Schritt für Schritt</h3>
+<ol>
+<li>Vorlage öffnen und als <code>2.2_Output-Liste_P3.xlsx</code> speichern.</li>
+<li>Excel, Blatt „Anhang 7 - Datenfluss+Netz“, Tabelle B2 (Nr. 8–12) mit der Vorlage vergleichen; Quelle 9V-Handbuch (Belegungsplan) eintragen.</li>
+<li>Auf Fotos/Handbuch jeden Aktor finden: Wo sitzt Ventil weiß, rot, blau? (Reihenfolge entlang des Bandes notieren – wichtig für das Zählen der Impulse!)</li>
+<li>Spalte <b>„Was passiert sichtbar?“</b> in einfachen Worten ausfüllen.</li>
+<li>Spalten <b>„Wann EIN?“</b> und <b>„Wann AUS / wie lange?“</b> prüfen und ergänzen. Zeiten, die ihr nicht kennt (z. B. wie lange ein Ventil offen sein muss), als <b>OFFEN</b> markieren – sie werden an der Anlage gemessen.</li>
+<li>Spalte <b>„Voraussetzung“</b>: z. B. Ventil nur, wenn Kompressor Druck hat und das Band steht.</li>
+<li>Spalte <b>„Darf nie passieren“</b>: Sicherheits- und Logikregeln sammeln (zwei Ventile gleichzeitig, Band läuft endlos, Kompressor dauerhaft an ohne Bedarf …).</li>
+<li>Wichtige Entscheidungsfrage vorbereiten: <b>Kompressor dauerhaft an oder nur beim Ausschleusen?</b> Hintergrund: 4 Lasten (3 Ventile + Kompressor), aber der Automation HAT hat nur 3 Relais. Schreibe beide Varianten mit Vor-/Nachteil auf (Lärm, Strom, Anzahl Relais) – Entscheidung im Meeting.</li>
+<li>Motor-Fragen notieren: Läuft das Band nur in eine Richtung? Braucht es verschiedene Geschwindigkeiten?</li>
+<li><b>Do 15.10.</b> Entwurf teilen, Fr Abstimmung, <b>Sa 17.10.</b> fertig.</li>
+</ol>
+<h3>Fertig, wenn …</h3>
+<ul class="check">
+<li>alle 5 Ausgänge mit „wann ein / wann aus / Voraussetzung“ beschrieben sind</li>
+<li>die Reihenfolge der Ventile entlang des Bandes feststeht</li>
+<li>„Darf nie passieren“ für jeden Ausgang ausgefüllt ist</li>
+<li>die Kompressor-Frage als Entscheidungsvorlage (2 Varianten) vorliegt</li>
+</ul>
+</div>
+
+<!-- ================= 2.3 ================= -->
+<div class="auftrag">
+<div class="kopfzeile"><span class="pill">P1</span><h2 style="margin:0;border:0">To-Do 2.3 – Ablauf-/Logikmodell</h2></div>
+<div class="box"><b>Deine Frage:</b> In welchen <b>Schritten (Zuständen)</b> arbeitet die Anlage, <b>welcher Sensor</b> löst den nächsten Schritt aus, <b>welche Aktoren</b> laufen dabei – und was passiert bei einem <b>Fehler</b>?<br>
+<b>Vorlage:</b> <code>vorlagen\2.3_Ablaufmodell_P1.csv</code> – ein Vorschlag mit 6 Zuständen ist eingetragen (so ist auch das Python-Grundgerüst <code>sortieranlage\process.py</code> aufgebaut).</div>
+
+<h3>Kurz erklärt</h3>
+<ul>
+<li><b>Zustand</b> = was die Anlage gerade tut (z. B. „wartet“, „fördert“). Sie ist immer in genau einem Zustand.</li>
+<li><b>Übergang</b> = „Wenn <i>Sensor X</i> meldet …, dann gehe zu Zustand Y und schalte <i>Aktor Z</i>.“</li>
+<li><b>Zeitlimit (Timeout)</b> = Wenn etwas zu lange nicht passiert, ist es ein Fehler (z. B. Band läuft, aber kein Impuls kommt → Band blockiert).</li>
+</ul>
+
+<h3>Schritt für Schritt</h3>
+<ol>
+<li>Vorlage öffnen und als <code>2.3_Ablaufmodell_P1.xlsx</code> speichern.</li>
+<li>Ablauf in der Excel lesen (Blatt „KI-Kontext“, Zeile „ABLAUF SORTIERUNG“) und mit den 6 Zuständen der Vorlage vergleichen. Fehlt ein Schritt? Ist einer überflüssig?</li>
+<li>Den Ablauf als <b>Bild</b> zeichnen (Papier, PowerPoint oder draw.io): Kästen = Zustände, Pfeile = Übergänge, am Pfeil steht der auslösende Sensor. Ein Fehler-Kasten, zu dem alle Zeitlimits führen.</li>
+<li>Sobald P2 und P3 ihre Entwürfe teilen (Do): Für <b>jeden Übergang</b> prüfen, ob der Sensor in der Input-Liste steht, und für jede Aktion, ob der Aktor in der Output-Liste steht. Fehlt etwas → Frage an P2/P3.</li>
+<li><b>Fehlerfälle</b> festlegen (für die Abnahme braucht es mindestens einen): je Fehler „woran erkenne ich ihn?“, „was macht die Anlage?“ (alles aus), „was sieht der Bediener?“. Vorschläge: Band blockiert, Werkstück kommt nicht an, Farbe unbekannt, Auswurf nicht frei.</li>
+<li>Klären, <b>wie ein Fehler quittiert</b> wird (Werkstück entnehmen + Programm neu starten? Taste? Peakboard-Knopf?) → OFFEN-Frage für das Meeting.</li>
+<li>Zeitlimits als VORSCHLAG lassen (2 s ohne Impuls, 10 s bis zur Auswurf-Lichtschranke) – echte Werte werden an der Anlage gemessen.</li>
+<li><b>Fr 16.10.</b> Abstimmung leiten (20 min, alle 4): Inputs ↔ Ablauf ↔ Outputs ↔ Datenpunkte.</li>
+<li>Optional (wenn Python installiert): Simulation ansehen – in PowerShell im Ordner <code>projektmanagement\sortieranlage</code>: <code>python main.py</code>. Die Ausgabe zeigt die Zustandswechsel des Vorschlags.</li>
+<li><b>So 18.10.</b> fertig → an P4.</li>
+</ol>
+<h3>Fertig, wenn …</h3>
+<ul class="check">
+<li>jeder Zustand einen Auslöser (Input), Aktionen (Outputs) und einen Folgezustand hat</li>
+<li>mindestens ein Fehlerfall vollständig beschrieben ist (Erkennung, Reaktion, Meldung)</li>
+<li>eine Ablaufskizze (Bild) existiert</li>
+<li>alle Inputs/Outputs zu den Listen von P2/P3 passen</li>
+</ul>
+</div>
+
+<!-- ================= 2.4 ================= -->
+<div class="auftrag">
+<div class="kopfzeile"><span class="pill">P4</span><h2 style="margin:0;border:0">To-Do 2.4 – Datenpunkte für Peakboard</h2></div>
+<div class="box"><b>Deine Frage:</b> Welche Informationen soll der Peakboard-Bildschirm zeigen, <b>wie heißen sie</b> (Topic), <b>wie sehen die Werte aus</b> und <b>wann</b> werden sie geschickt?<br>
+<b>Vorlage:</b> <code>vorlagen\2.4_Datenpunkte_P4.csv</code> – die 5 Pflicht-Datenpunkte aus dem Projektauftrag (Zustand, Zykluszahl, Farbe, Anzahl je Farbe, Fehler) sind eingetragen.</div>
+
+<h3>Kurz erklärt</h3>
+<ul>
+<li><b>MQTT</b> = „Nachrichten-Briefkasten“: Der Raspberry Pi wirft Nachrichten unter einem <b>Topic</b> (Adresse, z. B. <code>sortieranlage/zyklen</code>) ein, die Peakboard Box hat dieses Topic abonniert und zeigt den Wert an.</li>
+<li><b>JSON</b> = Schreibweise für die Nachricht, z. B. <code>{"wert": 12}</code> – Name in Anführungszeichen, Doppelpunkt, Wert.</li>
+<li><b>Datenpunkt</b> = eine Information, die angezeigt wird (z. B. Zykluszahl).</li>
+</ul>
+
+<h3>Schritt für Schritt</h3>
+<ol>
+<li>Vorlage öffnen und als <code>2.4_Datenpunkte_P4.xlsx</code> speichern.</li>
+<li><b>Zwei Vorschläge vergleichen:</b> Excel Anhang 7, Abschnitt A2 (z. B. <code>"zustand": "idle|running|fehler"</code>, <code>"gesamt"</code>, <code>"ts"</code>) und die Vorlage / <code>peakboard\MQTT_Schnittstelle.md</code> (<code>"zustand": "FOERDERN"</code>, <code>"wert"</code>, <code>"zeit"</code>). Unterschiede in einer kleinen Tabelle aufschreiben und <b>einen</b> Vorschlag empfehlen. Hinweis: Das Python-Grundgerüst nutzt bereits den zweiten Vorschlag.</li>
+<li>Namensregeln festlegen: nur Kleinbuchstaben, keine Umlaute, keine Leerzeichen, alles beginnt mit <code>sortieranlage/</code>.</li>
+<li>Für jeden Datenpunkt prüfen: Wertebereich, wann gesendet, Beispielnachricht. Lege eine Beispielnachricht pro Topic fest.</li>
+<li>Sobald P1 das Ablaufmodell schickt (So 18.10.): Kommt jeder Zustand aus 2.3 in <code>sortieranlage/status</code> vor? Ist jeder Fehlerfall ein Fehlercode?</li>
+<li><b>Bildschirm skizzieren</b> (Papier oder PowerPoint): Welche Kacheln, wo, welche Farben (Fehler = rot, läuft = grün)? Das ist die Vorlage für den Peakboard Designer.</li>
+<li>Ideen für „Kann“-Daten sammeln (Zykluszeit, Farbsensor-Messwert für die Kalibrierung …) und als Kann markieren – nicht alles muss sofort umgesetzt werden.</li>
+<li>Fragen für das Meeting: IP-Adresse der Peakboard Box? Läuft der MQTT-Broker auf dem Pi (Vorschlag)? Wer hat den Peakboard Designer auf dem Laptop?</li>
+<li><b>Mo 19.10.</b> fertig. Im Meeting die Topics zur Abstimmung vorlegen (= To-Do 4.3 vorbereitet).</li>
+</ol>
+<h3>Fertig, wenn …</h3>
+<ul class="check">
+<li>alle 5 Pflicht-Datenpunkte Topic, Beispiel-JSON, Wertebereich und Sendezeitpunkt haben</li>
+<li>eine Empfehlung „Vorschlag A oder B“ mit Begründung vorliegt</li>
+<li>jeder Zustand und Fehler aus 2.3 abgedeckt ist</li>
+<li>eine Bildschirm-Skizze existiert</li>
+</ul>
+</div>
+
+<!-- ================= Abschluss ================= -->
+<div class="auftrag">
+<h2>Danach: 2.5 Prüfung (P5)</h2>
+<p>Ab Mo 19.10. werden die vier Ergebnisse gegen den Projektauftrag geprüft: keine ungeklärten Inputs/Outputs, alle offenen Punkte markiert. Ist P5 noch nicht besetzt, übernimmt das die Softwareleitung. Prüffragen: Hat jeder Sensor eine Aufgabe im Ablauf? Wird jeder Aktor irgendwo geschaltet? Gibt es mindestens einen Fehlerfall? Werden Zustand, Zykluszahl, Farbe und Fehler übertragen (Abnahmekriterien)?</p>
+
+<h2>Ablauf im Regelmeeting am 20.10.</h2>
+<table>
+<tr><th>Min.</th><th>Punkt</th><th>Wer</th></tr>
+<tr><td>5</td><td>Input-Liste</td><td>P2</td></tr>
+<tr><td>5</td><td>Output-Liste + Entscheidungsvorlage Kompressor</td><td>P3</td></tr>
+<tr><td>5</td><td>Ablaufmodell + Fehlerfälle (Skizze zeigen)</td><td>P1</td></tr>
+<tr><td>5</td><td>Datenpunkte/Topics + Bildschirm-Skizze, Abstimmung</td><td>P4</td></tr>
+<tr><td>10</td><td>Offene Fragen an Prof. Kampker (HAT-Kapazität, Spannungen, IPs, Broker-Ort, Projektordner auf dem Pi)</td><td>alle</td></tr>
+</table>
+
+<h2>Mini-Glossar</h2>
+<table>
+<tr><td><b>Input / Eingang</b></td><td>Signal, das in die Steuerung hineinkommt (von einem Sensor).</td></tr>
+<tr><td><b>Output / Ausgang</b></td><td>Befehl, den die Steuerung herausgibt (an einen Aktor).</td></tr>
+<tr><td><b>digital / analog</b></td><td>digital = nur an/aus · analog = Zahlenwert (z. B. Helligkeit).</td></tr>
+<tr><td><b>Impuls</b></td><td>ein kurzes An-Aus-Signal; viele Impulse zählen = Weg messen.</td></tr>
+<tr><td><b>Zustand</b></td><td>der aktuelle Arbeitsschritt der Anlage.</td></tr>
+<tr><td><b>Timeout</b></td><td>Zeitlimit; wird es überschritten, gilt das als Fehler.</td></tr>
+<tr><td><b>Relais</b></td><td>elektrischer Schalter, mit dem der Raspberry Pi sicher 9-V-Teile schaltet.</td></tr>
+<tr><td><b>MQTT / Topic</b></td><td>Nachrichtensystem / „Adresse“ einer Nachricht für Peakboard.</td></tr>
+<tr><td><b>TXT</b></td><td>der alte fischertechnik-Controller, den der Raspberry Pi ersetzt (I1, M1 … sind seine Anschlussnamen).</td></tr>
+</table>
+<p class="fuss">Team Software · Projektmanagement (IoT und Digitalisierung) WS 26/27 · Hochschule Niederrhein · Arbeitsaufträge M2 · Stand 13.10.2026 · Vorlagen: <code>M2_Arbeitsauftraege\vorlagen</code></p>
+</div>
+</body></html>
