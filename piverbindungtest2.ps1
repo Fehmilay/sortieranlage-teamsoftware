@@ -71,7 +71,8 @@ Ergebnis $p1883 "MQTT-Broker (Port 1883) $(if($p1883){'vom Netz aus erreichbar'}
 Teil "3/6 Anmeldung am Pi"
 $remote = @'
 echo "== Mosquitto"
-if command -v mosquitto >/dev/null; then echo "INSTALLIERT: $(mosquitto -h 2>/dev/null | head -1)"; else echo "MOSQUITTO_FEHLT"; fi
+MQBIN=$(command -v mosquitto || ls /usr/sbin/mosquitto 2>/dev/null)   # liegt in /usr/sbin, das ist fuer normale Benutzer nicht im PATH
+if [ -n "$MQBIN" ] || systemctl cat mosquitto >/dev/null 2>&1; then echo "INSTALLIERT: ${MQBIN:-Dienst mosquitto}"; else echo "MOSQUITTO_FEHLT"; fi
 echo "DIENST: $(systemctl is-active mosquitto 2>/dev/null)"
 echo "AUTOSTART: $(systemctl is-enabled mosquitto 2>/dev/null)"
 echo "LAUSCHT:"; ss -ltn 2>/dev/null | awk '$4 ~ /:1883$/ {print "  " $4}'
@@ -103,7 +104,8 @@ fi
 echo "== Test auf dem Pi (Steuerungs-Simulation sendet an localhost)"
 D=~/sortieranlage; [ -f $D/main.py ] || D=~/sortieranlage_test
 if command -v mosquitto_sub >/dev/null && [ -f $D/main.py ]; then
-  timeout 8 mosquitto_sub -h localhost -t 'sortieranlage/#' -v -C 10 > /tmp/sortier_sub.txt 2>&1 &
+  U=$(sed -n 1p ~/.sortieranlage_mqtt 2>/dev/null); P=$(sed -n 2p ~/.sortieranlage_mqtt 2>/dev/null)   # Broker verlangt Anmeldung
+  timeout 8 mosquitto_sub -h localhost ${U:+-u "$U"} ${P:+-P "$P"} -t 'sortieranlage/#' -v -C 10 > /tmp/sortier_sub.txt 2>&1 &
   sleep 1
   (cd $D && python3 main.py --farben weiss,rot --mqtt-host localhost >/dev/null 2>&1)
   wait

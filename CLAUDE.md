@@ -74,7 +74,7 @@ README.txt Abschnitt 2 folgen: erst `.\laptop\02_einspielen.ps1 -Schritt Pruefen
 Sicherungen: Jedes Skript legt vor jeder Änderung eine Kopie im Scratchpad (Temp) an. Zusätzlich am Ende jeder Sitzung den Tagesstand nach `sicherungen\Leistungsnachweis_JJJJ-MM-TT.xlsx` kopieren (Ordner ist von GitHub ausgeschlossen).
 Blatt 2 „Leistungsnachweis (Abgabe)“ (sheet20.xml) = saubere Kopie von Blatt 1 Zeilen 1–24 + Zweizeiler-Wochenziel (ZIEL in todo_team.py) – nach JEDER Änderung an Blatt 1 `python werkzeuge\excel\abgabe_blatt.py <xlsx> <backup>` ausführen. Blatt 1 bleibt die Arbeitsfassung mit To-do-Block. Zeiten: Regelmeeting 2 h/Woche, jede Claude-Sitzung eigene Zeile, min. 0,5 h, realistisch.
 Alles, was wir tun, laufend auf Blatt 1 ("Leistungsnachweis") in der Zeile des heutigen Datums ergänzen (XML direkt im xlsx bearbeiten, openpyxl ist nicht installiert und würde Bilder gefährden).
-Ablage/Versand: Team-Drive (Konto kubilayff).
+Ablage/Versand: Team-Drive (Konto kubilayff). Excel in den Drive: Connector schafft 5,6 MB nicht, Chrome-Upload-Umweg ist gesperrt → Google Drive für Desktop (Konto kubilayff) einmalig installieren lassen, danach `powershell -File werkzeuge\drive_sync.ps1` (kopiert Excel + LN-PDF nach „04 Excel + PDFs“). Regelmeeting dienstags = eigene Zeile „Krefeld“, 2 h (20.10. eingetragen, Summe 12,5 h).
 
 ## GitHub + To-do (ab 17.10.2026)
 - Öffentliches Repository https://github.com/Fehmilay/sortieranlage-teamsoftware (Konto Fehmilay, kein git installiert → Upload per `gh api`, Skript `werkzeuge/github_hochladen.py`). `.env` NIE hochladen (steht in .gitignore).
@@ -87,7 +87,7 @@ Ablage/Versand: Team-Drive (Konto kubilayff).
 4. Projektordner auf dem Pi von Prof. Kampker.
 5. Farb-Schwellwerte kalibrieren.
 6. Fotos in Anhang 5 (06.10.) der Excel neu einfügen (waren in der hochgeladenen Datei leer).
-7. E-Mail-Adresse von Prof. Kampker für den Versand des Leistungsnachweises.
+7. ERLEDIGT: Leistungsnachweis wöchentlich per Mail an ralf.kampker@hs-niederrhein.de (Moodle-Forum 13.10.). Versand über GroupWise im Browser (webmail.stud.hn.de, Konto Kubilay Fehmi Gönüleglendiren, in Chrome angemeldet): neue Mail, Excel-Kopie `abgabe\Leistungsnachweis_gesamt_bis_TT-MM-JJJJ.xlsx` anhängen, kurzer Text, Gruß „Kubilay“ (so wie am 06.10./13.10.) – Senden erst nach OK des Nutzers.
 
 ## Arbeitsregeln für Claude Code
 - Zugangsdaten nur in `.env` (vom Nutzer erlaubt), sonst in keine Datei. Claude tippt trotzdem keine Passwörter in ssh/Login-Masken (SSH-Schlüssel nutzen). Keine Aktorik-Befehle ohne bestätigte I/O-Liste und Verdrahtung; erst Simulation, dann Einzeltests.

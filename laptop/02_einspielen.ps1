@@ -58,7 +58,7 @@ if ($alle -or $Schritt -eq "Setup") {
 
 if ($Schritt -eq "MqttTest" -or ($alle -and $Installieren)) {
     Teil "MQTT Ende-zu-Ende auf dem Pi (Broker localhost:1883)"
-    Pi "command -v mosquitto_sub >/dev/null && (timeout 15 mosquitto_sub -h localhost -t 'sortieranlage/#' -v -C 12 & sleep 1; cd ~/$Ziel && python3 main.py --farben weiss,rot,blau --fehler band_blockiert >/dev/null; wait) || echo 'mosquitto_sub fehlt'" | Out-Null
+    Pi "command -v mosquitto_sub >/dev/null && (U=`$(sed -n 1p ~/.sortieranlage_mqtt 2>/dev/null); P=`$(sed -n 2p ~/.sortieranlage_mqtt 2>/dev/null); timeout 15 mosquitto_sub -h localhost `${U:+-u `"`$U`"} `${P:+-P `"`$P`"} -t 'sortieranlage/#' -v -C 12 & sleep 1; cd ~/$Ziel && python3 main.py --farben weiss,rot,blau --fehler band_blockiert >/dev/null; wait) || echo 'mosquitto_sub fehlt'" | Out-Null
 }
 
 if ($alle -or $Schritt -eq "Bericht") {
