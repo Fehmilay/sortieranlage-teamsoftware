@@ -19,8 +19,8 @@ Bildschirm anzeigt. Abnahme: **02.02.2027**.
 | 4 | **Alles in einer Datei** (Leistungsnachweis, Gantt, Arbeitskarten, LIES MICH, Listen 2.1–2.4) | [Excel herunterladen](Leistungsnachweis_gesamt_bis_13-10-2026_aktualisiert.xlsx) → Datei öffnen → oben rechts „TO-DOs fürs Team“ anklicken |
 | 5 | **Fragen?** In der To-do-Tabelle rechts in die gelbe Spalte schreiben oder Rushit schicken – Rushit gibt sie an Claude (KI-Assistent) weiter, die Antwort steht danach in der Tabelle. | |
 
-**Team:** Rushit (P1, Leitung – koordiniert, hält den Draht zu Claude) · Jan (P2) Sensoren · Marie (P3) Aktoren + Draht zu Team Hardware ·
-Alhasane (P4) Daten/Peakboard · Hassan (P5) Testen/Doku · Dogukan (P6) Pi/Netzwerk/Organisation.
+**Team:** Rushit (P1, Leitung – koordiniert, hält den Draht zu Claude) · Jan (P2) Sensoren · Alhasane (P3) Aktoren + Draht zu Team Hardware ·
+Marie (P4) Daten/Peakboard · Hassan (P5) Testen/Doku · Dogukan (P6) Pi/Netzwerk/Organisation.
 
 **Ganzen Ordner herunterladen:** oben auf den grünen Knopf **„Code“** → **„Download ZIP“** → ZIP entpacken (Rechtsklick → „Alle extrahieren“).
 
@@ -36,11 +36,11 @@ Nie Passwörter in die Gruppe, ins Drive oder hier hochladen.
 | `sortieranlage/` | Das Python-Programm (Steuerung, Simulation, Selbsttest) | Claude, Dogukan |
 | `PI_EINRICHTEN.bat` | **Ein Doppelklick** spielt das Programm auf den Pi und richtet ihn ein (ohne Internet) | Dogukan (Karte P6-3) |
 | `piverbindungtest1.bat`, `piverbindungtest2.bat` | Tests: Ist der Pi erreichbar? Läuft das Postamt (MQTT)? | Dogukan |
-| `PEAKBOARD_TESTDATEN.bat` | Schickt Testdaten, damit das Peakboard-Board schon ohne Anlage gebaut werden kann | Dogukan, Alhasane |
+| `PEAKBOARD_TESTDATEN.bat` | Schickt Testdaten, damit das Peakboard-Board schon ohne Anlage gebaut werden kann | Dogukan, Marie |
 | `PI_INTERNET.bat` | Pi kurz übers Handy ins Internet (nur mit OK von Prof. Kampker) | Dogukan |
-| `peakboard/MQTT_Schnittstelle.md` | Welche Daten der Pi an das Peakboard schickt | Alhasane (P4) |
+| `peakboard/MQTT_Schnittstelle.md` | Welche Daten der Pi an das Peakboard schickt | Marie (P4) |
 | `Arbeitskarten/`, `Gantt/` | PDFs zum Lesen und Ausdrucken | alle |
-| `M2_Arbeitsauftraege/` | Listen 2.1–2.4 (Vorlagen) | Jan, Marie, Alhasane, Hassan |
+| `M2_Arbeitsauftraege/` | Listen 2.1–2.4 (Vorlagen) | Jan, Alhasane, Marie, Hassan |
 | `Datenflussplan_*`, `Netzwerkplan_*` | Bilder: wie die Daten fließen, wie das Netz aussieht | alle |
 | `README.txt` | Ablauf der Laptop-Anbindung an den Pi (ausführlich) | Dogukan |
 | `pi/`, `laptop/` | Hilfsdateien für die Einrichtung (werden von den .bat-Dateien benutzt) | – |

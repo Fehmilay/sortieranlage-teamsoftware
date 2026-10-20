@@ -1,0 +1,31 @@
+﻿piverbindungtest2 (MQTT) - 20.10.2026 17:45:17 - Pi 192.168.1.180
+
+=== 1/6 Netzwerk des Laptops
+  [FEHLER] Laptop ist nicht im selben Netz wie der Pi (192.168.1.180)
+           -> Mit dem WLAN der Anlage verbinden (oder -PiIP anpassen, falls sich das Netz geaendert hat).
+
+=== 2/6 Erreichbarkeit vom Laptop aus
+  [FEHLER] SSH (Port 22) nicht erreichbar
+           -> Pi eingeschaltet? Richtige IP? Erst piverbindungtest1.bat ausfuehren.
+  [FEHLER] MQTT-Broker (Port 1883) vom Netz aus NICHT erreichbar
+           -> Siehe Schritt 4: lauscht Mosquitto nur auf localhost?
+
+=== 3/6 Anmeldung am Pi
+  uebersprungen (Port 22 nicht erreichbar)
+
+=== 4/6 Mosquitto auf dem Pi
+  uebersprungen (keine Anmeldung)
+
+=== 5/6 MQTT-Test vom Laptop (so wie spaeter die Peakboard Box)
+  uebersprungen (Port 1883 vom Laptop nicht erreichbar)
+
+=== 6/6 ZUSAMMENFASSUNG
+  [FEHLER] Laptop ist nicht im selben Netz wie der Pi (192.168.1.180)
+  [FEHLER] SSH (Port 22) nicht erreichbar
+  [FEHLER] MQTT-Broker (Port 1883) vom Netz aus NICHT erreichbar
+
+  ERGEBNIS: Noch zu tun:
+   1. Mit dem WLAN der Anlage verbinden (oder -PiIP anpassen, falls sich das Netz geaendert hat).
+   2. Pi eingeschaltet? Richtige IP? Erst piverbindungtest1.bat ausfuehren.
+   3. Siehe Schritt 4: lauscht Mosquitto nur auf localhost?
+  Bericht gespeichert: C:\Users\apc-fehmikubi\Desktop\projektmanagement\pi_berichte\piverbindungtest2_2026-10-20_1745.txt

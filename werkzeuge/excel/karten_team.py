@@ -6,8 +6,8 @@ import karten_daten as K
 TEAM = {
     "P1": "Rushit Vlasi (Leitung)",
     "P2": "Jan",
-    "P3": "Marie",
-    "P4": "Alhasane",
+    "P3": "Alhasane",
+    "P4": "Marie",
     "P5": "Hassan",
     "P6": "Dogukan",
 }
@@ -78,7 +78,7 @@ def umverteilen():
     K.VORLAGEN = [(b, _text(t), [_text(z) for z in zeilen]) for b, t, zeilen in K.VORLAGEN]
     K.EINLEITUNG = [
         "Jede Person hat eigene Karten. Eine Karte = eine Aufgabe. Einfach Schritt für Schritt abarbeiten und abhaken.",
-        "Team: P1 Rushit (Leitung, koordiniert – keine eigenen Gantt-Aufgaben) · P2 Jan · P3 Marie · P4 Alhasane · P5 Hassan · P6 Dogukan.",
+        "Team: P1 Rushit (Leitung, koordiniert – keine eigenen Gantt-Aufgaben) · P2 Jan · P3 Alhasane · P4 Marie · P5 Hassan · P6 Dogukan.",
         "Unklar? NICHT raten – Frage in die Gruppe oder an Rushit. Fertig? „Erledigt + Datum“ in die Gruppe schreiben und im Gantt den Status auf „fertig“ setzen.",
         "Alles, was Programm, Excel und Drive-Dateien betrifft, erledigt Claude (KI-Assistent der Leitung). Hier steht nur, was Menschen tun müssen.",
         "Texte zum Kopieren (Nachrichten, Testplan, Messprotokoll, Bildschirm-Texte, Checkliste, Schild) stehen am Ende unter VORLAGEN A–I.",

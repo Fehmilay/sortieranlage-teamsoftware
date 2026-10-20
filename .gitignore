@@ -6,3 +6,7 @@ __pycache__/
 *.pyc
 # Office-Sperrdateien
 ~$*
+
+# Sicherungen der Excel bleiben nur auf dem Laptop
+sicherungen/
+upload_*/

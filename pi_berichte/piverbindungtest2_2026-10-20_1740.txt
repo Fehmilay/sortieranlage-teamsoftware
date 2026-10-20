@@ -1,0 +1,96 @@
+﻿piverbindungtest2 (MQTT) - 20.10.2026 17:40:19 - Pi 192.168.1.180
+
+=== 1/6 Netzwerk des Laptops
+  [OK]     Laptop im Anlagennetz: 192.168.1.187
+
+=== 2/6 Erreichbarkeit vom Laptop aus
+  [OK]     SSH (Port 22) erreichbar
+  [OK]     MQTT-Broker (Port 1883) vom Netz aus erreichbar
+
+=== 3/6 Anmeldung am Pi
+  Anmeldung ohne Passwort (SSH-Schluessel funktioniert)
+  [OK]     Anmeldung am Pi erfolgreich
+
+=== 4/6 Mosquitto auf dem Pi
+  | == Mosquitto
+  | MOSQUITTO_FEHLT
+  | DIENST: active
+  | AUTOSTART: enabled
+  | LAUSCHT:
+  |   0.0.0.0:1883
+  |   [::]:1883
+  | KONFIGURATION:
+  |   persistence true
+  |   persistence_location /var/lib/mosquitto/
+  |   log_dest file /var/log/mosquitto/mosquitto.log
+  |   include_dir /etc/mosquitto/conf.d
+  |   listener 1883
+  |   allow_anonymous false
+  |   password_file /etc/mosquitto/passwd
+  | CLIENTS_OK
+  | == Python-Module fuer die Hardware
+  | MODUL_FEHLT automationhat
+  | MODUL_OK gpiozero
+  | MODUL_OK lgpio
+  | MODUL_OK smbus2
+  | == I2C (Automation HAT Mini 0x48, Motor Driver HAT 0x40)
+  | I2C1_AUS
+  | == Test auf dem Pi (Steuerungs-Simulation sendet an localhost)
+  | EMPFANGEN: 0
+  |   Connection error: Connection Refused: not authorised.
+  [FEHLER] Mosquitto installiert
+           -> Mosquitto fehlt doch - mit Prof. Kampker klaeren.
+  [OK]     Mosquitto-Dienst laeuft
+  [OK]     Mosquitto startet automatisch beim Hochfahren
+  [OK]     Broker lauscht fuer das Netz (0.0.0.0:1883, [::]:1883)
+  [OK]     Test-Programme mosquitto_sub/_pub vorhanden
+  [FEHLER] Steuerungs-Simulation -> Broker auf dem Pi: 0 Nachrichten empfangen
+           -> Steuerung erreicht den Broker nicht - Bericht an Claude.
+  [FEHLER] I2C-Bus fuer die HATs eingeschaltet
+           -> I2C einschalten (Prof. Kampker, Admin-Passwort):  ssh -t admin@192.168.1.180 "sudo raspi-config nonint do_i2c 0"
+  [OK]     Treiber fuer den Automation HAT Mini nutzbar (automationhat oder gpiozero + eingebauter Treiber)
+
+=== 5/6 MQTT-Test vom Laptop (so wie spaeter die Peakboard Box)
+  | MQTT-Test gegen 192.168.1.180:1883
+  | [OK]     Verbindung angenommen (Benutzer peakboard)
+  | [OK]     Abonniert: sortieranlage/#
+  | [OK]     Testnachricht gesendet: sortieranlage/test
+  |          empfangen sortieranlage/status: {"zustand": "AUS", "modus": "sim", "zeit": "2026-10-20T17:40:34"}
+  |          empfangen sortieranlage/wert/zustand: AUS
+  |          empfangen sortieranlage/wert/modus: sim
+  |          empfangen sortieranlage/wert/zyklen: 2
+  |          empfangen sortieranlage/wert/farbe_letzte: rot
+  |          empfangen sortieranlage/wert/anzahl_weiss: 1
+  |          empfangen sortieranlage/wert/anzahl_rot: 1
+  |          empfangen sortieranlage/wert/anzahl_blau: 0
+  |          empfangen sortieranlage/wert/fehler_aktiv: 0
+  |          empfangen sortieranlage/wert/fehler_text: kein Fehler
+  |          empfangen sortieranlage/wert/fehler_anzahl: 0
+  |          empfangen sortieranlage/zyklen: {"wert": 2, "zeit": "2026-10-20T17:40:34"}
+  |          empfangen sortieranlage/farbe/letzte: {"wert": "rot", "zeit": "2026-10-20T17:40:34"}
+  |          empfangen sortieranlage/farbe/anzahl: {"weiss": 1, "rot": 1, "blau": 0, "zeit": "2026-10-20T17:40:34"}
+  |          empfangen sortieranlage/fehler: {"aktiv": false, "code": null, "text": "kein Fehler", "anzahl": 0, "zeit": "2026-10-20T17:40:34"}
+  |          empfangen sortieranlage/test: {"wert": "hallo-1792510835"}
+  | [OK]     Testnachricht kam zur�ck -> Broker vom Netz aus voll nutzbar (Peakboard kann sich verbinden).
+  [OK]     Laptop kann ueber den Broker senden und empfangen
+
+=== 6/6 ZUSAMMENFASSUNG
+  [OK]     Laptop im Anlagennetz: 192.168.1.187
+  [OK]     SSH (Port 22) erreichbar
+  [OK]     MQTT-Broker (Port 1883) vom Netz aus erreichbar
+  [OK]     Anmeldung am Pi erfolgreich
+  [FEHLER] Mosquitto installiert
+  [OK]     Mosquitto-Dienst laeuft
+  [OK]     Mosquitto startet automatisch beim Hochfahren
+  [OK]     Broker lauscht fuer das Netz (0.0.0.0:1883, [::]:1883)
+  [OK]     Test-Programme mosquitto_sub/_pub vorhanden
+  [FEHLER] Steuerungs-Simulation -> Broker auf dem Pi: 0 Nachrichten empfangen
+  [FEHLER] I2C-Bus fuer die HATs eingeschaltet
+  [OK]     Treiber fuer den Automation HAT Mini nutzbar (automationhat oder gpiozero + eingebauter Treiber)
+  [OK]     Laptop kann ueber den Broker senden und empfangen
+
+  ERGEBNIS: Noch zu tun:
+   1. Mosquitto fehlt doch - mit Prof. Kampker klaeren.
+   2. Steuerung erreicht den Broker nicht - Bericht an Claude.
+   3. I2C einschalten (Prof. Kampker, Admin-Passwort):  ssh -t admin@192.168.1.180 "sudo raspi-config nonint do_i2c 0"
+  Bericht gespeichert: C:\Users\apc-fehmikubi\Desktop\projektmanagement\pi_berichte\piverbindungtest2_2026-10-20_1740.txt

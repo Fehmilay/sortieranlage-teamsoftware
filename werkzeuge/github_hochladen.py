@@ -8,7 +8,7 @@ import base64, fnmatch, json, os, subprocess, sys, tempfile
 
 REPO = "Fehmilay/sortieranlage-teamsoftware"
 WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AUSSCHLUSS = [".env", "*.env", "__pycache__", "*.pyc", "~$*", ".git", ".claude"]
+AUSSCHLUSS = [".env", "*.env", "__pycache__", "*.pyc", "~$*", ".git", ".claude", "sicherungen", "upload_*"]
 
 
 def gh(pfad, daten=None, methode=None):

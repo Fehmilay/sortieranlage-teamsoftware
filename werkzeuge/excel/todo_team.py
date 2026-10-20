@@ -10,8 +10,11 @@ Live-Pflege: Aufgaben/Status/Rückmeldungen unten in TODOS und STAND ändern, da
 import json, os, re, shutil, sys, zipfile
 from xml.sax.saxutils import escape
 
-STAND_DATUM = "Sa 17.10.2026"
+STAND_DATUM = "Di 20.10.2026"
 BIS = "Dienstag 20.10.2026 (Regelmeeting)"
+# Zweizeiler (max. 2 Zeilen): Was haben wir erreicht, wenn alle die Ziele dieser Woche schaffen? Steht unten auf Blatt 2 (Abgabe) und im To-do-Block.
+ZIEL = ("Ziel bis Di 20.10.2026 – wenn alle ihre Aufgaben schaffen: Listen 2.1–2.4 fertig, Freigaben von Prof. Kampker und Antworten von Team Hardware liegen vor, "
+        "Peakboard läuft mit Testdaten – damit kann Team Hardware ab 21.10. anschließen und wir ab 26.10. auf der echten Anlage testen.")
 GH = "https://github.com/Fehmilay/sortieranlage-teamsoftware/blob/main/"
 GH_START = "https://github.com/Fehmilay/sortieranlage-teamsoftware"
 TODO_SHEET_URL = "https://docs.google.com/spreadsheets/d/1MI7Egtn5bykn7BOq3XI69zSVreS4dCe1AguFCColf-I"   # Abhak-Liste im Drive (17.10.)
@@ -54,26 +57,26 @@ TODOS = [
         ("T4", "Di 20.10.", "Testdaten für Peakboard laufen lassen: PEAKBOARD_TESTDATEN.bat (Karte P6-5) – geht auch zuhause. Ordner vorher von Rushit holen.", "GH_TD"),
     ]),
     ("P5 – Hassan (Testen, Doku, Abläufe)", [
-        ("T5", "Mo 19.10.", "Liste 2.3 Ablaufmodell fertig machen (Karte P5-6).", "M23"),
+        ("T5", "Di 20.10.", "Liste 2.3 Ablaufmodell lesen (15–20 min): Tabelle ist schon ausgefüllt, 6 Zeilen = 6 Schritte eines Klotzes. Nur die Spalten „Zustand“, „Was passiert hier?“ und „Nächster Zustand“ lesen – wie eine Geschichte. Kürzel (I1, M1 …) muss man nicht verstehen. Letzte Spalte: „passt“ oder Frage. Gemeinsam anschauen im Regelmeeting (Karte P5-6).", "M23"),
         ("T6", "Di 20.10.", "Im Regelmeeting die 3 Entscheidungen J7–J9 vorstellen (Vorlage B, Karte P5-4).", "A10"),
         ("T7", "Di 20.10.", "GitHub-Seite öffnen und die Startseite (README) lesen – nur lesen, nichts ändern. "
                             "Rückmeldung: Was ist unklar? Wie sollen wir weitermachen?", "GH"),
     ]),
     ("P2 – Jan (Sensoren / Eingänge + Bildschirm-Texte)", [
         ("T8", "Mo 19.10.", "Liste 2.1 Sensoren fertig machen (Karte P2-3).", "M21"),
-        ("T9", "Mo 19.10.", "Texte und Farben für den Bildschirm festlegen (Vorlage H, Karte P2-6).", "KARTEN"),
+        ("T9", "Mo 19.10.", "Vorschlag für Texte und Farben auf dem Bildschirm (Vorlage H, ganz hinten in den Arbeitskarten) kurz bewerten: „passt“ oder 1–2 Änderungen. Danach mit Marie zusammen den Peakboard Designer startklar machen (Karte P2-6 + P4-5).", "KARTEN"),
         ("T10", "Di 20.10.", "LIES MICH und deine Arbeitskarten (P2-…) durchlesen. Rückmeldung: Was verstehst du nicht?", "LIESMICH"),
     ]),
-    ("P3 – Marie (Aktoren / Ausgänge + Draht zu Team Hardware)", [
+    ("P3 – Alhasane (Aktoren / Ausgänge + Draht zu Team Hardware)", [
         ("T11", "Mo 19.10.", "WICHTIG (roter Pfad im Gantt): Team Hardware anschreiben (Vorlage J, Karte P3-0): Bestellung raus? Liefertermin? "
                              "Welches 9-V-Netzteil? Anschlussfragen bis Di 20.10. beantworten? Am Do 22.10. nochmal nachfragen. Antworten rechts eintragen.", "KARTEN"),
         ("T12", "Mo 19.10.", "Liste 2.2 Aktoren fertig machen (Karte P3-2).", "M22"),
         ("T13", "Di 20.10.", "Gantt durchsehen (rote Zeilen = kritischer Pfad). Rückmeldung: Sind die Termine von Team Hardware realistisch?", "GANTT"),
     ]),
-    ("P4 – Alhasane (Daten / Peakboard)", [
+    ("P4 – Marie (Daten / Peakboard)", [
         ("T14", "Mo 19.10.", "Liste 2.4 Datenpunkte fertig machen (Karte P4-4).", "M24"),
         ("T15", "sofort", "Abstimmung vom Fr 16.10. (Karte P4-9): Hat sie stattgefunden? Wenn nein: bis Mo 19.10. nachholen (20 min online). Ergebnis rechts eintragen.", "KARTEN"),
-        ("T16", "Mo 19.10.", "Peakboard Designer startklar machen (Karte P4-5). Den MQTT-Zugang bekommst du von Rushit (steht nicht in den Unterlagen).", "KARTEN"),
+        ("T16", "Mo 19.10.", "ZUSAMMEN MIT JAN den Peakboard Designer startklar machen (Karte P4-5): Prof. Kampker fragen, mit welchem Konto wir uns anmelden; Designer installieren (Windows-Laptop); leeres Projekt „Sortieranlage Team Software“ anlegen. Den MQTT-Zugang bekommst du von Rushit.", "KARTEN"),
         ("T17", "Di 20.10.", "Peakboard-Beschreibung auf GitHub lesen. Rückmeldung: Welches Nachrichten-Format (A, B oder C) nehmen wir fürs Board?", "GH_PB"),
     ]),
     ("ALLE (außer Rushit)", [
@@ -81,9 +84,29 @@ TODOS = [
                              "die Antwort steht danach hier.", "GANTT"),
     ]),
 ]
-WER_KURZ = {"P2": "Jan (P2)", "P3": "Marie (P3)", "P4": "Alhasane (P4)", "P5": "Hassan (P5)", "P6": "Dogukan (P6)", "AL": "ALLE"}
+WER_KURZ = {"P2": "Jan (P2)", "P3": "Alhasane (P3)", "P4": "Marie (P4)", "P5": "Hassan (P5)", "P6": "Dogukan (P6)", "AL": "ALLE"}
 # Stand der Rückmeldungen (Claude überträgt hier, was im Drive eingetragen wurde): Nr -> (Status, Erledigt am, Rückmeldung)
-STAND = {}
+STAND = {   # übertragen aus der Drive-Tabelle am 20.10.2026
+    "T1": ("offen", "", "Dogukan hat keinen Drive-Zugang – bekommt die Aufgabe direkt von Rushit."),
+    "T2": ("offen", "", "Dogukan bekommt die Aufgabe direkt von Rushit."),
+    "T3": ("offen", "", "Dogukan bekommt die Aufgabe direkt von Rushit."),
+    "T4": ("offen", "", "Dogukan bekommt die Aufgabe direkt von Rushit."),
+    "T5": ("erledigt", "19.10.", "Ablaufmodell gelesen – gemeinsame Durchsicht im Regelmeeting 20.10."),
+    "T6": ("in Arbeit", "", ""),
+    "T7": ("erledigt", "18.10.", ""),
+    "T8": ("erledigt", "", ""),
+    "T9": ("offen", "", "Vorschlag aus Vorlage H gilt – Jan bewertet nur kurz und richtet mit Marie den Peakboard Designer ein (20.10. in der VL)."),
+    "T10": ("erledigt", "", ""),
+    "T11": ("erledigt", "17.10.", "Team Hardware ist angeschrieben. Bitte die ANTWORTEN von Team Hardware hier eintragen (Bestellung, Netzteil, Anschlussfragen)."),
+    "T12": ("erledigt", "18.10.", ""),
+    "T13": ("offen", "", ""),
+    "T14": ("erledigt", "18.10.", "Bildschirmskizze von Marie liegt im Drive (Bildschirmskizze.png)."),
+    "T15": ("offen", "", ""),
+    "T16": ("Frage/Problem", "", "Marie: Designer läuft auf dem HSNR-Laptop, geht erst am 20.10. in der VL. – Claude: Passt. Am 20.10. in der VL zusammen mit Jan "
+                                "einrichten und das leere Projekt anlegen."),
+    "T17": ("erledigt", "19.10.", "Marie: A ist einfacher, aber nicht so umfangreich wie C – A versuchen, sonst C. – Claude: Einverstanden (Entscheidung J12 = A). "
+                                  "Der Pi schickt A, B und C gleichzeitig, Umstellen geht also jederzeit ohne Programmänderung."),
+}
 
 KOPF = ["Wer", "Bis", "Was tun (einfach erklärt) – Anleitung steht in der genannten Karte", "Öffnen (klicken)",
         "Status (Pfeil)", "Erledigt am", "Deine Rückmeldung / Frage an Claude (hier reinschreiben)"]
@@ -92,6 +115,14 @@ ANLEITUNG = ("So geht's: 1) Such deinen Namen in Spalte A. 2) Klick in Spalte D 
              "3) Die Schritte stehen in der genannten Arbeitskarte. 4) In Spalte E den Status wählen (Zelle anklicken → Pfeil). "
              "5) Gelbe Felder: Datum und Rückmeldung bzw. Frage eintragen. Rushit (Leitung) hat diese Woche keine eigenen Aufgaben "
              "und hält den Draht zu Claude: Fragen aus Spalte G werden beantwortet und hier aktualisiert.")
+
+
+# ---- Daten der laufenden Woche kommen aus woche.py (überschreibt die Werte oben) ----
+from woche import WOCHE, STAND_DATUM, BIS, ZIEL, TODOS, STAND, WER_KURZ, KOPF, ANLEITUNG, REITER
+import woche as _w
+TODO_SHEET_URL = _w.TODO_SHEET_URL   # Link der Wochen-Tabelle (leer bis zum Upload)
+for _r in [r[0] for r in REITER] + ["TO-DO"]:
+    ZIELE["R:" + _r] = (TODO_SHEET_URL, "→ Reiter „" + _r + "“")
 
 
 def _str(f, t):
@@ -136,9 +167,10 @@ def block_xml(start, st, links, breiten):
         rows.append(f'<row r="{r}" ht="{h:.0f}" customHeight="1">{xml}</row>')
     zeile(cell(f"A{r}", st["title"], f"TO-DO FÜR DAS TEAM BIS {BIS.upper()} – Stand {STAND_DATUM}, wird von Claude laufend aktualisiert")
           + "".join(cell(f"{c}{r}", st["title"]) for c in "BCDEFG"), 30); merges.append(f"A{r}:G{r}"); r += 1
+    zeile(cell(f"A{r}", st["sec"], ZIEL) + "".join(cell(f"{c}{r}", st["sec"]) for c in "BCDEFG"), 34); merges.append(f"A{r}:G{r}"); r += 1
     zeile(cell(f"A{r}", st["sub"], ANLEITUNG) + "".join(cell(f"{c}{r}", st["sub"]) for c in "BCDEFG"), 62); merges.append(f"A{r}:G{r}"); r += 1
     hinweis = ("Alle Dateien immer aktuell auf GitHub (Startseite = Erklärung)." +
-               (" Gemeinsame Abhak-Liste im Browser: Google-Tabelle „TO-DO bis Di 20.10.“ im Drive-Ordner." if TODO_SHEET_URL else ""))
+               (f" Gemeinsame Wochen-Tabelle im Drive: „★ {WOCHE} – Aufgaben + Ergebnisse“ (jede Aufgabe hat dort einen eigenen Reiter)." if TODO_SHEET_URL else ""))
     zeile(cell(f"A{r}", st["link"], formel=link_formel(GH_START, "→ GitHub öffnen"), wert="→ GitHub öffnen")
           + (cell(f"B{r}", st["link"], formel=link_formel(TODO_SHEET_URL, "→ Abhak-Liste (Drive)"), wert="→ Abhak-Liste (Drive)") if TODO_SHEET_URL else cell(f"B{r}", st["sub"]))
           + cell(f"C{r}", st["sub"], hinweis) + "".join(cell(f"{c}{r}", st["sub"]) for c in "DEFG"), 30); merges.append(f"C{r}:G{r}"); r += 1
@@ -151,7 +183,7 @@ def block_xml(start, st, links, breiten):
             continue
         w, (ziel, anzeige) = rest
         xml = (cell(f"A{r}", st["row"], w[0]) + cell(f"B{r}", st["row"], w[1]) + cell(f"C{r}", st["row"], w[2])
-               + cell(f"D{r}", st["link"], formel=link_formel(ziel, anzeige), wert=anzeige)
+               + (cell(f"D{r}", st["link"], formel=link_formel(ziel, anzeige), wert=anzeige) if ziel else cell(f"D{r}", st["row"], anzeige.replace("→ ", "")))
                + cell(f"E{r}", st["input"], w[4]) + cell(f"F{r}", st["input"], w[5]) + cell(f"G{r}", st["input"], w[6]))
         zeile(xml, max(hoehe(w[2], breiten[2]), hoehe(w[6], breiten[6]))); r += 1
     return rows, merges, erste, r - 1
@@ -280,7 +312,7 @@ def drive(ziel, links_json=None):
               '<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>'
               '<xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>'
               '<xf numFmtId="0" fontId="0" fillId="3" borderId="0" xfId="0" applyFill="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'
-              '<xf numFmtId="0" fontId="3" fillId="3" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center"/></xf>'
+              '<xf numFmtId="0" fontId="3" fillId="3" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>'
               '<xf numFmtId="0" fontId="2" fillId="5" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf>'
               '<xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyBorder="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'
               '<xf numFmtId="0" fontId="0" fillId="4" borderId="1" xfId="0" applyFill="1" applyBorder="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf>'

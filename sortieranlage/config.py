@@ -19,14 +19,16 @@ HARDWARE_FREIGEGEBEN = False
 # (sinking, bis 500 mA), 1 Relais. Förderband-Motor über Waveshare Motor Driver HAT (I2C).
 HAT_TYP = "mini"              # "mini" = 1 Relais, "voll" = Automation HAT PIM213 mit 3 Relais
 # Eingebauter Treiber (hat_mini.py), falls die Pimoroni-Bibliothek fehlt. BCM-Pins laut Pimoroni-Bibliothek:
-# VORSCHLAG – am Testtag mit io_monitor.py prüfen (T1).
+# BESTÄTIGT durch Team Hardware (GPIO-Schnittstellen.pdf, 20.10.2026: GPIO 26/20/21 Eingänge, 5/12/6 Ausgänge,
+# 16 Relais) – am Testtag mit io_monitor.py prüfen (T1).
 HAT_PINS = {"input": (26, 20, 21), "output": (5, 12, 6), "relay": (16,)}
 ADS1015_ADRESSE = 0x48        # Analog-Digital-Wandler auf dem HAT
 ANALOG_EINGANG_MAX_V = 25.85  # Messbereich der Analogeingänge (Spannungsteiler auf dem HAT)
 
 # --- I/O-Zuordnung ------------------------------------------------------------
 # Signale der Sortierstrecke: BESTÄTIGT (9V-Handbuch, Belegungsplan).
-# Klemme am HAT: VORSCHLAG (Anschlussplan 15.10.2026, Excel-Blatt „LIES MICH“) – das Hardware-Team
+# Klemme am HAT: BESTÄTIGT durch Team Hardware (quellen/GPIO-Schnittstellen_TeamHardware_2026-10-20.pdf) –
+# deckt sich mit unserem Vorschlag vom 15.10.; das Hardware-Team
 # bestätigt oder ändert ihn beim Anschließen; Kontrolle am Testtag mit io_monitor.py (Aufgabe T1).
 # Mögliche Werte: ("input", 1..3), ("analog", 1..3), ("output", 1..3), ("relay", 1 bzw. 1..3), ("motor", "A")
 EINGAENGE = {
@@ -43,14 +45,17 @@ AUSGAENGE = {
     "KOMPRESSOR":   {"ft": "O8", "text": "Kompressor",          "kanal": ("relay", 1)},  # Relais: höherer Strom
 }
 
-# Waveshare Motor Driver HAT (PCA9685 + TB6612FNG). Kanäle laut Waveshare-Beispielcode: VORSCHLAG,
+# Waveshare Motor Driver HAT (PCA9685 + TB6612FNG). Kanäle BESTÄTIGT (Team Hardware 20.10.: Motor an MA1/MA2,
+# PWMA Ch 0, AIN1 Ch 1, AIN2 Ch 2),
 # Drehrichtung und Geschwindigkeit OFFEN (am Testtag prüfen, Aufgabe T5).
 MOTOR_I2C_BUS = 1
 MOTOR_I2C_ADRESSE = 0x40
 MOTOR_KANAELE = {"A": {"pwm": 0, "in1": 1, "in2": 2}, "B": {"pwm": 5, "in1": 3, "in2": 4}}
 MOTOR_VORWAERTS = True        # falls das Band falsch herum läuft: False
 MOTOR_GESCHWINDIGKEIT = 100   # Prozent
-# Lichtschranke aktiv = unterbrochen. Pegel am HAT: OFFEN (True = Pegel 0 bedeutet unterbrochen).
+# Lichtschranke aktiv = unterbrochen. Pegel am HAT BESTÄTIGT (Team Hardware 20.10.): 1 = Lichtstrahl frei, 0 = unterbrochen.
+# Optional vorhanden: 0,96-Zoll-LCD des Automation HAT Mini (ST7735, SPI) – Team Hardware schlägt eine Live-Anzeige
+# von Farbwert + Status vor (noch nicht umgesetzt).
 LS_INVERTIERT = True
 
 # --- Farberkennung -------------------------------------------------------------

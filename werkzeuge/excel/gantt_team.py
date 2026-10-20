@@ -1,4 +1,4 @@
-"""Gantt-Plan ab 15.10.2026 mit kritischem Pfad (Netzplan in Arbeitstagen).
+﻿"""Gantt-Plan ab 15.10.2026 mit kritischem Pfad (Netzplan in Arbeitstagen).
 Erzeugt: Excel-Blatt (selbst aktualisierend), Druck-HTML (Wochenansicht) und Drive-HTML.
 Aufruf: python gantt.py <druck.html> <drive.html> [<xlsx> <backup>]
 """
@@ -33,11 +33,11 @@ def erster_at(t):
 
 
 # (nr, phase, aufgabe, wer, dauer_AT, vorgaenger, nicht_vor, status, karte)
-TEAM = {"P1": "Rushit Vlasi (Leitung)", "P2": "Jan", "P3": "Marie", "P4": "Alhasane",
-        "P5": "Hassan", "P6": "Dogukan", "KI": "Claude (KI-Assistent)", "alle": "ganzes Team"}
+TEAM = {"P1": "Rushit Vlasi (Leitung)", "P2": "Jan", "P3": "Alhasane", "P4": "Marie",
+        "P5": "Hassan", "P6": "Dogukan", "P7": "Melih", "P8": "Hamza", "KI": "Claude (KI-Assistent)", "alle": "ganzes Team"}
 ROLLEN = {"P1": "Leitung – koordiniert, keine eigenen Gantt-Aufgaben", "P2": "Sensoren / Eingänge",
           "P3": "Aktoren / Ausgänge + Draht zu Team Hardware", "P4": "Daten / Peakboard", "P5": "Testen, Doku, Abläufe",
-          "P6": "Pi, Netzwerk, Organisation", "KI": "programmiert und pflegt Excel/Drive (über die Leitung)", "alle": "–"}
+          "P6": "Pi, Netzwerk, Organisation", "P7": "Schnittstellen + Abstimmung mit Team Netzwerk", "P8": "Peakboard Box + Bildschirm", "KI": "programmiert und pflegt Excel/Drive (über die Leitung)", "alle": "–"}
 
 # (nr, phase, aufgabe, wer-kürzel, dauer_AT, vorgaenger, nicht_vor, status, karte)
 AUFGABEN = [
@@ -49,6 +49,9 @@ AUFGABEN = [
     ("V5", "1 Vorbereitung", "Liste 2.4 Datenpunkte fertig machen", "P4", 5, [], D(2026, 10, 13), "läuft", "P4-4"),
     ("V6", "1 Vorbereitung", "Abstimmung am Freitag 16.10. leiten (20 min online)", "P4", 1, [], D(2026, 10, 16), "offen", "P4-9"),
     ("V7", "1 Vorbereitung", "Regelmeeting 20.10.: Entscheidungen J7–J9 vorstellen (Vorlage B)", "P5", 1, ["V2", "V3", "V4", "V5"], D(2026, 10, 20), "offen", "P5-4"),
+    ("D1", "1 Vorbereitung", "M2-Abgabe: Schnittstellenmatrix prüfen + Verantwortliche eintragen", "P7", 3, [], D(2026, 10, 21), "offen", "–"),
+    ("D2", "1 Vorbereitung", "M2-Abgabe: Testkonzept inkl. Betrieb ohne Internet prüfen", "P5", 3, [], D(2026, 10, 21), "offen", "–"),
+    ("D3", "1 Vorbereitung", "Datenvertrag mit Team Netzwerk abstimmen (Farbwörter, Topic-Anfang, Broker)", "P7", 3, [], D(2026, 10, 21), "offen", "–"),
     ("H1", "2 Team Hardware (P3 hält Kontakt)", "Bestellung auslösen (macht Team Hardware, P3 fragt nach)", "P3", 1, [], D(2026, 10, 16), "offen", "P3-1"),
     ("H2", "2 Team Hardware (P3 hält Kontakt)", "Lieferung der Teile (Lieferant, P3 fragt nach)", "P3", 2, ["H1"], None, "offen", "P3-1"),
     ("H3", "2 Team Hardware (P3 hält Kontakt)", "9-V-Netzteil klären und bereitlegen (macht Team Hardware)", "P3", 3, [], D(2026, 10, 16), "offen", "P3-1"),
@@ -67,7 +70,7 @@ AUFGABEN = [
     ("B3", "5 Peakboard (parallel)", "Board mit Testdaten bauen (Datenquelle, Kacheln, Farben)", "P4", 4, ["B2"], None, "offen", "P4-6, P4-7"),
     ("B4", "5 Peakboard (parallel)", "Texte und Farben für den Bildschirm festlegen (Vorlage H)", "P2", 1, [], D(2026, 10, 19), "offen", "P2-6"),
     ("B5", "5 Peakboard (parallel)", "Board mit Testdaten prüfen", "P2", 1, ["B3", "B4"], None, "offen", "P2-5"),
-    ("B6", "5 Peakboard (parallel)", "Peakboard Box und Bildschirm aufbauen", "P3", 1, [], D(2026, 10, 21), "offen", "P3-4"),
+    ("B6", "5 Peakboard (parallel)", "Peakboard Box und Bildschirm aufbauen", "P8", 1, [], D(2026, 10, 21), "offen", "P3-4"),
     ("B7", "5 Peakboard (parallel)", "Board auf die Peakboard Box laden", "P4", 1, ["B5", "B6", "N2"], None, "offen", "P4-8"),
     ("B8", "5 Peakboard (parallel)", "Peakboard-Abnahmetest (7 Punkte, Vorlage I)", "P5", 2, ["B7", "E4"], None, "offen", "P5-3"),
     ("T1", "6 Testen und Verbessern", "Dauertest leiten: viele Klötze, alle Farben, alle Fehlerfälle (To-Dos 6.1–6.4)", "P5", 15, ["E4"], None, "offen", "–"),
@@ -168,7 +171,7 @@ def html(einfach=False):
            f'<th>von–bis</th><th>Puffer (AT)</th><th>Kritisch</th>{kopf}</tr>{"".join(zeilen)}</table>')
     erkl = "".join(f"<p><b>{h(k)}:</b> {h(v)}</p>" for k, v in ERKLAERUNG)
     erkl = ('<table border="1" cellpadding="4" style="border-collapse:collapse"><tr><th>Kürzel</th><th>Name</th><th>Rolle</th></tr>'
-            + "".join(f"<tr><td>{k}</td><td>{h(TEAM[k])}</td><td>{h(ROLLEN[k])}</td></tr>" for k in ("P1", "P2", "P3", "P4", "P5", "P6", "KI"))
+            + "".join(f"<tr><td>{k}</td><td>{h(TEAM[k])}</td><td>{h(ROLLEN[k])}</td></tr>" for k in ("P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "KI"))
             + "</table>") + erkl
     hw = ('<table border="1" cellpadding="4" style="border-collapse:collapse"><tr><th>Nr</th><th>Was wir von Team Hardware brauchen</th><th>Warum</th><th>bis</th><th>gefragt am</th><th>Antwort / Stand</th></tr>'
           + "".join(f"<tr><td>{n}</td><td>{h(w)}</td><td>{h(g)}</td><td>{h(b)}</td><td>&nbsp;</td><td>&nbsp;</td></tr>" for n, w, g, b in HW) + "</table>")
@@ -270,7 +273,7 @@ if len(sys.argv) > 4:
         merges.append(f"{col(i)}4:{col(i)}5")
     n_phasen = len({a["phase"] for a in A.values()})
     team_kopf = 6 + n_phasen + len(A) + 1 + 1            # Leerzeile nach Regelmeeting
-    team_von, team_bis = team_kopf + 1, team_kopf + 8
+    team_von, team_bis = team_kopf + 1, team_kopf + len(TEAM)
     r, phase, erste = 6, None, 6
     leer_tage = lambda r: [c(f"{col(K0 + i)}{r}", "", X_MITTE) for i in range(N)]
     for a in A.values():
@@ -308,7 +311,7 @@ if len(sys.argv) > 4:
     assert r == team_kopf, (r, team_kopf)
     zeile(r, [c(f"A{r}", "TEAM – Namen hier in Spalte B eintragen, sie erscheinen dann automatisch oben in der Spalte „Name“", SEC)]
           + [c(f"{col(i)}{r}", "", SEC) for i in range(1, K0)], 22); merges.append(f"A{r}:L{r}"); r += 1
-    for k in ("P1", "P2", "P3", "P4", "P5", "P6", "KI", "alle"):
+    for k in TEAM:
         zeile(r, [c(f"A{r}", k, LBL), c(f"B{r}", TEAM[k], ROW), c(f"C{r}", ROLLEN[k], ROW)] + [c(f"{col(i)}{r}", "", ROW) for i in range(3, K0)], 20)
         merges.append(f"C{r}:L{r}"); r += 1
     assert r - 1 == team_bis, (r - 1, team_bis)

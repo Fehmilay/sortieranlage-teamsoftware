@@ -24,11 +24,11 @@ S10 = ("S10", "Testdaten für Peakboard laufen lassen", "sobald P4 im Designer a
        "P4 sieht im Designer wechselnde Werte.",
        "„Python ist nicht installiert“ → den Laptop mit den Projektdateien nehmen. „Postamt nicht erreichbar“ an der Anlage → erst Karte S2.",
        "–")
-P1_5 = ("P1-5", "Texte und Farben für den Bildschirm festlegen", "Sa 17.10.", "15 min", "Vorlage H",
-        ["Vorlage H lesen: welcher Zustand mit welchem Text und welcher Farbe angezeigt wird.",
-         "Prüfen: Versteht das jemand, der die Anlage nicht kennt? Wenn nicht: bessere Texte vorschlagen.",
-         "Ergebnis an P4 (für das Board) und in die Gruppe."],
-        "Texte und Farben stehen fest.", "–", "–")
+P1_5 = ("P1-5", "Texte und Farben für den Bildschirm: Vorschlag kurz bewerten + Marie beim Designer helfen", "Mo 19.10.", "15 min + gemeinsamer Termin", "Vorlage H (ganz hinten in den Arbeitskarten)",
+        ["Vorlage H lesen – das ist schon der fertige Vorschlag (Claude), welcher Zustand mit welchem Text und welcher Farbe angezeigt wird. Den nehmen wir.",
+         "Kurz bewerten: „passt“ – oder 1–2 Sätze, was du ändern würdest. In die gelbe Spalte der To-do-Tabelle schreiben.",
+         "Mit Marie einen Termin ausmachen und ZUSAMMEN den Peakboard Designer startklar machen (Karte P4-5): Konto klären, installieren, leeres Projekt anlegen."],
+        "Bewertung steht in der To-do-Tabelle, Designer ist mit Marie eingerichtet.", "–", "Nicht alles neu erfinden – der Vorschlag gilt.")
 P2_2 = ("P2-2", "ROBO-Pro-Programm – ERLEDIGT durch Claude (15.10.)", "–", "0 min", "–",
         ["Nichts mehr zu tun: Claude hat das Programm „Sorting Line“ direkt aus Moodle ausgelesen. Ergebnis: weiß < 1160 ≤ rot < 1500 ≤ blau, "
          "Impulse bis Ventil 5 / 15 / 26, Ventil 0,5 s – schon im Programm eingetragen."],

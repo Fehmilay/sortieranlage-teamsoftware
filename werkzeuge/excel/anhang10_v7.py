@@ -114,9 +114,9 @@ a.abschnitt("Wer macht was?")
 a.kopf(["To-Do", "Aufgabe", "Wer", "Name / Ergebnis-Blatt", "Entwurf teilen bis", "Fertig bis"])
 for i, z in enumerate([
         ["2.1", "Input-Liste: Welcher Sensor liefert welches Signal und wann?", "P2", "Jan · Blatt „M2 2.1 Input-Liste (P2)“", "Do 15.10.", "Sa 17.10."],
-        ["2.2", "Output-Liste: Welcher Aktor soll wann wie angesteuert werden?", "P3", "Marie · Blatt „M2 2.2 Output-Liste (P3)“", "Do 15.10.", "Sa 17.10."],
+        ["2.2", "Output-Liste: Welcher Aktor soll wann wie angesteuert werden?", "P3", "Alhasane · Blatt „M2 2.2 Output-Liste (P3)“", "Do 15.10.", "Sa 17.10."],
         ["2.3", "Ablauf-/Logikmodell: Input → Verarbeitung → Output", "P5", "Hassan · Blatt „M2 2.3 Ablaufmodell (Hassan)“ + Skizze", "Fr 16.10.", "So 18.10."],
-        ["2.4", "Datenpunkte für Zustand, Zykluszahl, Farbe, Fehler (Topics für Peakboard)", "P4", "Alhasane · Blatt „M2 2.4 Datenpunkte (P4)“ + Bildschirm-Skizze", "Fr 16.10.", "Mo 19.10."],
+        ["2.4", "Datenpunkte für Zustand, Zykluszahl, Farbe, Fehler (Topics für Peakboard)", "P4", "Marie · Blatt „M2 2.4 Datenpunkte (P4)“ + Bildschirm-Skizze", "Fr 16.10.", "Mo 19.10."],
         ["2.5", "I/O- und Logikmodell gegen Anforderungen prüfen (danach)", "P5", "Hassan, ab Mo 19.10.", "–", "Di 20.10."]], 1):
     a.daten(z, i)
 a.notiz("Abhängigkeiten laut Anhang 4: 2.3 braucht 2.1 + 2.2, 2.4 braucht 2.3. Damit das in einer Woche klappt, starten alle sofort mit dem "
@@ -362,11 +362,11 @@ blaetter = [
     ("Anhang 10 - Auftraege M2", a),
     ("M2 2.1 Input-Liste (P2)", arbeitsblatt("2.1_Input-Liste_P2.csv", "M2 · To-Do 2.1 – Input-Liste (Sensoren)", H.format("Sa 17.10.2026", "P2 Jan"),
                                              [5, 10, 26, 18, 14, 18, 22, 20, 16, 26, 12, 14, 22, 13, 24])),
-    ("M2 2.2 Output-Liste (P3)", arbeitsblatt("2.2_Output-Liste_P3.csv", "M2 · To-Do 2.2 – Output-Liste (Aktoren)", H.format("Sa 17.10.2026", "P3 Marie"),
+    ("M2 2.2 Output-Liste (P3)", arbeitsblatt("2.2_Output-Liste_P3.csv", "M2 · To-Do 2.2 – Output-Liste (Aktoren)", H.format("Sa 17.10.2026", "P3 Alhasane"),
                                               [5, 10, 22, 14, 22, 24, 24, 18, 11, 22, 9, 22, 13, 28])),
     ("M2 2.3 Ablaufmodell (Hassan)", arbeitsblatt("2.3_Ablaufmodell_P1.csv", "M2 · To-Do 2.3 – Ablauf-/Logikmodell", H.format("So 18.10.2026", "P5 Hassan"),
                                               [5, 15, 34, 24, 16, 16, 18, 40, 24, 13])),
-    ("M2 2.4 Datenpunkte (P4)", arbeitsblatt("2.4_Datenpunkte_P4.csv", "M2 · To-Do 2.4 – Datenpunkte für Peakboard", H.format("Mo 19.10.2026", "P4 Alhasane"),
+    ("M2 2.4 Datenpunkte (P4)", arbeitsblatt("2.4_Datenpunkte_P4.csv", "M2 · To-Do 2.4 – Datenpunkte für Peakboard", H.format("Mo 19.10.2026", "P4 Marie"),
                                              [5, 18, 24, 24, 40, 28, 18, 18, 18, 10, 13])),
 ]
 
