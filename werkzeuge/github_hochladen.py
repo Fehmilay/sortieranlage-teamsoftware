@@ -4,7 +4,7 @@ Aufruf (im Projektordner):  python werkzeuge\\github_hochladen.py "Commit-Nachri
 Der Stand im Repository wird danach genau der lokale Ordner (gelöschte Dateien verschwinden auch dort).
 Ausgeschlossen: alles aus AUSSCHLUSS – vor allem .env (Zugangsdaten).
 """
-import base64, fnmatch, json, os, subprocess, sys, tempfile
+import base64, fnmatch, json, os, subprocess, sys, tempfile, time
 
 REPO = "Fehmilay/sortieranlage-teamsoftware"
 WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,7 +18,11 @@ def gh(pfad, daten=None, methode=None):
         datei = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8")
         json.dump(daten, datei); datei.close()
         befehl += ["--method", methode or "POST", "--input", datei.name]
-    r = subprocess.run(befehl, capture_output=True, text=True, encoding="utf-8")
+    for versuch in range(5):   # GitHub antwortet manchmal kurz mit 502/503 – dann erneut versuchen
+        r = subprocess.run(befehl, capture_output=True, text=True, encoding="utf-8")
+        if not r.returncode or not any(c in (r.stderr or "") for c in ("HTTP 502", "HTTP 503", "HTTP 504")):
+            break
+        time.sleep(5 * (versuch + 1))
     if datei:
         os.unlink(datei.name)
     if r.returncode:

@@ -9,18 +9,27 @@ Bildschirm anzeigt. Abnahme: **02.02.2027**.
 
 ---
 
+> ### 💬 Fragen zum Projekt? So bekommst du sofort eine Antwort
+> 1. Diesen Link kopieren: **https://github.com/Fehmilay/sortieranlage-teamsoftware**
+> 2. ChatGPT (oder Claude, Gemini …) öffnen, den Link einfügen und deine Frage dazuschreiben, z. B.
+>    *„Hier ist unser Projekt: <Link>. Was genau muss ich bei Aufgabe W7 tun?“*
+> 3. Die KI liest die Dateien hier und antwortet. Passt etwas nicht, Frage in die To-do-Tabelle (Spalte G) schreiben.
+>
+> Dieses Repository wird nach jeder Änderung aktualisiert – hier liegt immer der neueste Stand.
+
 ## ▶ START HIER – was muss ich tun?
 
 | Schritt | Was | Wo |
 |---|---|---|
-| 1 | **Deine Aufgaben bis zum nächsten Regelmeeting** (mit Links, Status zum Abhaken, Feld für Rückmeldung) | Google-Tabelle **„TO-DO bis Di 20.10.“** im Team-Drive-Ordner – oder Excel, Blatt 1 ganz unten (ab Zeile 27) |
+| 1 | **Deine Aufgaben bis zum nächsten Regelmeeting** (mit Links, Status zum Abhaken, Feld für Rückmeldung) | Google-Tabelle **„★ KW 43 – Aufgaben bis Di 27.10.“** im Team-Drive-Ordner (ein Reiter pro Aufgabe zum Eintragen) – oder Excel, Blatt 1 ganz unten (ab Zeile 27) |
 | 2 | **Schritt-für-Schritt-Anleitungen** zu jeder Aufgabe (Karte P2-3, P6-1 …) | [Arbeitskarten (PDF)](Arbeitskarten/Arbeitskarten_Schritt_fuer_Schritt_Stand_15-10-2026.pdf) |
 | 3 | **Zeitplan** – wer macht was bis wann, rot = darf sich nicht verspäten | [Gantt-Plan (PDF)](Gantt/Gantt_Plan_ab_15-10-2026_mit_kritischem_Pfad.pdf) |
 | 4 | **Alles in einer Datei** (Leistungsnachweis, Gantt, Arbeitskarten, LIES MICH, Listen 2.1–2.4) | [Excel herunterladen](Leistungsnachweis_gesamt_bis_13-10-2026_aktualisiert.xlsx) → Datei öffnen → oben rechts „TO-DOs fürs Team“ anklicken |
-| 5 | **Fragen?** In der To-do-Tabelle rechts in die gelbe Spalte schreiben oder Rushit schicken – Rushit gibt sie an Claude (KI-Assistent) weiter, die Antwort steht danach in der Tabelle. | |
+| 5 | **Fragen?** Erst den GitHub-Link mit deiner Frage in ChatGPT einfügen (Kasten oben). Sonst in die gelbe Spalte G der To-do-Tabelle oder an Hamza – er sammelt die Fragen für Rushit. | |
 
 **Team:** Rushit (P1, Leitung – koordiniert, hält den Draht zu Claude) · Jan (P2) Sensoren · Alhasane (P3) Aktoren + Draht zu Team Hardware ·
-Marie (P4) Daten/Peakboard · Hassan (P5) Testen/Doku · Dogukan (P6) Pi/Netzwerk/Organisation.
+Marie (P4) Daten/Peakboard · Hassan (P5) Testen/Doku · Dogukan (P6) **alles im Terminal + Datenübertragung zum Pi** ·
+Melih (P7) Schnittstellen + Abstimmung mit Team Netzwerk/QM · Hamza (P8) **rechte Hand der Leitung: Kommunikation** + Risiken.
 
 **Ganzen Ordner herunterladen:** oben auf den grünen Knopf **„Code“** → **„Download ZIP“** → ZIP entpacken (Rechtsklick → „Alle extrahieren“).
 
