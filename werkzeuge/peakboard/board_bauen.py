@@ -24,8 +24,8 @@ PORT = 1883
 TOPIC = "sortieranlage/wert/"      # Tabelle A in MQTT_Schnittstelle.md
 VERBINDUNG = "Postamt Pi (Mosquitto)"
 # --heimtest: öffentliches Test-Postamt ohne Anmeldung, Daten von PEAKBOARD_TESTDATEN.bat Option 2
-HEIMTEST = dict(BROKER="test.mosquitto.org", TOPIC="hsnr-sortieranlage-teamsoftware/wert/",
-                VERBINDUNG="Test-Postamt Internet (test.mosquitto.org)",
+HEIMTEST = dict(BROKER="broker.hivemq.com", TOPIC="hsnr-sortieranlage-teamsoftware/wert/",
+                VERBINDUNG="Test-Postamt Internet (broker.hivemq.com)",
                 ZIEL=os.path.join(WURZEL, "peakboard", "Sortieranlage_Board_Heimtest.pbmx"))
 WERTE = ["zustand", "zyklen", "farbe_letzte", "anzahl_weiss", "anzahl_rot", "anzahl_blau",
          "fehler_aktiv", "fehler_text", "fehler_anzahl", "modus"]

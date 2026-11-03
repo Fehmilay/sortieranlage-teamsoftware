@@ -17,10 +17,10 @@ und die Fehlermeldung als Screenshot in „03 Bilder + Skizzen“ legen.
 
 ## Heimtest – ohne Anlage, von zu Hause (Stand 03.11.2026)
 `peakboard/Sortieranlage_Board_Heimtest.pbmx` ist dasselbe Board, hört aber auf das öffentliche Test-Postamt
-**test.mosquitto.org** (Port 1883, **keine Anmeldung** – Authentifizierung „Keine“ lassen) unter dem Topic-Anfang
-`hsnr-sortieranlage-teamsoftware/wert/…`. Oben im Titel steht „(HEIMTEST)“.
+**broker.hivemq.com** (Port 1883, **keine Anmeldung** – Authentifizierung „Keine“ lassen) unter dem Topic-Anfang
+`hsnr-sortieranlage-teamsoftware/wert/…`. Oben im Titel steht „(HEIMTEST)“. (test.mosquitto.org war am 03.11. nicht erreichbar.)
 1. Testdaten starten: `PEAKBOARD_TESTDATEN.bat` → Option **2 (zuhause)**. Das Fenster zeigt, welcher Server benutzt wird –
-   steht dort `broker.hivemq.com`, im Designer bei der Datenquelle `SortierMQTT` den MQTT Broker entsprechend ändern.
+   steht dort `test.mosquitto.org`, im Designer bei der Datenquelle `SortierMQTT` den MQTT Broker entsprechend ändern.
 2. Heimtest-Datei im Designer öffnen → `SortierMQTT` → „Empfänger starten“ → Werte müssen im MQTT Tester erscheinen → OK → Vorschau.
 3. Prüfen: Zustandstext + Farbe der Kachel, Zahlen, Farbfeld „Letzte Farbe“, bei jedem 8. Klotz rotes Störungsbanner.
 Nur erfundene Daten, jeder im Internet kann mitlesen – deshalb ohne Passwort und nie mit echten Anlagendaten.
