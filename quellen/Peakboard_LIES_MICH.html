@@ -1,0 +1,97 @@
+<html><head><meta charset="utf-8"></head><body>
+<h1>★ PEAKBOARD – LIES MICH ZUERST (Marie + Jan)</h1>
+<p><b>Stand 03.11.2026.</b> Hier steht alles, was ihr für das Peakboard braucht. Wenn ihr nur ein Dokument lest, dann dieses.</p>
+
+<h2>1. Worum geht es?</h2>
+<p>Unser Programm läuft auf dem Raspberry Pi und schickt seine Werte an das <b>Postamt</b>. Das Postamt ist der MQTT-Broker auf dem Pi. Das Peakboard holt die Werte dort ab und zeigt sie auf dem Bildschirm an: Zustand, Stückzahl, Farbe und Störung. Pi und Peakboard sprechen nie direkt miteinander, immer nur über das Postamt.</p>
+
+<h2>2. Stand jetzt</h2>
+<ul>
+<li><b>Die Verbindung steht.</b> Auf dem Pi laufen gerade <b>2 Stunden lang Testdaten</b>. Der Pi spielt eine sortierende Anlage vor. Es bewegt sich nichts, alles ist nur Simulation.</li>
+<li>Die Daten kommen am Postamt an, das ist geprüft. Zustand und Stückzahl ändern sich laufend.</li>
+<li><b>Ihr könnt also ab sofort das Peakboard mit echten Pi-Daten verbinden.</b></li>
+</ul>
+
+<h2>3. Was ihr braucht (Checkliste)</h2>
+<table border="1">
+<tr><th>Was</th><th>Wert</th></tr>
+<tr><td>Laptop</td><td>Windows-Laptop mit <b>Peakboard Designer</b></td></tr>
+<tr><td>WLAN</td><td><b>TP-Link_25F4</b> (WLAN der Anlage)</td></tr>
+<tr><td>Datenquelle</td><td><b>MQTT</b></td></tr>
+<tr><td>Server</td><td><b>192.168.1.180</b></td></tr>
+<tr><td>Port</td><td><b>1883</b> (QoS 0, Message type: Text)</td></tr>
+<tr><td>Benutzer + Passwort</td><td><b>bekommt ihr persönlich von Rushit</b>. Sie stehen absichtlich nirgends im Drive, in GitHub oder in ChatGPT, und so soll es bleiben.</td></tr>
+</table>
+
+<h2>4. Diese Topics abonnieren</h2>
+<p>Jeder Wert hat ein eigenes Topic. Die Nachricht ist nur der Text oder die Zahl, kein JSON. Gesendet wird mit „retain“, das Peakboard bekommt also sofort den letzten Stand.</p>
+<table border="1">
+<tr><th>Topic</th><th>Beispiel</th><th>Bedeutung</th></tr>
+<tr><td>sortieranlage/wert/zustand</td><td>FOERDERN</td><td>BEREIT, FOERDERN, ZAEHLEN, AUSSCHLEUSEN, PRUEFEN, FEHLER, AUS</td></tr>
+<tr><td>sortieranlage/wert/zyklen</td><td>12</td><td>fertig sortierte Klötze</td></tr>
+<tr><td>sortieranlage/wert/farbe_letzte</td><td>rot</td><td>weiss, rot, blau („–“ = noch keiner)</td></tr>
+<tr><td>sortieranlage/wert/anzahl_weiss</td><td>4</td><td>Anzahl weiße Klötze</td></tr>
+<tr><td>sortieranlage/wert/anzahl_rot</td><td>5</td><td>Anzahl rote Klötze</td></tr>
+<tr><td>sortieranlage/wert/anzahl_blau</td><td>3</td><td>Anzahl blaue Klötze</td></tr>
+<tr><td>sortieranlage/wert/fehler_aktiv</td><td>1</td><td>1 = Störung, 0 = keine</td></tr>
+<tr><td>sortieranlage/wert/fehler_text</td><td>Kein Impuls am Taster C1 …</td><td>Klartext der Störung</td></tr>
+<tr><td><i>optional:</i> sortieranlage/wert/fehler_anzahl</td><td>2</td><td>Störungen seit Start</td></tr>
+<tr><td><i>optional:</i> sortieranlage/wert/modus</td><td>sim</td><td>sim = Testbetrieb, hardware = Echtbetrieb</td></tr>
+</table>
+
+<h2>5. So geht es: zwei Wege</h2>
+<h3>Weg A (schnell): die fertige Board-Datei ausprobieren</h3>
+<p>Claude hat ein Board vorgebaut: <b>Sortieranlage_Board.pbmx</b>. <b>Achtung: Es wurde noch nie im Designer geöffnet.</b> Genau das bitte zuerst testen.</p>
+<ol>
+<li>Datei von GitHub laden: <a href="https://github.com/Fehmilay/sortieranlage-teamsoftware/tree/main/peakboard">github.com/Fehmilay/sortieranlage-teamsoftware → Ordner peakboard</a> → <b>Sortieranlage_Board.pbmx</b> anklicken → „Download raw file“.</li>
+<li>Die Datei im Peakboard Designer öffnen.</li>
+<li>Links unter <b>Data</b> die Verbindung „Postamt Pi (Mosquitto)“ öffnen: Server 192.168.1.180, Port 1883. <b>Benutzer und Passwort selbst eintragen.</b></li>
+<li>Vorschau bzw. Start im Designer: Die Werte müssen sich ändern.</li>
+</ol>
+<p>So soll das Board aussehen: <a href="https://github.com/Fehmilay/sortieranlage-teamsoftware/blob/main/peakboard/Sortieranlage_Board_Vorschau.png">Vorschau-Bild auf GitHub</a></p>
+
+<h3>Weg B (falls A nicht klappt): Datenquelle von Hand anlegen (ca. 45 min)</h3>
+<ol>
+<li>Im Designer: <b>Data → Add data source → MQTT</b>.</li>
+<li>Server 192.168.1.180, Port 1883, Benutzer und Passwort von Rushit.</li>
+<li>Unter Subscriptions die Topics aus Abschnitt 4 eintragen, QoS 0, Message type: Text.</li>
+<li><b>Enable listener</b>, dann in der Vorschau prüfen, ob Werte ankommen.</li>
+<li>Kacheln anlegen und an die Werte binden (Bildschirm-Entwurf siehe unten).</li>
+</ol>
+<p>Kommt bei Weg A eine Fehlermeldung, macht bitte einen Screenshot davon und legt ihn in „03 Bilder + Skizzen vom Team“.</p>
+
+<h2>6. Ziel für heute</h2>
+<ul>
+<li>Die Werte ändern sich im Designer.</li>
+<li><b>Ungefähr bei jedem 8. Klotz kommt eine Störung</b> (fehler_aktiv = 1, fehler_text gefüllt). Das ist Absicht, so testen wir den Fehlerfall.</li>
+<li><b>Screenshot</b> davon in den Drive-Ordner <b>„03 Bilder + Skizzen vom Team“</b>.</li>
+</ul>
+
+<h2>7. Peakboard Box</h2>
+<p>Im Netz hängt ein Gerät mit der Adresse <b>192.168.1.81</b>. Bitte am Bildschirm der Peakboard Box nachschauen, ob das ihre Adresse ist, und das Ergebnis eintragen. Das Board kommt erst auf die Box, wenn es im Designer läuft. Den Zugang zur Box gibt es ebenfalls bei Rushit.</p>
+
+<h2>8. Vor dem Gehen</h2>
+<ul>
+<li>Ergebnisse in die <a href="https://docs.google.com/spreadsheets/d/10ha8iYFgSw4lbGkk6zKd1Z8lcuJq2ODZTECWHIZb4Uo">★ KW-45-Tabelle</a> eintragen: Öffnet die Datei (ja/nein)? Kommen Werte an (ja/nein)? Gab es eine Fehlermeldung? Was zeigt die Box als Adresse?</li>
+<li><b>Den Pi nicht einfach ausstecken</b>, das kann die Speicherkarte beschädigen. Stattdessen Rushit Bescheid geben („Pi aus“). Dann wird er sauber heruntergefahren, und nach 30 Sekunden darf der Stecker raus.</li>
+</ul>
+
+<h2>9. Bildschirm-Entwurf (1920 × 1080, VORSCHLAG)</h2>
+<table border="1">
+<tr><th>Bereich</th><th>Inhalt</th><th>Topic</th></tr>
+<tr><td>Kopfzeile</td><td>„Sortieranlage – Team Software HSNR“ + Uhrzeit</td><td>–</td></tr>
+<tr><td>Kachel links (groß)</td><td>Zustand (übersetzt, farbig)</td><td>wert/zustand</td></tr>
+<tr><td>Kachel Mitte</td><td>Sortierte Klötze (große Zahl)</td><td>wert/zyklen</td></tr>
+<tr><td>Kachel rechts</td><td>Letzte Farbe (Kachel färbt sich weiß/rot/blau)</td><td>wert/farbe_letzte</td></tr>
+<tr><td>Zeile darunter</td><td>Zähler weiß · rot · blau</td><td>wert/anzahl_*</td></tr>
+<tr><td>Banner unten</td><td>Störungsmeldung, rot, nur sichtbar bei fehler_aktiv = 1</td><td>wert/fehler_aktiv, wert/fehler_text</td></tr>
+</table>
+<p>Zustandstexte: BEREIT → „Bereit – Klotz auflegen“ (grau) · FOERDERN → „Fördert“ (grün) · ZAEHLEN → „Fährt zum Auswerfer“ (grün) · AUSSCHLEUSEN → „Sortiert aus“ (grün) · PRUEFEN → „Prüft“ (grün) · FEHLER → „STÖRUNG“ (rot) · AUS → „Aus“ (dunkelgrau).</p>
+
+<h2>10. Mehr Details und Fragen</h2>
+<ul>
+<li>Ausführliche Schnittstelle: <a href="https://github.com/Fehmilay/sortieranlage-teamsoftware/blob/main/peakboard/MQTT_Schnittstelle.md">peakboard/MQTT_Schnittstelle.md</a></li>
+<li>Infos zur Board-Datei: <a href="https://github.com/Fehmilay/sortieranlage-teamsoftware/blob/main/peakboard/BOARD_DATEI_LIESMICH.md">peakboard/BOARD_DATEI_LIESMICH.md</a></li>
+<li><b>Frage?</b> Kopiert den Link https://github.com/Fehmilay/sortieranlage-teamsoftware in ChatGPT oder Claude und schreibt eure Frage dazu. Oder fragt Hamza bzw. Rushit.</li>
+</ul>
+</body></html>
