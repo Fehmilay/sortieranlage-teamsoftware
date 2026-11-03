@@ -1,6 +1,7 @@
 """Baut das Peakboard-Board der Sortieranlage als .pbmx (VORSCHLAG, im Designer noch nicht geöffnet).
 
 Aufruf:  python werkzeuge/peakboard/board_bauen.py <vorlage.pbmx> [ziel.pbmx]
+         python werkzeuge/peakboard/board_bauen.py --heimtest <vorlage.pbmx>   # → Sortieranlage_Board_Heimtest.pbmx
 
 <vorlage.pbmx> = offizielle, öffentliche Peakboard-Vorlage „Intralogistik-Bestellungen-Empfangen-ueber-MQTT.pbmx“
 (github.com/Peakboard/peakboard-templates.github.io, Ordner _templates/Intralogistics-Receive-Orders-via-MQTT).
@@ -21,6 +22,11 @@ ZIEL = os.path.join(WURZEL, "peakboard", "Sortieranlage_Board.pbmx")
 BROKER = "192.168.1.180"          # Pi im TP-Link-WLAN (BESTÄTIGT 20.10.2026)
 PORT = 1883
 TOPIC = "sortieranlage/wert/"      # Tabelle A in MQTT_Schnittstelle.md
+VERBINDUNG = "Postamt Pi (Mosquitto)"
+# --heimtest: öffentliches Test-Postamt ohne Anmeldung, Daten von PEAKBOARD_TESTDATEN.bat Option 2
+HEIMTEST = dict(BROKER="test.mosquitto.org", TOPIC="hsnr-sortieranlage-teamsoftware/wert/",
+                VERBINDUNG="Test-Postamt Internet (test.mosquitto.org)",
+                ZIEL=os.path.join(WURZEL, "peakboard", "Sortieranlage_Board_Heimtest.pbmx"))
 WERTE = ["zustand", "zyklen", "farbe_letzte", "anzahl_weiss", "anzahl_rot", "anzahl_blau",
          "fehler_aktiv", "fehler_text", "fehler_anzahl", "modus"]
 MQTT = "SortierMQTT"               # Name der Datenquelle im Board
@@ -211,7 +217,7 @@ def bauen(vorlage, ziel):
 
     # --- Connections.pbcx: Postamt (Mosquitto) auf dem Pi, ohne Zugangsdaten
     alt = next(iter(json.loads(dateien["Connections.pbcx"].decode("utf-8")).values()))
-    verbindung = dict(alt, Server=BROKER, Port=PORT, UserName="", Password="", Name="Postamt Pi (Mosquitto)",
+    verbindung = dict(alt, Server=BROKER, Port=PORT, UserName="", Password="", Name=VERBINDUNG,
                       ClientID="#{-- Auto generated. Remove this comment on editing.\r\n"
                                "return runtime.network.hostname .. 'SortierMQTT'}#")
 
@@ -357,5 +363,9 @@ if __name__ == "__main__":
         raise SystemExit(__doc__)
     if sys.argv[1] == "--vorschau":
         vorschau_html(sys.argv[2])
+    elif sys.argv[1] == "--heimtest":
+        globals().update(HEIMTEST)
+        LAYOUT[1]["text"] += " (HEIMTEST)"
+        bauen(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else ZIEL)
     else:
         bauen(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else ZIEL)
