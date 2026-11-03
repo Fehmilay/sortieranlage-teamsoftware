@@ -1,4 +1,4 @@
-﻿"""Gantt-Plan ab 15.10.2026 mit kritischem Pfad (Netzplan in Arbeitstagen).
+"""Gantt-Plan ab 15.10.2026 mit kritischem Pfad (Netzplan in Arbeitstagen).
 Erzeugt: Excel-Blatt (selbst aktualisierend), Druck-HTML (Wochenansicht) und Drive-HTML.
 Aufruf: python gantt.py <druck.html> <drive.html> [<xlsx> <backup>]
 """
@@ -37,40 +37,40 @@ TEAM = {"P1": "Rushit Vlasi (Leitung)", "P2": "Jan", "P3": "Alhasane", "P4": "Ma
         "P5": "Hassan", "P6": "Dogukan", "P7": "Melih", "P8": "Hamza", "KI": "Claude (KI-Assistent)", "alle": "ganzes Team"}
 ROLLEN = {"P1": "Leitung – koordiniert, keine eigenen Gantt-Aufgaben", "P2": "Sensoren / Eingänge",
           "P3": "Aktoren / Ausgänge + Draht zu Team Hardware", "P4": "Daten / Peakboard", "P5": "Testen, Doku, Abläufe",
-          "P6": "Pi, Netzwerk, Organisation", "P7": "Schnittstellen + Abstimmung mit Team Netzwerk", "P8": "Peakboard Box + Bildschirm", "KI": "programmiert und pflegt Excel/Drive (über die Leitung)", "alle": "–"}
+          "P6": "alles im Terminal + Datenübertragung zum Pi", "P7": "Schnittstellen + Abstimmung mit Team Netzwerk", "P8": "rechte Hand der Leitung: Kommunikation + Risiken", "KI": "programmiert und pflegt Excel/Drive (über die Leitung)", "alle": "–"}
 
 # (nr, phase, aufgabe, wer-kürzel, dauer_AT, vorgaenger, nicht_vor, status, karte)
 AUFGABEN = [
     ("F0", "0 Erledigt", "Software vorbereitet: Programm, Tests, Einrichtungsprogramm, Arbeitskarten, Gantt", "KI", 3, [], D(2026, 10, 13), "fertig", "–"),
-    ("V1", "1 Vorbereitung", "Freigaben bei Prof. Kampker holen (Mail mit 5 Fragen, Vorlage A)", "P6", 4, [], D(2026, 10, 15), "läuft", "P6-1"),
-    ("V2", "1 Vorbereitung", "Liste 2.1 Sensoren fertig machen", "P2", 5, [], D(2026, 10, 13), "läuft", "P2-3"),
-    ("V3", "1 Vorbereitung", "Liste 2.2 Aktoren fertig machen", "P3", 5, [], D(2026, 10, 13), "läuft", "P3-2"),
-    ("V4", "1 Vorbereitung", "Liste 2.3 Ablaufmodell fertig machen", "P5", 5, [], D(2026, 10, 13), "läuft", "P5-6"),
-    ("V5", "1 Vorbereitung", "Liste 2.4 Datenpunkte fertig machen", "P4", 5, [], D(2026, 10, 13), "läuft", "P4-4"),
-    ("V6", "1 Vorbereitung", "Abstimmung am Freitag 16.10. leiten (20 min online)", "P4", 1, [], D(2026, 10, 16), "offen", "P4-9"),
-    ("V7", "1 Vorbereitung", "Regelmeeting 20.10.: Entscheidungen J7–J9 vorstellen (Vorlage B)", "P5", 1, ["V2", "V3", "V4", "V5"], D(2026, 10, 20), "offen", "P5-4"),
-    ("D1", "1 Vorbereitung", "M2-Abgabe: Schnittstellenmatrix prüfen + Verantwortliche eintragen", "P7", 3, [], D(2026, 10, 21), "offen", "–"),
-    ("D2", "1 Vorbereitung", "M2-Abgabe: Testkonzept inkl. Betrieb ohne Internet prüfen", "P5", 3, [], D(2026, 10, 21), "offen", "–"),
-    ("D3", "1 Vorbereitung", "Datenvertrag mit Team Netzwerk abstimmen (Farbwörter, Topic-Anfang, Broker)", "P7", 3, [], D(2026, 10, 21), "offen", "–"),
-    ("H1", "2 Team Hardware (P3 hält Kontakt)", "Bestellung auslösen (macht Team Hardware, P3 fragt nach)", "P3", 1, [], D(2026, 10, 16), "offen", "P3-1"),
-    ("H2", "2 Team Hardware (P3 hält Kontakt)", "Lieferung der Teile (Lieferant, P3 fragt nach)", "P3", 2, ["H1"], None, "offen", "P3-1"),
-    ("H3", "2 Team Hardware (P3 hält Kontakt)", "9-V-Netzteil klären und bereitlegen (macht Team Hardware)", "P3", 3, [], D(2026, 10, 16), "offen", "P3-1"),
-    ("H4", "2 Team Hardware (P3 hält Kontakt)", "Anschlussfragen beantworten lassen: Spannungen, ohne Zusatzbauteile? (Team Hardware)", "P3", 3, [], D(2026, 10, 16), "offen", "P3-0"),
-    ("H5", "2 Team Hardware (P3 hält Kontakt)", "Anschlussplan bestätigen oder ändern (Team Hardware + P3, Vorlage F)", "P3", 1, ["H4"], None, "offen", "P3-0"),
-    ("H6", "2 Team Hardware (P3 hält Kontakt)", "Hardware anschließen: Platinen auf den Pi, Kabel an die Klemmen (Team Hardware)", "P3", 1, ["H2", "H3", "H5"], None, "offen", "H-1"),
+    ("V1", "1 Vorbereitung", "Freigaben bei Prof. Kampker holen (Mail mit 5 Fragen, Vorlage A)", "P8", 1, [], D(2026, 11, 3), "läuft", "P6-1"),
+    ("V2", "1 Vorbereitung", "Liste 2.1 Sensoren fertig machen", "P2", 5, [], D(2026, 10, 13), "fertig", "P2-3"),
+    ("V3", "1 Vorbereitung", "Liste 2.2 Aktoren fertig machen", "P3", 5, [], D(2026, 10, 13), "fertig", "P3-2"),
+    ("V4", "1 Vorbereitung", "Liste 2.3 Ablaufmodell fertig machen", "P5", 5, [], D(2026, 10, 13), "fertig", "P5-6"),
+    ("V5", "1 Vorbereitung", "Liste 2.4 Datenpunkte fertig machen", "P4", 5, [], D(2026, 10, 13), "fertig", "P4-4"),
+    ("V6", "1 Vorbereitung", "Abstimmung am Freitag 16.10. leiten (20 min online)", "P4", 1, [], D(2026, 10, 16), "fertig", "P4-9"),
+    ("V7", "1 Vorbereitung", "Regelmeeting 03.11.: Entscheidungen J7–J9 + Datenvertrag treffen (Vorlage B)", "P5", 1, ["V2", "V3", "V4", "V5"], D(2026, 11, 3), "offen", "P5-4"),
+    ("D1", "1 Vorbereitung", "M2-Abgabe: Schnittstellenmatrix prüfen + Verantwortliche eintragen", "P7", 3, [], D(2026, 11, 3), "offen", "–"),
+    ("D2", "1 Vorbereitung", "M2-Abgabe: Testkonzept inkl. Betrieb ohne Internet prüfen", "P5", 3, [], D(2026, 11, 3), "offen", "–"),
+    ("D3", "1 Vorbereitung", "Datenvertrag mit Team Netzwerk abstimmen (Farbwörter, Topic-Anfang, Broker)", "P7", 3, [], D(2026, 11, 3), "offen", "–"),
+    ("H1", "2 Team Hardware (P3 hält Kontakt)", "Bestellung auslösen (macht Team Hardware, P3 fragt nach)", "P3", 1, [], D(2026, 10, 16), "fertig", "P3-1"),
+    ("H2", "2 Team Hardware (P3 hält Kontakt)", "Lieferung der Teile (Lieferant, P3 fragt nach)", "P3", 2, ["H1"], None, "fertig", "P3-1"),
+    ("H3", "2 Team Hardware (P3 hält Kontakt)", "9-V-Netzteil klären und bereitlegen (macht Team Hardware)", "P3", 3, [], D(2026, 10, 16), "fertig", "P3-1"),
+    ("H4", "2 Team Hardware (P3 hält Kontakt)", "Anschlussfragen beantworten lassen: Spannungen, ohne Zusatzbauteile? (Team Hardware)", "P3", 3, [], D(2026, 10, 16), "fertig", "P3-0"),
+    ("H5", "2 Team Hardware (P3 hält Kontakt)", "Anschlussplan bestätigen oder ändern (Team Hardware + P3, Vorlage F)", "P3", 1, ["H4"], None, "fertig", "P3-0"),
+    ("H6", "2 Team Hardware (P3 hält Kontakt)", "Hardware anschließen: Platinen auf den Pi, Kabel an die Klemmen (Team Hardware)", "P3", 1, ["H2", "H3", "H5"], D(2026, 11, 4), "offen", "H-1"),
     ("H7", "2 Team Hardware (P3 hält Kontakt)", "Sichtprüfung, Foto, Übergabe an Team Software (Team Hardware + P3)", "P3", 1, ["H6"], None, "offen", "H-1"),
-    ("N1", "3 Pi und Netzwerk", "Internet für die Anlage über den Router von Kleutges", "P6", 1, [], D(2026, 10, 19), "offen", "P6-2"),
-    ("N2", "3 Pi und Netzwerk", "Pi einrichten mit PI_EINRICHTEN (ein Doppelklick)", "P6", 1, ["V1", "N1"], None, "offen", "P6-3"),
+    ("N1", "3 Pi und Netzwerk", "Internet für die Anlage über den Router von Kleutges", "P6", 1, [], D(2026, 10, 19), "fertig", "P6-2"),
+    ("N2", "3 Pi und Netzwerk", "Pi einrichten mit PI_EINRICHTEN (ein Doppelklick)", "P6", 1, ["V1", "N1"], D(2026, 11, 4), "läuft", "P6-3"),
     ("E1", "4 Einspielen auf echter Hardware", "Eingänge prüfen und messen – nichts bewegt sich (T1–T4)", "P2", 1, ["H7", "N2"], None, "offen", "P2-4"),
-    ("E2", "4 Einspielen auf echter Hardware", "Programmteile für die Entscheidungen J7–J9", "KI", 4, ["V7"], None, "offen", "J14"),
+    ("E2", "4 Einspielen auf echter Hardware", "Programmteile für die Entscheidungen J7–J9", "KI", 2, ["V7"], None, "offen", "J14"),
     ("E3", "4 Einspielen auf echter Hardware", "Ausgänge einzeln testen – NUR mit Freigabe von Prof. Kampker (T5, T6)", "P3", 1, ["E1"], None, "offen", "P3-3"),
     ("E4", "4 Einspielen auf echter Hardware", "Einspieltag leiten: erster Sortiervorgang, mehrere Farben, ein Fehlerfall", "P6", 2, ["E3", "E2"], None, "offen", "P6-6"),
-    ("B1", "5 Peakboard (parallel)", "Peakboard Designer startklar machen", "P4", 2, [], D(2026, 10, 16), "offen", "P4-5"),
+    ("B1", "5 Peakboard (parallel)", "Peakboard Designer startklar machen", "P4", 2, [], D(2026, 11, 3), "läuft", "P4-5"),
     ("B2", "5 Peakboard (parallel)", "Testdaten für Peakboard laufen lassen", "P6", 1, ["B1"], None, "offen", "P6-5"),
     ("B3", "5 Peakboard (parallel)", "Board mit Testdaten bauen (Datenquelle, Kacheln, Farben)", "P4", 4, ["B2"], None, "offen", "P4-6, P4-7"),
-    ("B4", "5 Peakboard (parallel)", "Texte und Farben für den Bildschirm festlegen (Vorlage H)", "P2", 1, [], D(2026, 10, 19), "offen", "P2-6"),
+    ("B4", "5 Peakboard (parallel)", "Texte und Farben für den Bildschirm festlegen (Vorlage H)", "P2", 1, [], D(2026, 11, 3), "offen", "P2-6"),
     ("B5", "5 Peakboard (parallel)", "Board mit Testdaten prüfen", "P2", 1, ["B3", "B4"], None, "offen", "P2-5"),
-    ("B6", "5 Peakboard (parallel)", "Peakboard Box und Bildschirm aufbauen", "P8", 1, [], D(2026, 10, 21), "offen", "P3-4"),
+    ("B6", "5 Peakboard (parallel)", "Peakboard Box und Bildschirm aufbauen", "P4", 1, [], D(2026, 11, 10), "offen", "P3-4"),
     ("B7", "5 Peakboard (parallel)", "Board auf die Peakboard Box laden", "P4", 1, ["B5", "B6", "N2"], None, "offen", "P4-8"),
     ("B8", "5 Peakboard (parallel)", "Peakboard-Abnahmetest (7 Punkte, Vorlage I)", "P5", 2, ["B7", "E4"], None, "offen", "P5-3"),
     ("T1", "6 Testen und Verbessern", "Dauertest leiten: viele Klötze, alle Farben, alle Fehlerfälle (To-Dos 6.1–6.4)", "P5", 15, ["E4"], None, "offen", "–"),
@@ -123,16 +123,16 @@ ERKLAERUNG = [
                       "„KI“ = Claude erledigt es (Programm, Excel). Bei Team-Hardware-Aufgaben ist P3 verantwortlich dafür, dass sie erledigt werden."),
 ]
 
-HW = [  # was wir von Team Hardware brauchen (P3 fragt nach)
-    ("HW1", "Bestätigung: Bestellung ist raus + Liefertermin", "ohne Teile kein Anschluss", "Fr 16.10."),
-    ("HW2", "Welches 9-V-Netzteil nehmen wir? (steht nicht auf der Bestellliste)", "ohne Strom läuft nichts", "Di 20.10."),
-    ("HW3", "Antworten auf die Anschlussfragen (Vorlage E): Spannungen, geht es ohne Zusatzbauteile?", "ROT – davon hängt der Anschluss ab", "Di 20.10."),
-    ("HW4", "Anschlussplan bestätigt oder geändert (Vorlage F)", "ROT – danach wird verkabelt", "Mi 21.10."),
-    ("HW5", "Hardware angeschlossen + Foto + Sichtprüfung", "ROT – danach können wir messen", "Fr 23.10."),
-    ("HW6", "Zusage: jemand von Team Hardware ist am Mo 26.10. (Messen) und Di 27.10. (Ausgänge testen) dabei", "Fehler an Kabeln findet nur Team Hardware", "Fr 23.10."),
-    ("HW7", "Was ist Motor M2? (das alte Programm schaltet ihn 3 Sekunden)", "sonst fehlt evtl. ein Teil der Anlage", "Fr 23.10."),
-    ("HW8", "Pneumatik in Ordnung? Kompressor, Schläuche dicht, Ventile gehen", "sonst klemmt das Ausschleusen", "Fr 23.10."),
-    ("HW9", "Hilfe bei Fehlersuche an Kabeln während der Testphase", "Dauertest braucht stabile Verkabelung", "19.11. (laufend)"),
+HW = [  # was wir von Team Hardware brauchen (P3 fragt nach) – Stand 03.11.2026
+    ("HW1", "Bestätigung: Bestellung ist raus + Liefertermin", "ohne Teile kein Anschluss", "ERLEDIGT (Teile am 20.10. da)"),
+    ("HW2", "Welches 9-V-Netzteil nehmen wir? (steht nicht auf der Bestellliste)", "ohne Strom läuft nichts", "ERLEDIGT (reicht laut Team Hardware)"),
+    ("HW3", "Restliche Anschlussfragen: Strom der Ventile, gemeinsame Masse, eigenes 5-V/3-A-Netzteil für den Pi", "ROT – davon hängt der Anschluss ab", "Di 03.11."),
+    ("HW4", "Anschlussplan bestätigt (GPIO-Übersicht)", "ROT – danach wird verkabelt", "ERLEDIGT (20.10.)"),
+    ("HW5", "Hardware angeschlossen + Foto + Sichtprüfung", "ROT – danach können wir messen", "Mi 04.11."),
+    ("HW6", "Zusage: jemand von Team Hardware ist beim Messen (Do 05.11.) und beim Ausgänge-Test (Fr 06.11.) dabei", "Fehler an Kabeln findet nur Team Hardware", "Di 03.11."),
+    ("HW7", "Was ist Motor M2? (das alte Programm schaltet ihn 3 Sekunden)", "sonst fehlt evtl. ein Teil der Anlage", "Fr 06.11."),
+    ("HW8", "Pneumatik in Ordnung? Kompressor, Schläuche dicht, Ventile gehen", "sonst klemmt das Ausschleusen", "Fr 06.11."),
+    ("HW9", "Hilfe bei Fehlersuche an Kabeln während der Testphase", "Dauertest braucht stabile Verkabelung", "ab 11.11. (laufend)"),
     ("HW10", "Verdrahtungsplan als Foto/Skizze für die Doku (To-Do 5.3)", "die Doku muss ein anderes Team befähigen", "Fr 20.11."),
 ]
 NACHRICHT_P3 = [
@@ -179,7 +179,7 @@ def html(einfach=False):
     css = ("" if einfach else "<style>@page{size:A3 landscape;margin:10mm} body{font-family:'Segoe UI',Arial,sans-serif;font-size:10pt} "
            "h1{background:#1f4e79;color:#fff;padding:8px 12px;border-radius:5px;font-size:16pt} h2{color:#1f4e79;margin-top:14px} "
            "td,th{vertical-align:top} th{background:#dbe9f6} .neu{page-break-before:always}</style>")
-    teile = [f"<h1>Gantt-Plan Sortieranlage ab 15.10.2026 – mit kritischem Pfad (ab jetzt arbeiten wir danach)</h1>",
+    teile = [f"<h1>Gantt-Plan Sortieranlage – mit kritischem Pfad · Stand 03.11.2026 (KW 44 war frei, Plan angepasst)</h1>",
              f"<p><b>Kritischer Pfad (rot):</b> {' → '.join(KRIT)}. Die Abnahme ist am 02.02.2027. Weihnachtspause 21.12.–01.01. ist nicht eingeplant. AT = Arbeitstage.</p>",
              tab, '<h2 class="neu">Erklärung für alle (ganz einfach)</h2>', erkl,
              "<h2>Was wir von Team Hardware brauchen – P3 fragt nach (Montag + Donnerstag)</h2>", hw,

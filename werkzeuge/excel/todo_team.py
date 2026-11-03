@@ -122,7 +122,8 @@ from woche import WOCHE, STAND_DATUM, BIS, ZIEL, TODOS, STAND, WER_KURZ, KOPF, A
 import woche as _w
 TODO_SHEET_URL = _w.TODO_SHEET_URL   # Link der Wochen-Tabelle (leer bis zum Upload)
 for _r in [r[0] for r in REITER] + ["TO-DO"]:
-    ZIELE["R:" + _r] = (TODO_SHEET_URL, "→ Reiter „" + _r + "“")
+    ZIELE["R:" + _r] = ((getattr(_w, "M2_SHEET_URL", "") or TODO_SHEET_URL, "→ M2-Tabelle, Reiter „" + _r + "“")
+                        if _r in getattr(_w, "M2_REITER", set()) else (TODO_SHEET_URL, "→ Reiter „" + _r + "“"))
 
 
 def _str(f, t):

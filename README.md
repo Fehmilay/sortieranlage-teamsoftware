@@ -21,7 +21,7 @@ Bildschirm anzeigt. Abnahme: **02.02.2027**.
 
 | Schritt | Was | Wo |
 |---|---|---|
-| 1 | **Deine Aufgaben bis zum nächsten Regelmeeting** (mit Links, Status zum Abhaken, Feld für Rückmeldung) | Google-Tabelle **„★ KW 43 – Aufgaben bis Di 27.10.“** im Team-Drive-Ordner (ein Reiter pro Aufgabe zum Eintragen) – oder Excel, Blatt 1 ganz unten (ab Zeile 27) |
+| 1 | **Deine Aufgaben bis zum nächsten Regelmeeting** (mit Links, Status zum Abhaken, Feld für Rückmeldung) | Google-Tabelle **„★ KW 45 – Aufgaben bis Di 10.11.“** im Team-Drive-Ordner (ein Reiter pro Aufgabe zum Eintragen; M2-Abgaben in „★ KW 45 – M2-Abgaben“) – oder Excel, Blatt 1 ganz unten (ab Zeile 27) |
 | 2 | **Schritt-für-Schritt-Anleitungen** zu jeder Aufgabe (Karte P2-3, P6-1 …) | [Arbeitskarten (PDF)](Arbeitskarten/Arbeitskarten_Schritt_fuer_Schritt_Stand_15-10-2026.pdf) |
 | 3 | **Zeitplan** – wer macht was bis wann, rot = darf sich nicht verspäten | [Gantt-Plan (PDF)](Gantt/Gantt_Plan_ab_15-10-2026_mit_kritischem_Pfad.pdf) |
 | 4 | **Alles in einer Datei** (Leistungsnachweis, Gantt, Arbeitskarten, LIES MICH, Listen 2.1–2.4) | [Excel herunterladen](Leistungsnachweis_gesamt_bis_13-10-2026_aktualisiert.xlsx) → Datei öffnen → oben rechts „TO-DOs fürs Team“ anklicken |

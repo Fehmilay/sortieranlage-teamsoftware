@@ -8,6 +8,8 @@ from xml.sax.saxutils import escape
 
 import todo_team as T
 from woche import REITER, WOCHE
+import woche as W
+M2 = getattr(W, "M2_REITER", set())          # diese Reiter liegen in einer zweiten Tabelle (Upload-Größe)
 
 ST = {"title": 1, "sub": 2, "sec": 3, "head": 4, "row": 5, "input": 6, "link": 7}
 
@@ -49,17 +51,21 @@ def reiter_xml(titel, hinweis, kopf, zeilen, breiten, eingabe):
     return blatt_xml(rows, merges, breiten)
 
 
-def main(ziel):
+def main(ziel, teil="1"):
     def links(z):
         if z.startswith("R:"):
+            if z[2:] in M2:
+                return getattr(W, "M2_SHEET_URL", ""), "→ Tabelle „M2-Abgaben“, Reiter „" + z[2:] + "“"
             return "", "→ Reiter „" + z[2:] + "“"
         url = T.DRIVE.get(z) or T.ZIELE[z][0]
         return url, T.ZIELE[z][1]
     breiten = [20, 11, 62, 26, 16, 12, 50]
     rows, merges, erste, letzte = T.block_xml(1, ST, links, breiten)
     cf, dv = T.cf_dv(erste, letzte, {"erledigt": 0, "frage": 1, "arbeit": 2})
-    blaetter = [("★ TO-DO " + WOCHE, blatt_xml(rows, merges, breiten, cf + dv, fix=5))]
+    blaetter = [("★ TO-DO " + WOCHE, blatt_xml(rows, merges, breiten, cf + dv, fix=5))] if teil == "1" else []
     for name, titel, hinweis, kopf, zeilen, br, eingabe in REITER:
+        if (name in M2) != (teil == "2"):
+            continue
         blaetter.append((name, reiter_xml(titel, hinweis, kopf, zeilen, br, eingabe)))
     # Stile aus todo_team.drive() übernehmen (gleiche Optik)
     import io, tempfile, os
@@ -92,4 +98,4 @@ def main(ziel):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else "1")   # Teil 1 = TO-DO + Reiter, Teil 2 = M2-Reiter
