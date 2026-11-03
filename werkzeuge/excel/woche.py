@@ -7,10 +7,10 @@ Jede Woche: neue Datei woche.py schreiben (alte als woche_kwNN.py aufheben), Dri
 WOCHE = "KW 45"
 STAND_DATUM = "Di 03.11.2026"
 BIS = "Dienstag 10.11.2026 (Regelmeeting)"
-ZIEL = ("Ziel bis Di 10.11.2026 – wenn alle ihre Aufgaben schaffen: Hardware ist angeschlossen und der Pi fertig eingerichtet (03.11.), am 10.11. werden "
-        "Eingänge gemessen und Ausgänge mit Freigabe getestet, das Peakboard-Board zeigt Testdaten – erster Sortierlauf dann am Di 17.11.")
-TODO_SHEET_URL = "https://docs.google.com/spreadsheets/d/10ha8iYFgSw4lbGkk6zKd1Z8lcuJq2ODZTECWHIZb4Uo"   # Wochen-Tabelle KW 45 im Drive
-M2_SHEET_URL = "https://docs.google.com/spreadsheets/d/1iX--dkQl7JiJagsp86AY9IjNL2GXbPSWr1cmxBYXL1Q"     # zweite Tabelle „M2-Abgaben“ (Risiken, Schnittstellenmatrix, Testkonzept, Doku, Entscheidungen)
+ZIEL = ("Ziel bis Di 10.11.2026 – wenn alle ihre Aufgaben schaffen: Team Hardware hat fertig verkabelt (03.11. + 10.11.), der Pi ist fertig eingerichtet, "
+        "das Peakboard-Board zeigt Testdaten, die M2-Abgaben sind geprüft. Danach: Übergabe Di 17.11., Einspielen Di 24.11., erster Sortierlauf Di 01.12.")
+TODO_SHEET_URL = "https://docs.google.com/spreadsheets/d/1bXOgwx0ie3KiWtJpJybUZtEKyVMtDpv4ElG2MelW34Q"   # Wochen-Tabelle KW 45 im Drive
+M2_SHEET_URL = "https://docs.google.com/spreadsheets/d/10pr6kpdF5EGmnDSl98uHcxw267b1XnRR1LsLByVBOV8"     # zweite Tabelle „M2-Abgaben“ (Risiken, Schnittstellenmatrix, Testkonzept, Doku, Entscheidungen)
 M2_REITER = {"Risiken", "Schnittstellenmatrix", "Testkonzept", "Doku-Gliederung", "Entscheidungen"}
 
 KOPF = ["Wer", "Bis", "Was tun (einfach erklärt)", "Ergebnis eintragen in",
@@ -26,23 +26,23 @@ WER_KURZ = {"P2": "Jan (P2)", "P3": "Alhasane (P3)", "P4": "Marie (P4)", "P5": "
 # (Person, [(Nr, Bis, Was tun, Reiter)])
 TODOS = [
     ("P3 – Alhasane (Aktoren + Draht zu Team Hardware, Kontakt: Schläger) – KRITISCHER PFAD", [
-        ("W1", "Di 03.11.", "Team Hardware schließt HEUTE 16–18 Uhr an (nur dienstags möglich). Dabei die offenen Fragen klären "
+        ("W1", "Di 10.11.", "Team Hardware verkabelt dienstags 16–18 Uhr (03.11. begonnen, 10.11. weiter, Übergabe Di 17.11.). Dabei die offenen Fragen klären "
                             "(Strom der Ventile, gemeinsame Masse, eigenes Pi-Netzteil, Motor M2). Antworten in den Reiter.", "R:Hardware-Antworten"),
-        ("W2", "Di 03.11.", "Beim Anschließen dabei sein: prüfen, ob wie im Anschlussplan verkabelt wird (nur Abweichungen eintragen), Foto der Verkabelung "
+        ("W2", "Di 10.11.", "Bei der Verkabelung dabei sein (03.11. + 10.11.): prüfen, ob wie im Anschlussplan verkabelt wird (nur Abweichungen eintragen), Foto der Verkabelung "
                             "in den Drive-Ordner „03 Bilder“.", "R:Anschlussplan"),
-        ("W3", "Di 10.11.", "Ausgänge einzeln testen – NUR mit Freigabe von Prof. Kampker und mit Team Hardware dabei (Karte P3-3). Jede Zeile im Reiter.",
+        ("W3", "Di 10.11.", "Ausgänge-Test vorbereiten: Karte P3-3 lesen, Freigabe von Prof. Kampker über Hamza holen (Reiter Antworten Prof, P1). Der Test selbst ist am Di 24.11. – nur mit Team Hardware dabei.",
          "R:Ausgaenge-Test"),
     ]),
     ("P6 – Dogukan (alles im Terminal + Datenübertragung zum Pi)", [
-        ("W4", "Di 03.11.", "Heute 16–18 Uhr: Pi per LAN-Kabel an eine gelbe Buchse des TP-Link und mit eigenem 5-V/3-A-Netzteil anschließen (am 20.10. ist das WLAN "
+        ("W4", "Di 10.11.", "Am Di 03.11. oder spätestens Di 10.11. (16–18 Uhr): Pi per LAN-Kabel an eine gelbe Buchse des TP-Link und mit eigenem 5-V/3-A-Netzteil anschließen (am 20.10. ist das WLAN "
                             "zweimal abgerissen). Dann PI_EINRICHTEN – letzter Schritt: Pi-Passwort einmal eintippen. Jede Zeile im Reiter.", "R:Pi-Einrichtung"),
-        ("W5", "Di 03.11.", "Direkt nach dem Anschließen der Hardware: piverbindungtest2 starten – die Platinen müssen erkannt werden. Bericht kommt automatisch.",
+        ("W5", "Di 10.11.", "Sobald die Platinen aufgesteckt sind: piverbindungtest2 starten – die Platinen müssen erkannt werden. Bericht kommt automatisch.",
          "R:Pi-Einrichtung"),
-        ("W6", "Di 17.11.", "Einspieltag leiten (vorbereiten, damit am 17.11. alles klappt): erster Sortierlauf mit drei Farben und einem Fehlerfall (Karte P6-6). Ergebnis in K9/K10.", "R:Testkonzept"),
+        ("W6", "Di 01.12.", "Einspieltag vorbereiten, damit am Di 01.12. alles klappt: erster Sortierlauf mit drei Farben und einem Fehlerfall (Karte P6-6). Ergebnis dann in K9/K10.", "R:Testkonzept"),
     ]),
     ("P2 – Jan (Sensoren + Bildschirm-Texte)", [
         ("W7", "Mi 04.11.", "Bildschirm-Texte bewerten (noch offen): pro Zeile „ja“ oder besseres Wort.", "R:Bildschirm-Texte"),
-        ("W8", "Di 10.11.", "An der Anlage: Eingänge messen – es bewegt sich NICHTS (Karte P2-4). Werte vom Laptop-Bildschirm abschreiben.", "R:Messprotokoll Eingaenge"),
+        ("W8", "Di 10.11.", "Eingänge-Messung vorbereiten: Karte P2-4 lesen und den Reiter ansehen. Gemessen wird am Di 24.11. an der Anlage – es bewegt sich NICHTS.", "R:Messprotokoll Eingaenge"),
     ]),
     ("P4 – Marie (Daten + Peakboard)", [
         ("W9", "Mi 04.11.", "Peakboard Designer auf Rushits Laptop: Projekt anlegen und Datenquelle MQTT einrichten (Karten P4-5, P4-6). Von zu Hause geht das mit PEAKBOARD_TESTDATEN (öffentlicher Test-Broker), an der Anlage mit 192.168.1.180:1883.", "R:Peakboard-Stand"),
@@ -86,9 +86,9 @@ REITER = [
       ["HW8", "Was ist Motor M2? (altes Programm schaltet ihn 3 s)", "evtl. fehlt ein Teil der Anlage", "", ""],
       ["HW9", "Druckluft in Ordnung? Kompressor, Schläuche dicht, Ventile gehen?", "sonst klappt das Aussortieren nicht", "", ""],
       ["HW10", "Wofür ist der GPIO-Multiplexer auf der Bestellliste?", "Verständnis", "", ""],
-      ["HW11", "Anschluss heute Di 03.11. 16–18 Uhr erledigt? Was fehlt noch?", "KRITISCHER PFAD – Team Hardware arbeitet nur dienstags", "", ""],
-      ["HW12", "Ist Team Hardware am Di 10.11. (Messen + Ausgänge-Test) und Di 17.11. (erster Sortierlauf) dabei?", "Fehler an Kabeln findet nur Team Hardware", "", ""],
-      ["HW13", "Verdrahtungsplan als Foto/Skizze bis 20.11.?", "Doku für die Abnahme", "", ""],
+      ["HW11", "Verkabelung Di 03.11. – wie weit? Was fehlt noch bis zur Übergabe am Di 17.11.?", "KRITISCHER PFAD – Team Hardware arbeitet nur dienstags", "", ""],
+      ["HW12", "Ist Team Hardware am Di 24.11. (Messen + Ausgänge-Test) und Di 01.12. (erster Sortierlauf) dabei?", "Fehler an Kabeln findet nur Team Hardware", "", ""],
+      ["HW13", "Verdrahtungsplan als Foto/Skizze bei der Übergabe am Di 17.11.?", "Doku für die Abnahme", "", ""],
       ["HW14", "Bekommt der Pi ein eigenes 5-V/3-A-Netzteil? (mit Platinen braucht er mehr Strom)", "am 20.10. riss die Verbindung ab – Verdacht: Strom", "", ""]],
      [6, 46, 26, 46, 10], [3, 4]),
     ("Anschlussplan", "Anschlussplan – Team Hardware bestätigt (trägt Alhasane ein)",
@@ -107,8 +107,8 @@ REITER = [
     ("Antworten Prof", "Antworten von Prof. Kampker – trägt Hamza ein",
      "Passwörter NIE hier eintragen – nur „erhalten: ja“. Das Passwort selbst persönlich an Rushit.",
      ["Nr", "Frage", "Antwort", "Datum"],
-     [["P1", "Freigabe für den Ausgänge-Test am Di 10.11.?", "", ""],
-      ["P2", "Freigabe für den Einspieltag (erster Sortierlauf) am Di 17.11.?", "", ""],
+     [["P1", "Freigabe für den Ausgänge-Test am Di 24.11.?", "", ""],
+      ["P2", "Freigabe für den Einspieltag (erster Sortierlauf) am Di 01.12.?", "", ""],
       ["P7", "Darf Team Software auch außerhalb von Dienstag an die Anlage (z. B. für den Dauertest)? Würde den Puffer vergrößern.", "", ""],
       ["P3", "Darf der Pi per LAN-Kabel an den TP-Link (stabiler als WLAN)?", "", ""],
       ["P4", "Peakboard: Box + Bildschirm – oder reicht Peakboard LINK im Browser (seine Mail vom 03.11.)?", "", ""],
@@ -126,7 +126,7 @@ REITER = [
       ["5", "Nach dem Anschließen der Hardware: piverbindungtest2 – Automation HAT Mini (0x48) und Motor Driver HAT (0x40) erkannt?", "", ""],
       ["6", "MQTT-Test vom Laptop OK? (am 20.10. schon OK)", "OK (20.10.)", ""]],
      [8, 60, 14, 50], [2, 3]),
-    ("Messprotokoll Eingaenge", "Eingänge messen (Di 10.11.) – trägt Jan ein",
+    ("Messprotokoll Eingaenge", "Eingänge messen (Di 24.11.) – trägt Jan ein",
      "Es bewegt sich NICHTS. Der Eingangs-Monitor zeigt die Werte auf dem Laptop (Dogukan startet ihn). Werte einfach abschreiben.",
      ["Nr", "Was tun", "Erwartet", "Angezeigt", "OK?"],
      [["M1", "Lichtschranke vorne (I1) frei lassen", "Eingang 1 = 1 (frei)", "", ""],
@@ -138,7 +138,7 @@ REITER = [
       ["M7", "Roter Klotz unter den Farbsensor (3×)", "0,116 – 0,150", "", ""],
       ["M8", "Blauer Klotz unter den Farbsensor (3×)", "über 0,150", "", ""]],
      [6, 46, 24, 28, 8], [3, 4]),
-    ("Ausgaenge-Test", "Ausgänge einzeln testen (Di 10.11.) – trägt Alhasane ein",
+    ("Ausgaenge-Test", "Ausgänge einzeln testen (Di 24.11.) – trägt Alhasane ein",
      "NUR mit Freigabe von Prof. Kampker und mit Team Hardware dabei. Immer nur EIN Teil kurz einschalten. Hände weg vom Band. Bei Problemen sofort Not-Aus/Strom aus.",
      ["Nr", "Was wird kurz eingeschaltet", "Erwartet", "Was ist passiert?", "OK?"],
      [["A1", "Kompressor (O8) für 3 Sekunden", "Kompressor läuft hörbar", "", ""],
@@ -178,7 +178,7 @@ REITER = [
       ["R2", "Ventile ziehen mehr Strom als die Platinen-Ausgänge können", "unbekannt", "hoch – Platine kaputt", "Strom von Team Hardware klären (HW3), sonst über Relais schalten", "Alhasane + Team Hardware", "", ""],
       ["R3", "Platine voll belegt – keine Reserve, falls ein Anschluss ausfällt", "niedrig", "mittel", "Ersatz-Platine früh klären", "Team Hardware", "", ""],
       ["R4", "Verbindung zum Pi reißt ab / Pi startet neu (am 20.10. zweimal passiert)", "hoch", "hoch – Einrichtung nicht möglich", "Pi per LAN-Kabel + eigenes 5-V/3-A-Netzteil", "Dogukan", "", ""],
-      ["R5", "Farbwerte der echten Klötze passen nicht zu den Startwerten", "mittel", "mittel – falsche Rutsche", "Messprotokoll am 10.11., Claude passt die Grenzen an", "Jan + Claude", "", ""],
+      ["R5", "Farbwerte der echten Klötze passen nicht zu den Startwerten", "mittel", "mittel – falsche Rutsche", "Messprotokoll am 24.11., Claude passt die Grenzen an", "Jan + Claude", "", ""],
       ["R6", "Peakboard Designer nur auf Rushits Laptop", "hoch", "mittel – Board nur dort baubar", "feste Termine mit Marie, Peakboard LINK prüfen", "Marie", "", ""],
       ["R7", "IP-Adressen ändern sich (anderer Router)", "mittel", "niedrig", "Skripte finden den Pi über seinen Namen", "Dogukan", "", ""],
       ["R8", "Team trägt Ergebnisse nicht ein (KW 43: nichts angekommen)", "hoch", "mittel – Claude kann nicht weiterarbeiten", "Hamza erinnert Mo + Do, Rushit fragt im Meeting nach", "Hamza", "", ""],
@@ -209,14 +209,14 @@ REITER = [
       ["K2", "Laptop erreicht den Pi", "piverbindungtest2", "Anmeldung OK", "Dogukan", "erledigt", "OK (20.10.)"],
       ["K3", "Pi sendet MQTT", "MQTT-Test vom Laptop", "Nachricht kommt zurück", "Dogukan", "erledigt", "OK mit Login (20.10.)"],
       ["K4", "Peakboard empfängt", "Testdaten laufen lassen", "Werte ändern sich auf dem Board", "Marie", "bis Di 10.11. (von zu Hause)", ""],
-      ["K5", "Ohne Internet", "Internet trennen, alles neu starten", "Anlage + Anzeige laufen weiter", "Hassan", "Di 24.11.", ""],
-      ["K6", "Postamt (Broker) fällt aus", "Mosquitto kurz stoppen", "Anlage sortiert weiter, Anzeige bleibt stehen", "Hassan", "Di 24.11.", ""],
-      ["K7", "Eingänge", "Messprotokoll", "alle Werte wie erwartet", "Jan", "Di 10.11.", ""],
-      ["K8", "Ausgänge einzeln", "nur mit Freigabe Prof.", "jedes Ventil/Motor einzeln", "Alhasane", "Di 10.11.", ""],
-      ["K9", "Sortierlauf 3 Farben", "je 3 Klötze", "richtige Rutsche, Zähler stimmt", "Dogukan", "Di 17.11.", ""],
-      ["K10", "Fehlerfall", "Band festhalten", "STÖRUNG auf dem Bildschirm", "Dogukan", "Di 17.11.", ""],
-      ["K11", "Neustart Pi", "Strom aus/an", "startet von selbst wieder", "Hassan", "Di 24.11.", ""],
-      ["K12", "Dauertest", "viele Klötze, alle Farben", "keine Fehlzählung", "Hassan", "Di 24.11., 01.12., 08.12.", ""]],
+      ["K5", "Ohne Internet", "Internet trennen, alles neu starten", "Anlage + Anzeige laufen weiter", "Hassan", "Di 08.12.", ""],
+      ["K6", "Postamt (Broker) fällt aus", "Mosquitto kurz stoppen", "Anlage sortiert weiter, Anzeige bleibt stehen", "Hassan", "Di 08.12.", ""],
+      ["K7", "Eingänge", "Messprotokoll", "alle Werte wie erwartet", "Jan", "Di 24.11.", ""],
+      ["K8", "Ausgänge einzeln", "nur mit Freigabe Prof.", "jedes Ventil/Motor einzeln", "Alhasane", "Di 24.11.", ""],
+      ["K9", "Sortierlauf 3 Farben", "je 3 Klötze", "richtige Rutsche, Zähler stimmt", "Dogukan", "Di 01.12.", ""],
+      ["K10", "Fehlerfall", "Band festhalten", "STÖRUNG auf dem Bildschirm", "Dogukan", "Di 01.12.", ""],
+      ["K11", "Neustart Pi", "Strom aus/an", "startet von selbst wieder", "Hassan", "Di 05.01.", ""],
+      ["K12", "Dauertest", "viele Klötze, alle Farben", "keine Fehlzählung", "Hassan", "Di 08.12. + 15.12.", ""]],
      [6, 24, 28, 32, 12, 12, 24], [4, 5, 6]),
     ("Doku-Gliederung", "Doku für ein anderes Team (Abnahmekriterium) – Gliederung prüft Hassan",
      "Vorschlag von Claude. Ziel: ein anderes Team kann die Anlage damit starten, bedienen und Fehler beheben. Pro Kapitel: passt es? Was fehlt?",

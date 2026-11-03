@@ -1,7 +1,7 @@
 # ★ PEAKBOARD – LIES MICH ZUERST (Marie + Jan)
 
 **Stand 03.11.2026.** Hier steht alles, was ihr für das Peakboard braucht. Dasselbe Dokument liegt als Google Doc im Drive
-(Ordner „05 Peakboard (Marie + Jan)“): https://docs.google.com/document/d/1Cc_shLDK0koSENF6--ZbNDbfylIb3cnYpM5zDaU8NkM
+(Ordner „05 Peakboard (Marie + Jan)“): https://docs.google.com/document/d/1qmOIfqN57xvzhgJGufYyh8RXb5hjy0S5mbmNttcGpOM
 Quelle: `quellen/Peakboard_LIES_MICH.html`. Wer etwas ändert, ändert es bitte im Drive und hier.
 
 ## 1. Worum geht es?
