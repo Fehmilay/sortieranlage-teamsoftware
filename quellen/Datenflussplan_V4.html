@@ -104,49 +104,49 @@ tr:nth-child(even) td { background: #f5f8fc; }
 </svg>
 
 <!-- ID-Marken an den Pfeilen -->
-<div class="abs" style="left:340px;top:192px"><span class="id">S01</span></div>
-<div class="abs" style="left:340px;top:282px"><span class="id">S02</span></div>
-<div class="abs" style="left:340px;top:372px"><span class="id">S03</span></div>
-<div class="abs" style="left:340px;top:462px"><span class="id">S04</span></div>
+<div class="abs" style="left:340px;top:192px"><span class="id">S05</span></div>
+<div class="abs" style="left:340px;top:282px"><span class="id">S09</span></div>
+<div class="abs" style="left:340px;top:372px"><span class="id">S08</span></div>
+<div class="abs" style="left:340px;top:462px"><span class="id">S07</span></div>
 <div class="abs lbl" style="left:667px;top:222px">GPIO<br>I2C</div>
 <div class="abs lbl" style="left:862px;top:312px">Messwerte</div>
 <div class="abs lbl" style="left:862px;top:518px;color:#c55a11">Befehle</div>
-<div class="abs" style="left:340px;top:569px"><span class="id ido">S05</span></div>
-<div class="abs" style="left:340px;top:641px"><span class="id ido">S06</span></div>
-<div class="abs" style="left:340px;top:713px"><span class="id ido">S07</span></div>
+<div class="abs" style="left:340px;top:569px"><span class="id ido">S11</span></div>
+<div class="abs" style="left:340px;top:641px"><span class="id ido">S10</span></div>
+<div class="abs" style="left:340px;top:713px"><span class="id ido">S06</span></div>
 <div class="abs lbl" style="left:990px;top:400px;color:#548235">Ereignis</div>
-<div class="abs" style="left:1150px;top:518px"><span class="id idg">S09</span> <span class="lbl" style="color:#548235">publish</span></div>
-<div class="abs" style="left:1288px;top:470px"><span class="id idg">S10</span></div>
+<div class="abs" style="left:1150px;top:518px"><span class="id idg">S12</span> <span class="lbl" style="color:#548235">publish</span></div>
+<div class="abs" style="left:1288px;top:470px"><span class="id idg">S13</span></div>
 <div class="abs lbl" style="left:1240px;top:497px;color:#548235">subscribe :1883</div>
-<div class="abs" style="left:1615px;top:518px"><span class="id idg">S11</span> <span class="lbl">HDMI</span></div>
-<div class="abs" style="left:1440px;top:292px"><span class="id ido">S13</span> <span class="lbl">Board hochladen</span> · <span class="id idg">S14</span> <span class="lbl">Testdaten</span></div>
-<div class="abs" style="left:1288px;top:678px"><span class="id idv">S12</span></div>
+<div class="abs" style="left:1615px;top:518px"><span class="id idg">S14</span> <span class="lbl">HDMI</span></div>
+<div class="abs" style="left:1440px;top:292px"><span class="id ido">S04</span> <span class="lbl">Board hochladen</span> · <span class="id idg">S03</span> <span class="lbl">Testdaten</span></div>
+<div class="abs" style="left:1288px;top:678px"><span class="id idv">S02</span></div>
 <div class="abs lbl" style="left:1240px;top:735px;color:#7030a0">SSH / SCP :22</div>
 <div class="abs lbl" style="left:24px;top:772px;color:#777;font-size:12.5px">Band bewegt den Klotz → Sensoren melden die neue Lage (geschlossener Kreis)</div>
 
 <!-- Tabelle der Datenflüsse -->
-<div class="abs zt" style="left:26px;top:798px;color:#1f4e79">Jeder Pfeil = ein Datenfluss (Grundlage für die Schnittstellenmatrix) · Status: <span class="ok">BESTÄTIGT</span> · <span class="vo">VORSCHLAG</span> · <span class="of">OFFEN</span></div>
+<div class="abs zt" style="left:26px;top:798px;color:#1f4e79">Jeder Pfeil = ein Datenfluss, in zeitlicher Reihenfolge (S01–S04 Inbetriebnahme · S05–S11 Weg eines Klotzes · S12–S14 Anzeige) · Status: <span class="ok">BESTÄTIGT</span> · <span class="vo">VORSCHLAG</span> · <span class="of">OFFEN</span></div>
 <table class="abs" style="left:26px;top:826px;width:1848px">
 <tr><th style="width:52px">ID</th><th style="width:300px">von → nach</th><th style="width:230px">Inhalt</th><th style="width:280px">Signal / Format</th><th style="width:190px">Übertragung</th><th style="width:190px">Häufigkeit</th><th style="width:220px">Zweck</th><th>Status</th></tr>
-<tr><td>S01</td><td>I1 → HAT Input 1 (GPIO 26)</td><td>Klotz vor dem Farbsensor?</td><td>digital: 1 = frei, 0 = unterbrochen</td><td>Kabel · GPIO</td><td>Abfrage alle 10 ms</td><td>Messung starten</td><td><span class="ok">BESTÄTIGT</span> (Team HW 20.10.)</td></tr>
-<tr><td>S02</td><td>I3 → HAT Input 2 (GPIO 20)</td><td>Klotz am Auswurf?</td><td>digital 1 / 0</td><td>Kabel · GPIO</td><td>alle 10 ms</td><td>Ausgang frei prüfen</td><td><span class="ok">BESTÄTIGT</span></td></tr>
-<tr><td>S03</td><td>C1 → HAT Input 3 (GPIO 21)</td><td>Weg des Bandes</td><td>Impulse, entprellt (beide Flanken)</td><td>Kabel · GPIO</td><td>je Zahnradzahn</td><td>Klotz bis zum Ventil fahren</td><td><span class="ok">BESTÄTIGT</span></td></tr>
-<tr><td>S04</td><td>I2 → HAT Analog 1 (ADS1015, I2C 0x48)</td><td>Farbwert</td><td>0–9 V → Zahl 0–1, kleinster Wert zählt</td><td>Kabel · I2C-Bus 1</td><td>alle 10 ms beim Messen</td><td>Farbe erkennen</td><td><span class="ok">BESTÄTIGT</span> · Grenzen <span class="of">kalibrieren</span></td></tr>
-<tr><td>S05</td><td>Pi → HAT Output 1–3 (GPIO 5/12/6) → Ventile O5–O7</td><td>Ventil auf / zu</td><td>digital, 9 V, Stoß 0,5 s</td><td>Kabel</td><td>1× je Klotz</td><td>aussortieren</td><td><span class="ok">BESTÄTIGT</span> · Ventilstrom <span class="of">OFFEN</span></td></tr>
-<tr><td>S06</td><td>Pi → HAT Relais (GPIO 16) → Kompressor O8</td><td>Druckluft ein / aus</td><td>Relais, 9 V, max. 200 mA</td><td>Kabel</td><td>ab 1 s vor dem Ausschleusen</td><td>Druck aufbauen</td><td><span class="ok">BESTÄTIGT</span></td></tr>
-<tr><td>S07</td><td>Pi → Motor Driver HAT (PCA9685, I2C 0x40, Kanal A) → M1</td><td>Band an / aus, Richtung</td><td>PWM Kanal 0, Richtung Kanal 1/2; 9 V, max. 650 mA</td><td>I2C-Bus 1 · Kabel</td><td>bei Zustandswechsel</td><td>Klotz transportieren</td><td><span class="ok">BESTÄTIGT</span> · Schutz <span class="of">OFFEN</span></td></tr>
-<tr><td>S08</td><td>9-V-Netzteil → HATs + Aktoren · 5-V-Netzteil → Pi</td><td>Versorgung</td><td>9 V / 5 V 3 A</td><td>Kabel, WAGO-Klemmen</td><td>dauernd</td><td>Strom</td><td>9 V <span class="ok">vorhanden</span> · gemeinsame Masse <span class="of">OFFEN</span></td></tr>
-<tr><td>S09</td><td>mqtt_client.py → Mosquitto (localhost:1883)</td><td>Zustand, Stückzahl, letzte Farbe, Anzahl je Farbe, Fehler, Modus</td><td>MQTT: Text-Werte (retain) + JSON-Ereignis <code>{event, color, cycle_count, timestamp}</code></td><td>TCP 1883 auf dem Pi, mit Login</td><td>bei jeder Änderung, je Klotz</td><td>Daten bereitstellen</td><td><span class="ok">BESTÄTIGT</span> (Test 03.11.)</td></tr>
-<tr><td>S10</td><td>Mosquitto → Peakboard Box</td><td>wie S09</td><td>Format A: <code>sortieranlage/wert/*</code> als Text</td><td>WLAN/LAN · TCP 1883 · Login</td><td>sofort bei Änderung</td><td>Anzeige</td><td>Format A <span class="ok">BESTÄTIGT</span> · Box-IP <span class="of">OFFEN</span></td></tr>
-<tr><td>S11</td><td>Peakboard Box → Bildschirm</td><td>Dashboard</td><td>Bildsignal</td><td>HDMI</td><td>dauernd</td><td>anzeigen</td><td><span class="vo">VORSCHLAG</span></td></tr>
-<tr><td>S12</td><td>Laptop Team Software → Pi</td><td>Programm, Einrichtung, Tests, Berichte</td><td>SSH / SCP (Schlüssel)</td><td>WLAN · TCP 22</td><td>einmalig / Wartung</td><td>einspielen, warten</td><td><span class="ok">BESTÄTIGT</span> (03.11.)</td></tr>
-<tr><td>S13</td><td>Peakboard Designer → Peakboard Box</td><td>fertiges Board</td><td>Peakboard-Projekt</td><td>WLAN/LAN · Port <span class="of">OFFEN</span></td><td>bei Änderung</td><td>Board hochladen</td><td><span class="of">OFFEN</span></td></tr>
-<tr><td>S14</td><td>Mosquitto → Peakboard Designer</td><td>Live-Testwerte (Simulation)</td><td>wie S10</td><td>WLAN · TCP 1883 · Login</td><td>beim Bauen</td><td>Board testen</td><td><span class="ok">BESTÄTIGT</span> (Testdaten 03.11.)</td></tr>
+<tr><td>S01</td><td>9-V-Netzteil → HATs + Aktoren · 5-V-Netzteil → Pi</td><td>Versorgung</td><td>9 V / 5 V 3 A</td><td>Kabel, WAGO-Klemmen</td><td>dauernd</td><td>Strom</td><td>9 V <span class="ok">vorhanden</span> · gemeinsame Masse <span class="of">OFFEN</span></td></tr>
+<tr><td>S02</td><td>Laptop Team Software → Pi</td><td>Programm, Einrichtung, Tests, Berichte</td><td>SSH / SCP (Schlüssel)</td><td>WLAN · TCP 22</td><td>einmalig / Wartung</td><td>einspielen, warten</td><td><span class="ok">BESTÄTIGT</span> (03.11.)</td></tr>
+<tr><td>S03</td><td>Mosquitto → Peakboard Designer</td><td>Live-Testwerte (Simulation)</td><td>wie S13</td><td>WLAN · TCP 1883 · Login</td><td>beim Bauen</td><td>Board testen</td><td><span class="ok">BESTÄTIGT</span> (Testdaten 03.11.)</td></tr>
+<tr><td>S04</td><td>Peakboard Designer → Peakboard Box</td><td>fertiges Board</td><td>Peakboard-Projekt</td><td>WLAN/LAN · Port <span class="of">OFFEN</span></td><td>bei Änderung</td><td>Board hochladen</td><td><span class="of">OFFEN</span></td></tr>
+<tr><td>S05</td><td>I1 → HAT Input 1 (GPIO 26)</td><td>Klotz vor dem Farbsensor?</td><td>digital: 1 = frei, 0 = unterbrochen</td><td>Kabel · GPIO</td><td>Abfrage alle 10 ms</td><td>Messung starten</td><td><span class="ok">BESTÄTIGT</span> (Team HW 20.10.)</td></tr>
+<tr><td>S06</td><td>Pi → Motor Driver HAT (PCA9685, I2C 0x40, Kanal A) → M1</td><td>Band an / aus, Richtung</td><td>PWM Kanal 0, Richtung Kanal 1/2; 9 V, max. 650 mA</td><td>I2C-Bus 1 · Kabel</td><td>bei Zustandswechsel</td><td>Klotz transportieren</td><td><span class="ok">BESTÄTIGT</span> · Schutz <span class="of">OFFEN</span></td></tr>
+<tr><td>S07</td><td>I2 → HAT Analog 1 (ADS1015, I2C 0x48)</td><td>Farbwert</td><td>0–9 V → Zahl 0–1, kleinster Wert zählt</td><td>Kabel · I2C-Bus 1</td><td>alle 10 ms beim Messen</td><td>Farbe erkennen</td><td><span class="ok">BESTÄTIGT</span> · Grenzen <span class="of">kalibrieren</span></td></tr>
+<tr><td>S08</td><td>C1 → HAT Input 3 (GPIO 21)</td><td>Weg des Bandes</td><td>Impulse, entprellt (beide Flanken)</td><td>Kabel · GPIO</td><td>je Zahnradzahn</td><td>Klotz bis zum Ventil fahren</td><td><span class="ok">BESTÄTIGT</span></td></tr>
+<tr><td>S09</td><td>I3 → HAT Input 2 (GPIO 20)</td><td>Klotz am Auswurf?</td><td>digital 1 / 0</td><td>Kabel · GPIO</td><td>alle 10 ms</td><td>Ausgang frei prüfen</td><td><span class="ok">BESTÄTIGT</span></td></tr>
+<tr><td>S10</td><td>Pi → HAT Relais (GPIO 16) → Kompressor O8</td><td>Druckluft ein / aus</td><td>Relais, 9 V, max. 200 mA</td><td>Kabel</td><td>ab 1 s vor dem Ausschleusen</td><td>Druck aufbauen</td><td><span class="ok">BESTÄTIGT</span></td></tr>
+<tr><td>S11</td><td>Pi → HAT Output 1–3 (GPIO 5/12/6) → Ventile O5–O7</td><td>Ventil auf / zu</td><td>digital, 9 V, Stoß 0,5 s</td><td>Kabel</td><td>1× je Klotz</td><td>aussortieren</td><td><span class="ok">BESTÄTIGT</span> · Ventilstrom <span class="of">OFFEN</span></td></tr>
+<tr><td>S12</td><td>mqtt_client.py → Mosquitto (localhost:1883)</td><td>Zustand, Stückzahl, letzte Farbe, Anzahl je Farbe, Fehler, Modus</td><td>MQTT: Text-Werte (retain) + JSON-Ereignis <code>{event, color, cycle_count, timestamp}</code></td><td>TCP 1883 auf dem Pi, mit Login</td><td>bei jeder Änderung, je Klotz</td><td>Daten bereitstellen</td><td><span class="ok">BESTÄTIGT</span> (Test 03.11.)</td></tr>
+<tr><td>S13</td><td>Mosquitto → Peakboard Box</td><td>wie S12</td><td>Format A: <code>sortieranlage/wert/*</code> als Text</td><td>WLAN/LAN · TCP 1883 · Login</td><td>sofort bei Änderung</td><td>Anzeige</td><td>Format A <span class="ok">BESTÄTIGT</span> · Box-IP <span class="of">OFFEN</span></td></tr>
+<tr><td>S14</td><td>Peakboard Box → Bildschirm</td><td>Dashboard</td><td>Bildsignal</td><td>HDMI</td><td>dauernd</td><td>anzeigen</td><td><span class="vo">VORSCHLAG</span></td></tr>
 </table>
 
 <!-- Beispiele (Kursfolie 14) -->
-<div class="abs bsp" style="left:26px;top:1392px;width:910px;height:112px"><b>Beispiel 1 – Klotz rot wird richtig aussortiert:</b> I1 wird unterbrochen (S01) → Band läuft (S07) → Farbsensor misst kleinsten Wert 0,13 (S04) → „rot“ → 15 Impulse zählen (S03) → Kompressor (S06), Ventil rot 0,5 s (S05) → I3 wieder frei (S02) → Stückzahl +1 → MQTT: <code>wert/farbe_letzte = rot</code>, <code>wert/anzahl_rot</code> +1, <code>event {"event":"sorted","color":"red"}</code> (S09) → Peakboard: rote Kachel, Zähler rot +1 (S10).</div>
-<div class="abs bsp" style="left:950px;top:1392px;width:924px;height:112px;border-color:#c00000"><b style="color:#c00000">Beispiel 2 – Störung „Band blockiert“:</b> Band läuft, aber 2 s lang kein Impuls von C1 (S03) → Zustand FEHLER → Motor, Ventile, Kompressor sofort AUS (S05–S07) → MQTT: <code>wert/fehler_aktiv = 1</code>, <code>wert/fehler_text</code>, <code>event {"event":"error","code":"band_blockiert"}</code> (S09) → Peakboard: rotes Störungsbanner (S10). Fällt Peakboard oder das Netz aus, sortiert die Anlage trotzdem weiter.</div>
+<div class="abs bsp" style="left:26px;top:1392px;width:910px;height:112px"><b>Beispiel 1 – Klotz rot wird richtig aussortiert:</b> I1 wird unterbrochen (S05) → Band läuft (S06) → Farbsensor misst kleinsten Wert 0,13 (S07) → „rot“ → 15 Impulse zählen (S08) → Kompressor (S10), Ventil rot 0,5 s (S11) → I3 wieder frei (S09) → Stückzahl +1 → MQTT: <code>wert/farbe_letzte = rot</code>, <code>wert/anzahl_rot</code> +1, <code>event {"event":"sorted","color":"red"}</code> (S12) → Peakboard: rote Kachel, Zähler rot +1 (S13).</div>
+<div class="abs bsp" style="left:950px;top:1392px;width:924px;height:112px;border-color:#c00000"><b style="color:#c00000">Beispiel 2 – Störung „Band blockiert“:</b> Band läuft, aber 2 s lang kein Impuls von C1 (S08) → Zustand FEHLER → Motor, Ventile, Kompressor sofort AUS (S06, S10, S11) → MQTT: <code>wert/fehler_aktiv = 1</code>, <code>wert/fehler_text</code>, <code>event {"event":"error","code":"band_blockiert"}</code> (S12) → Peakboard: rotes Störungsbanner (S13). Fällt Peakboard oder das Netz aus, sortiert die Anlage trotzdem weiter.</div>
 
 <div class="abs fuss" style="top:1530px">
 Offen für die Abstimmung (M2): Farbwörter deutsch oder englisch (heute: Text-Werte deutsch, Ereignis englisch) · Topic-Anfang <code>sortieranlage/…</code> oder <code>hsnr/sortieranlage/…</code> · Ventilstrom, gemeinsame Masse, Schutz Motortreiber (Team Hardware) · Box-IP und Upload-Port (Team Netzwerk)<br>
