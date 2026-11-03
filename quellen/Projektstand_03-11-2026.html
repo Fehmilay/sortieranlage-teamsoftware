@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>★ PROJEKTSTAND 03.11.2026 – nach dem Regelmeeting (Dienstags-Plan)</title></head>
+<body>
+<h1>★ Projektstand Team Software – 03.11.2026, nach dem Regelmeeting</h1>
+<p><b>Sortieranlage: Raspberry Pi + Python statt alter Steuerung, Anzeige über MQTT auf Peakboard. Abnahme: 02.02.2027.</b></p>
+<p><b>Neu seit dem Meeting:</b> Team Hardware arbeitet nur dienstags 16–18 Uhr. Alles, was an der Anlage passiert, ist deshalb nur an Dienstagen möglich. Der Zeitplan ist darauf umgestellt (Gantt auf GitHub, Stand 03.11.).</p>
+
+<h2>1. Ampel</h2>
+<table border="1" cellpadding="4">
+<tr><th>Bereich</th><th>Ampel</th><th>Warum</th></tr>
+<tr><td>Programm</td><td>GRÜN</td><td>Steuerung fertig und getestet (Simulation). Liegt schon auf dem Pi.</td></tr>
+<tr><td>Raspberry Pi</td><td>GELB</td><td>Programm und MQTT-Zugang sind drauf, MQTT läuft mit Anmeldung. Es fehlt der letzte Schritt (I2C für die Platinen, Autostart) – jetzt per LAN-Kabel und eigenem Netzteil, spätestens Di 10.11.</td></tr>
+<tr><td>Zusammenspiel mit der Hardware</td><td>ROT</td><td>Team Hardware hat am 03.11. mit der Verkabelung begonnen, weiter am 10.11., Übergabe am 17.11. Erst danach können wir messen und testen (24.11.).</td></tr>
+<tr><td>Peakboard</td><td>GELB</td><td>Testdaten kommen vom Pi an (192.168.1.180, Port 1883). Board-Datei als Vorschlag erstellt (Ordner 05 Peakboard), im Designer noch ungetestet.</td></tr>
+<tr><td>Doku / Zeitplan</td><td>GRÜN</td><td>Gantt, Anleitungen, Leistungsnachweis aktuell. Alles auf GitHub. Leistungsnachweis am 03.11. an Prof. Kampker geschickt.</td></tr>
+</table>
+
+<h2>2. Zeitplan (kritischer Pfad, nur dienstags an der Anlage)</h2>
+<table border="1" cellpadding="4">
+<tr><th>Dienstag</th><th>Schritt</th><th>Wer</th></tr>
+<tr><td>03.11. + 10.11.</td><td>Verkabelung Automation HAT Mini + Motor Driver HAT; Pi fertig einrichten</td><td>Team Hardware, Alhasane, Dogukan</td></tr>
+<tr><td>17.11.</td><td>Sichtprüfung, Foto, Übergabe an Team Software</td><td>Team Hardware + Alhasane</td></tr>
+<tr><td>24.11.</td><td>Eingänge messen, danach Ausgänge einzeln testen (Freigabe Prof. Kampker)</td><td>Jan, Alhasane</td></tr>
+<tr><td>01.12.</td><td>Einspieltag: erster Sortierlauf, mehrere Farben, ein Fehlerfall</td><td>Dogukan</td></tr>
+<tr><td>08.12. + 15.12.</td><td>Dauertest; Peakboard-Abnahmetest (08.12.)</td><td>Hassan</td></tr>
+<tr><td>05.01.</td><td>Feinschliff</td><td>Dogukan</td></tr>
+<tr><td>12.01.</td><td>Probeabnahme intern</td><td>Hassan</td></tr>
+<tr><td>19.01. + 26.01.</td><td>Ersatz-Dienstage (Puffer)</td><td>alle</td></tr>
+<tr><td><b>02.02.2027</b></td><td><b>Abnahme</b></td><td>alle</td></tr>
+</table>
+<p><b>Die Abnahme ist machbar, aber der Puffer sind nur noch die zwei Ersatz-Dienstage im Januar.</b> Jeder ausgefallene Dienstag verschiebt alles danach um eine Woche. Deshalb: jeden Dienstag gut vorbereiten, und Prof. Kampker fragen, ob wir auch an anderen Tagen an die Anlage dürfen.</p>
+
+<h2>3. Noch offen – Antworten bitte in die Wochen-Tabelle</h2>
+<p><b>Team Hardware (Schläger) – trägt Alhasane ein:</b> Strom der Ventile (reicht der Platinen-Ausgang oder Relais?), gemeinsame Masse 9 V / Pi, eigenes 5-V/3-A-Netzteil für den Pi, was ist Motor M2, dabei am 24.11. und 01.12.?</p>
+<p><b>Team QM (Haj Hamoud) – Melih:</b> Datenvertrag (Farbwörter deutsch weiss/rot/blau, Topic-Anfang, Broker auf dem Pi mit Login), Schnittstellenmatrix (Stand von Team QM liegt im Drive: „Schnittstellenmatrix stand 21.10.2026.xlsx“), Pi per LAN-Kabel an den TP-Link.</p>
+<p><b>Prof. Kampker – trägt Hamza ein:</b> Freigabe Ausgänge-Test am 24.11. und Einspieltag am 01.12., Zugang zur Anlage auch außerhalb von Dienstag, Peakboard-Box oder Peakboard LINK im Browser, Peakboard-Konto, letzter Pi-Schritt mit Admin-Passwort.</p>
+<p><b>Entscheidungen J7–J9 und D1–D3</b> (Fehler zurücksetzen, Ausgang prüfen, ein Klotz gleichzeitig, Farbwörter, Topic-Anfang, Broker): Hassan bzw. Melih tragen das Ergebnis aus dem Meeting in den Reiter „Entscheidungen“ der M2-Tabelle ein – erst dann baut Claude es ins Programm ein.</p>
+
+<h2>4. Aufgaben bis Di 10.11.</h2>
+<p>Alles steht in der Tabelle <a href="https://docs.google.com/spreadsheets/d/1bXOgwx0ie3KiWtJpJybUZtEKyVMtDpv4ElG2MelW34Q"><b>★ KW 45 – Aufgaben bis Di 10.11.</b></a> und der <a href="https://docs.google.com/spreadsheets/d/10pr6kpdF5EGmnDSl98uHcxw267b1XnRR1LsLByVBOV8"><b>★ KW 45 – M2-Abgaben</b></a>.</p>
+<p><b>Ziel bis Di 10.11.:</b> Team Hardware hat fertig verkabelt, der Pi ist fertig eingerichtet, das Peakboard-Board zeigt Testdaten, die M2-Abgaben sind geprüft.</p>
+<p>Fragen? GitHub-Link <a href="https://github.com/Fehmilay/sortieranlage-teamsoftware">https://github.com/Fehmilay/sortieranlage-teamsoftware</a> in ChatGPT einfügen und die Frage dazuschreiben.</p>
+</body></html>
