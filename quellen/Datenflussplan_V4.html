@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Datenflussplan V4</title>
+<style>
+@page { size: 1900px 1610px; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1900px; height: 1610px; background: #fff; font-family: "Segoe UI", Arial, sans-serif; color: #1a1a1a; }
+.abs { position: absolute; }
+.kopf { left: 26px; top: 20px; width: 1848px; height: 70px; background: #1f4e79; color: #fff; border-radius: 10px;
+        font-size: 25px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.zone { border: 2px dashed; border-radius: 14px; }
+.zt { font-size: 17px; font-weight: 700; }
+.b { border: 2.5px solid #1f3d5c; border-radius: 11px; display: flex; flex-direction: column; justify-content: center;
+     text-align: center; font-size: 15px; line-height: 1.4; padding: 6px 10px; }
+.in > b:first-child { display: block; }
+.b b { font-size: 16px; }
+.sen { background: #ececec; }
+.akt { background: #f4f4f4; border-color: #7f7f7f; }
+.hat { background: #f8cbad; border-color: #c55a11; }
+.pi  { background: #fff2cc; border-color: #bf9000; }
+.pi2 { background: #fffbea; border-color: #bf9000; }
+.mq  { background: #e2f0d9; border-color: #548235; }
+.pb  { background: #dbe9f6; }
+.lap { background: #fbe5d6; border-color: #c55a11; }
+.id { display: inline-block; background: #1f4e79; color: #fff; border-radius: 9px; font-size: 13px; font-weight: 700; padding: 1px 7px; }
+.ido { background: #c55a11; } .idg { background: #548235; } .idv { background: #7030a0; }
+.lbl { font-size: 13.5px; background: #fff; padding: 0 3px; line-height: 1.25; }
+code { font-family: Consolas, monospace; font-size: 13px; }
+table { border-collapse: collapse; font-size: 13.5px; }
+th { background: #1f4e79; color: #fff; padding: 5px 6px; text-align: left; }
+td { border: 1px solid #bfbfbf; padding: 4px 6px; vertical-align: top; }
+tr:nth-child(even) td { background: #f5f8fc; }
+.ok { color: #1e7b34; font-weight: 700; } .vo { color: #b26b00; font-weight: 700; } .of { color: #c00000; font-weight: 700; }
+.bsp { border: 2px solid #999; border-radius: 10px; padding: 8px 12px; font-size: 14px; line-height: 1.45; background: #fafafa; }
+.fuss { font-size: 13.5px; color: #333; text-align: center; width: 1900px; left: 0; line-height: 1.55; }
+</style></head><body>
+
+<div class="abs kopf">Datenflussplan V4 – Sortieranlage: Sensor → Automation HAT Mini → Raspberry Pi (Python) → Aktoren · MQTT → Peakboard (Stand 03.11.2026)</div>
+
+<!-- Zonen -->
+<div class="abs zone" style="left:20px;top:105px;width:1290px;height:675px;border-color:#c55a11;background:#fffaf6"></div>
+<div class="abs zt" style="left:36px;top:111px;color:#c55a11">A · Prozesssteuerung – lokal und zeitkritisch (läuft auch ohne Netz und ohne Peakboard)</div>
+<div class="abs zone" style="left:1325px;top:105px;width:555px;height:675px;border-color:#548235;background:#f7fbf4"></div>
+<div class="abs zt" style="left:1341px;top:111px;color:#548235">B · Monitoring über MQTT (Anzeige, Wartung)</div>
+<div class="abs zone" style="left:700px;top:140px;width:595px;height:625px;border-color:#bf9000;background:#fffef6;border-style:solid"></div>
+<div class="abs zt" style="left:716px;top:146px;color:#7f6000">Raspberry Pi 4 „hsnrpi1“ · Python 3.13 · Ordner <code>~/sortieranlage</code></div>
+
+<!-- Sensoren -->
+<div class="abs b sen" style="left:36px;top:175px;width:290px;height:78px"><div class="in"><b>I1 Lichtschranke Farbsensor</b>Klotz kommt (1 = frei, 0 = unterbrochen)</div></div>
+<div class="abs b sen" style="left:36px;top:265px;width:290px;height:78px"><div class="in"><b>I3 Lichtschranke Auswurf</b>Klotz ist am Auswurf / weg</div></div>
+<div class="abs b sen" style="left:36px;top:355px;width:290px;height:78px"><div class="in"><b>C1 Impulstaster</b>Zahnrad-Impulse = Weg des Bandes</div></div>
+<div class="abs b sen" style="left:36px;top:445px;width:290px;height:78px"><div class="in"><b>I2 Farbsensor (analog)</b>Spannung 0–9 V je nach Farbe</div></div>
+<!-- Aktoren -->
+<div class="abs b akt" style="left:36px;top:560px;width:290px;height:62px"><div class="in"><b>O5 / O6 / O7 Ventile</b>weiß / rot / blau · 9 V</div></div>
+<div class="abs b akt" style="left:36px;top:632px;width:290px;height:62px"><div class="in"><b>O8 Kompressor</b>Druckluft · 9 V · max. 200 mA</div></div>
+<div class="abs b akt" style="left:36px;top:704px;width:290px;height:62px"><div class="in"><b>M1 Bandmotor</b>9 V · max. 650 mA</div></div>
+
+<!-- HATs -->
+<div class="abs b hat" style="left:395px;top:175px;width:270px;height:348px"><div class="in"><b>Automation HAT Mini – Eingänge</b><br>Input 1 = GPIO 26<br>Input 2 = GPIO 20<br>Input 3 = GPIO 21<br>Analog 1 = ADC ADS1015<br>(I2C-Bus 1, Adresse 0x48)<br><br><small>trennt 9-V-Signale vom Pi</small></div></div>
+<div class="abs b hat" style="left:395px;top:560px;width:270px;height:206px"><div class="in"><b>Ausgänge</b>Automation HAT Mini:<br>Output 1/2/3 = GPIO 5/12/6<br>Relais = GPIO 16<br><b>Motor Driver HAT</b><br>PCA9685 (I2C 0x40), Kanal A</div></div>
+
+<!-- Pi-Software -->
+<div class="abs b pi" style="left:722px;top:185px;width:265px;height:118px"><div class="in"><b>inputs.py · hat_mini.py</b>liest alle 10 ms, entprellt C1,<br>Farbe = kleinster Messwert</div></div>
+<div class="abs b pi2" style="left:1010px;top:185px;width:265px;height:118px"><div class="in"><b>config.py</b>weiß &lt; 0,116 ≤ rot &lt; 0,150 ≤ blau<br>Impulse bis Ventil 5 / 15 / 26<br>Ventil 0,5 s · Timeouts</div></div>
+<div class="abs b pi" style="left:722px;top:345px;width:265px;height:160px"><div class="in"><b>process.py – Zustände</b>BEREIT → FÖRDERN → ZÄHLEN →<br>AUSSCHLEUSEN → PRÜFEN<br>bei Störung → <b style="display:inline;color:#c00000">FEHLER</b> (alles aus)</div></div>
+<div class="abs b pi" style="left:1010px;top:345px;width:265px;height:160px"><div class="in"><b>mqtt_client.py</b>eigener Sende-Thread mit Warteschlange<br>(Steuerung wartet nie aufs Netz)<br>Login aus <code>~/.sortieranlage_mqtt</code></div></div>
+<div class="abs b pi" style="left:722px;top:560px;width:265px;height:110px"><div class="in"><b>outputs.py · motor_hat.py</b>schaltet Ventile, Kompressor, Motor<br>(gesperrt bis Freigabe)</div></div>
+<div class="abs b mq" style="left:1010px;top:560px;width:265px;height:190px"><div class="in"><b>Mosquitto (MQTT-Broker)</b>läuft auf dem Pi · Port 1883<br>nur mit Benutzer + Passwort<br><code>sortieranlage/wert/*</code> (Text, retain)<br><code>sortieranlage/event</code> (JSON)<br><code>sortieranlage/status …</code> (JSON)</div></div>
+<div class="abs b pi2" style="left:722px;top:690px;width:265px;height:60px;font-size:14px"><div class="in">systemd-Dienst (Autostart vorbereitet)<br>Simulation + Selbsttest ohne Hardware</div></div>
+
+<!-- Monitoring -->
+<div class="abs b lap" style="left:1350px;top:175px;width:510px;height:95px"><div class="in"><b>Laptop mit Peakboard Designer</b>Board bauen · mit Testdaten prüfen · auf die Box laden</div></div>
+<div class="abs b pb" style="left:1350px;top:345px;width:510px;height:160px"><div class="in"><b>Peakboard Box</b>MQTT-Client · abonniert <code>sortieranlage/wert/#</code><br>Kacheln: Zustand · Stückzahl · letzte Farbe ·<br>Anzahl weiß/rot/blau · Störungsbanner</div></div>
+<div class="abs b sen" style="left:1350px;top:560px;width:510px;height:70px"><div class="in"><b>Bildschirm (HDMI)</b>Live-Anzeige an der Anlage</div></div>
+<div class="abs b lap" style="left:1350px;top:660px;width:510px;height:90px"><div class="in"><b>Laptop Team Software</b>Programm einspielen, Tests, Berichte (PI_EINRICHTEN)<br>nur zur Einrichtung / Wartung</div></div>
+
+<svg class="abs" style="left:0;top:0" width="1900" height="800">
+  <defs>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f4e79"/></marker>
+    <marker id="mo" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c55a11"/></marker>
+    <marker id="mg" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#548235"/></marker>
+    <marker id="mv" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7030a0"/></marker>
+  </defs>
+  <g stroke="#1f4e79" stroke-width="3" fill="none" marker-end="url(#m)">
+    <line x1="326" y1="214" x2="391" y2="214"/><line x1="326" y1="304" x2="391" y2="304"/>
+    <line x1="326" y1="394" x2="391" y2="394"/><line x1="326" y1="484" x2="391" y2="484"/>
+    <line x1="665" y1="244" x2="718" y2="244"/>
+    <line x1="855" y1="303" x2="855" y2="341"/>
+  </g>
+  <line x1="1010" y1="244" x2="991" y2="244" stroke="#999" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <g stroke="#c55a11" stroke-width="3" fill="none" marker-end="url(#mo)">
+    <line x1="855" y1="505" x2="855" y2="556"/>
+    <line x1="722" y1="615" x2="669" y2="615"/>
+    <line x1="395" y1="591" x2="330" y2="591"/><line x1="395" y1="663" x2="330" y2="663"/><line x1="395" y1="735" x2="330" y2="735"/>
+  </g>
+  <g stroke="#548235" stroke-width="3" fill="none" marker-end="url(#mg)">
+    <line x1="987" y1="425" x2="1006" y2="425"/>
+    <line x1="1142" y1="505" x2="1142" y2="556"/>
+    <path d="M1275,610 C1320,610 1310,425 1346,425"/>
+    <line x1="1605" y1="505" x2="1605" y2="556"/>
+    <line x1="1605" y1="270" x2="1605" y2="341"/>
+  </g>
+  <path d="M1350,705 C1300,705 1300,720 1279,720" stroke="#7030a0" stroke-width="3" fill="none" stroke-dasharray="9 6" marker-end="url(#mv)"/>
+  <path d="M60,766 C60,790 20,790 20,560 C20,540 30,520 36,515" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="4 5"/>
+</svg>
+
+<!-- ID-Marken an den Pfeilen -->
+<div class="abs" style="left:340px;top:192px"><span class="id">S01</span></div>
+<div class="abs" style="left:340px;top:282px"><span class="id">S02</span></div>
+<div class="abs" style="left:340px;top:372px"><span class="id">S03</span></div>
+<div class="abs" style="left:340px;top:462px"><span class="id">S04</span></div>
+<div class="abs lbl" style="left:667px;top:222px">GPIO<br>I2C</div>
+<div class="abs lbl" style="left:862px;top:312px">Messwerte</div>
+<div class="abs lbl" style="left:862px;top:518px;color:#c55a11">Befehle</div>
+<div class="abs" style="left:340px;top:569px"><span class="id ido">S05</span></div>
+<div class="abs" style="left:340px;top:641px"><span class="id ido">S06</span></div>
+<div class="abs" style="left:340px;top:713px"><span class="id ido">S07</span></div>
+<div class="abs lbl" style="left:990px;top:400px;color:#548235">Ereignis</div>
+<div class="abs" style="left:1150px;top:518px"><span class="id idg">S09</span> <span class="lbl" style="color:#548235">publish</span></div>
+<div class="abs" style="left:1288px;top:470px"><span class="id idg">S10</span></div>
+<div class="abs lbl" style="left:1240px;top:497px;color:#548235">subscribe :1883</div>
+<div class="abs" style="left:1615px;top:518px"><span class="id idg">S11</span> <span class="lbl">HDMI</span></div>
+<div class="abs" style="left:1440px;top:292px"><span class="id ido">S13</span> <span class="lbl">Board hochladen</span> · <span class="id idg">S14</span> <span class="lbl">Testdaten</span></div>
+<div class="abs" style="left:1288px;top:678px"><span class="id idv">S12</span></div>
+<div class="abs lbl" style="left:1240px;top:735px;color:#7030a0">SSH / SCP :22</div>
+<div class="abs lbl" style="left:24px;top:772px;color:#777;font-size:12.5px">Band bewegt den Klotz → Sensoren melden die neue Lage (geschlossener Kreis)</div>
+
+<!-- Tabelle der Datenflüsse -->
+<div class="abs zt" style="left:26px;top:798px;color:#1f4e79">Jeder Pfeil = ein Datenfluss (Grundlage für die Schnittstellenmatrix) · Status: <span class="ok">BESTÄTIGT</span> · <span class="vo">VORSCHLAG</span> · <span class="of">OFFEN</span></div>
+<table class="abs" style="left:26px;top:826px;width:1848px">
+<tr><th style="width:52px">ID</th><th style="width:300px">von → nach</th><th style="width:230px">Inhalt</th><th style="width:280px">Signal / Format</th><th style="width:190px">Übertragung</th><th style="width:190px">Häufigkeit</th><th style="width:220px">Zweck</th><th>Status</th></tr>
+<tr><td>S01</td><td>I1 → HAT Input 1 (GPIO 26)</td><td>Klotz vor dem Farbsensor?</td><td>digital: 1 = frei, 0 = unterbrochen</td><td>Kabel · GPIO</td><td>Abfrage alle 10 ms</td><td>Messung starten</td><td><span class="ok">BESTÄTIGT</span> (Team HW 20.10.)</td></tr>
+<tr><td>S02</td><td>I3 → HAT Input 2 (GPIO 20)</td><td>Klotz am Auswurf?</td><td>digital 1 / 0</td><td>Kabel · GPIO</td><td>alle 10 ms</td><td>Ausgang frei prüfen</td><td><span class="ok">BESTÄTIGT</span></td></tr>
+<tr><td>S03</td><td>C1 → HAT Input 3 (GPIO 21)</td><td>Weg des Bandes</td><td>Impulse, entprellt (beide Flanken)</td><td>Kabel · GPIO</td><td>je Zahnradzahn</td><td>Klotz bis zum Ventil fahren</td><td><span class="ok">BESTÄTIGT</span></td></tr>
+<tr><td>S04</td><td>I2 → HAT Analog 1 (ADS1015, I2C 0x48)</td><td>Farbwert</td><td>0–9 V → Zahl 0–1, kleinster Wert zählt</td><td>Kabel · I2C-Bus 1</td><td>alle 10 ms beim Messen</td><td>Farbe erkennen</td><td><span class="ok">BESTÄTIGT</span> · Grenzen <span class="of">kalibrieren</span></td></tr>
+<tr><td>S05</td><td>Pi → HAT Output 1–3 (GPIO 5/12/6) → Ventile O5–O7</td><td>Ventil auf / zu</td><td>digital, 9 V, Stoß 0,5 s</td><td>Kabel</td><td>1× je Klotz</td><td>aussortieren</td><td><span class="ok">BESTÄTIGT</span> · Ventilstrom <span class="of">OFFEN</span></td></tr>
+<tr><td>S06</td><td>Pi → HAT Relais (GPIO 16) → Kompressor O8</td><td>Druckluft ein / aus</td><td>Relais, 9 V, max. 200 mA</td><td>Kabel</td><td>ab 1 s vor dem Ausschleusen</td><td>Druck aufbauen</td><td><span class="ok">BESTÄTIGT</span></td></tr>
+<tr><td>S07</td><td>Pi → Motor Driver HAT (PCA9685, I2C 0x40, Kanal A) → M1</td><td>Band an / aus, Richtung</td><td>PWM Kanal 0, Richtung Kanal 1/2; 9 V, max. 650 mA</td><td>I2C-Bus 1 · Kabel</td><td>bei Zustandswechsel</td><td>Klotz transportieren</td><td><span class="ok">BESTÄTIGT</span> · Schutz <span class="of">OFFEN</span></td></tr>
+<tr><td>S08</td><td>9-V-Netzteil → HATs + Aktoren · 5-V-Netzteil → Pi</td><td>Versorgung</td><td>9 V / 5 V 3 A</td><td>Kabel, WAGO-Klemmen</td><td>dauernd</td><td>Strom</td><td>9 V <span class="ok">vorhanden</span> · gemeinsame Masse <span class="of">OFFEN</span></td></tr>
+<tr><td>S09</td><td>mqtt_client.py → Mosquitto (localhost:1883)</td><td>Zustand, Stückzahl, letzte Farbe, Anzahl je Farbe, Fehler, Modus</td><td>MQTT: Text-Werte (retain) + JSON-Ereignis <code>{event, color, cycle_count, timestamp}</code></td><td>TCP 1883 auf dem Pi, mit Login</td><td>bei jeder Änderung, je Klotz</td><td>Daten bereitstellen</td><td><span class="ok">BESTÄTIGT</span> (Test 03.11.)</td></tr>
+<tr><td>S10</td><td>Mosquitto → Peakboard Box</td><td>wie S09</td><td>Format A: <code>sortieranlage/wert/*</code> als Text</td><td>WLAN/LAN · TCP 1883 · Login</td><td>sofort bei Änderung</td><td>Anzeige</td><td>Format A <span class="ok">BESTÄTIGT</span> · Box-IP <span class="of">OFFEN</span></td></tr>
+<tr><td>S11</td><td>Peakboard Box → Bildschirm</td><td>Dashboard</td><td>Bildsignal</td><td>HDMI</td><td>dauernd</td><td>anzeigen</td><td><span class="vo">VORSCHLAG</span></td></tr>
+<tr><td>S12</td><td>Laptop Team Software → Pi</td><td>Programm, Einrichtung, Tests, Berichte</td><td>SSH / SCP (Schlüssel)</td><td>WLAN · TCP 22</td><td>einmalig / Wartung</td><td>einspielen, warten</td><td><span class="ok">BESTÄTIGT</span> (03.11.)</td></tr>
+<tr><td>S13</td><td>Peakboard Designer → Peakboard Box</td><td>fertiges Board</td><td>Peakboard-Projekt</td><td>WLAN/LAN · Port <span class="of">OFFEN</span></td><td>bei Änderung</td><td>Board hochladen</td><td><span class="of">OFFEN</span></td></tr>
+<tr><td>S14</td><td>Mosquitto → Peakboard Designer</td><td>Live-Testwerte (Simulation)</td><td>wie S10</td><td>WLAN · TCP 1883 · Login</td><td>beim Bauen</td><td>Board testen</td><td><span class="ok">BESTÄTIGT</span> (Testdaten 03.11.)</td></tr>
+</table>
+
+<!-- Beispiele (Kursfolie 14) -->
+<div class="abs bsp" style="left:26px;top:1392px;width:910px;height:112px"><b>Beispiel 1 – Klotz rot wird richtig aussortiert:</b> I1 wird unterbrochen (S01) → Band läuft (S07) → Farbsensor misst kleinsten Wert 0,13 (S04) → „rot“ → 15 Impulse zählen (S03) → Kompressor (S06), Ventil rot 0,5 s (S05) → I3 wieder frei (S02) → Stückzahl +1 → MQTT: <code>wert/farbe_letzte = rot</code>, <code>wert/anzahl_rot</code> +1, <code>event {"event":"sorted","color":"red"}</code> (S09) → Peakboard: rote Kachel, Zähler rot +1 (S10).</div>
+<div class="abs bsp" style="left:950px;top:1392px;width:924px;height:112px;border-color:#c00000"><b style="color:#c00000">Beispiel 2 – Störung „Band blockiert“:</b> Band läuft, aber 2 s lang kein Impuls von C1 (S03) → Zustand FEHLER → Motor, Ventile, Kompressor sofort AUS (S05–S07) → MQTT: <code>wert/fehler_aktiv = 1</code>, <code>wert/fehler_text</code>, <code>event {"event":"error","code":"band_blockiert"}</code> (S09) → Peakboard: rotes Störungsbanner (S10). Fällt Peakboard oder das Netz aus, sortiert die Anlage trotzdem weiter.</div>
+
+<div class="abs fuss" style="top:1530px">
+Offen für die Abstimmung (M2): Farbwörter deutsch oder englisch (heute: Text-Werte deutsch, Ereignis englisch) · Topic-Anfang <code>sortieranlage/…</code> oder <code>hsnr/sortieranlage/…</code> · Ventilstrom, gemeinsame Masse, Schutz Motortreiber (Team Hardware) · Box-IP und Upload-Port (Team Netzwerk)<br>
+<span style="color:#666">Team Software · Projektmanagement (IoT und Digitalisierung) WS 26/27 · Hochschule Niederrhein · Datenflussplan V4 · Stand 03.11.2026 · Pin-Belegung laut Team Hardware (20.10.2026)</span>
+</div>
+</body></html>

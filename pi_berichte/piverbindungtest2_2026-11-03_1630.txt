@@ -1,0 +1,39 @@
+﻿piverbindungtest2 (MQTT) - 03.11.2026 16:30:54 - Pi 192.168.1.180
+
+=== 1/6 Netzwerk des Laptops
+  [OK]     Laptop im Anlagennetz: 192.168.1.187
+
+=== 2/6 Erreichbarkeit vom Laptop aus
+  [OK]     SSH (Port 22) erreichbar
+  [OK]     MQTT-Broker (Port 1883) vom Netz aus erreichbar
+
+=== 3/6 Anmeldung am Pi
+  SSH-Schluessel funktioniert noch nicht - Anmeldung mit Passwort.
+
+  >>> Jetzt fragt ssh nach dem PASSWORT fuer admin@192.168.1.180 (Zeichen sind beim Tippen unsichtbar).
+  [FEHLER] Anmeldung am Pi fehlgeschlagen
+           -> Passwort pruefen ('Permission denied').
+
+=== 4/6 Mosquitto auf dem Pi
+  uebersprungen (keine Anmeldung)
+
+=== 5/6 MQTT-Test vom Laptop (so wie spaeter die Peakboard Box)
+  | MQTT-Test gegen 192.168.1.180:1883
+  | [OK]     Verbindung angenommen (Benutzer peakboard)
+  | [OK]     Abonniert: sortieranlage/#
+  | [OK]     Testnachricht gesendet: sortieranlage/test
+  |          empfangen sortieranlage/test: {"wert": "hallo-1793719867"}
+  | [OK]     Testnachricht kam zur�ck -> Broker vom Netz aus voll nutzbar (Peakboard kann sich verbinden).
+  [OK]     Laptop kann ueber den Broker senden und empfangen
+
+=== 6/6 ZUSAMMENFASSUNG
+  [OK]     Laptop im Anlagennetz: 192.168.1.187
+  [OK]     SSH (Port 22) erreichbar
+  [OK]     MQTT-Broker (Port 1883) vom Netz aus erreichbar
+  [FEHLER] Anmeldung am Pi fehlgeschlagen
+  [OK]     Laptop kann ueber den Broker senden und empfangen
+
+  ERGEBNIS: Noch zu tun:
+   1. SSH-Schluessel fertig einrichten: Doppelklick auf 01_ssh_schluessel_einrichten.bat (im Anlagen-WLAN).
+   2. Passwort pruefen ('Permission denied').
+  Bericht gespeichert: C:\Users\apc-fehmikubi\Desktop\projektmanagement\pi_berichte\piverbindungtest2_2026-11-03_1630.txt

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Projektstand Team Software 03.11.2026</title>
+<style>
+@page{size:A4;margin:14mm}
+body{font-family:'Segoe UI',Arial,sans-serif;font-size:10.5pt;color:#1a1a1a;line-height:1.4}
+h1{background:#1f4e79;color:#fff;padding:8px 12px;border-radius:5px;font-size:16pt;margin:0 0 6px}
+h2{color:#1f4e79;font-size:12.5pt;margin:14px 0 6px;border-bottom:2px solid #dbe9f6;padding-bottom:2px}
+table{border-collapse:collapse;width:100%;margin:4px 0}
+td,th{border:1px solid #9fb6cf;padding:4px 6px;vertical-align:top;text-align:left}
+th{background:#dbe9f6}
+.gruen{background:#c6efce}.gelb{background:#ffeb9c}.rot{background:#ffc7ce}
+.klein{font-size:9pt;color:#555}
+.neu{page-break-before:always}
+</style></head><body>
+<h1>Projektstand Team Software – Regelmeeting 03.11.2026</h1>
+<p><b>Sortieranlage:</b> Raspberry Pi + Python ersetzt die alte Steuerung, Daten per MQTT an Peakboard. <b>Abnahme: 02.02.2027.</b><br>
+<span class="klein">Leitung Team Software · Stand 03.11.2026 · Status-Konvention: BESTÄTIGT = belegt, VORSCHLAG = Team-Entwurf, OFFEN = unbekannt</span></p>
+
+<h2>1. Ampel</h2>
+<table>
+<tr><th style="width:24%">Bereich</th><th style="width:10%">Ampel</th><th>Begründung</th></tr>
+<tr><td>Programm</td><td class="gruen">GRÜN</td><td>Steuerung fertig und in der Simulation getestet (Selbsttest bestanden), liegt bereits auf dem Pi.</td></tr>
+<tr><td>Raspberry Pi</td><td class="gelb">GELB</td><td>Programm und MQTT-Zugang übertragen, MQTT mit Anmeldung BESTÄTIGT (20.10.). Offen: letzter Einrichtungsschritt (I2C für die Platinen, Autostart) – Verbindung über WLAN war instabil, jetzt per LAN-Kabel.</td></tr>
+<tr><td>Hardware / Zusammenspiel</td><td class="rot">ROT</td><td>Team Hardware hat am 03.11. mit der Verkabelung des Automation HAT Mini begonnen (in Bearbeitung). Erst danach sind Tests an der echten Anlage möglich.</td></tr>
+<tr><td>Peakboard</td><td class="gelb">GELB</td><td>Testdaten kommen vom Pi an (192.168.1.180, Port 1883). Board wird im Peakboard Designer gebaut.</td></tr>
+<tr><td>Doku / Planung</td><td class="gruen">GRÜN</td><td>Gantt mit kritischem Pfad, Arbeitskarten, Wochen-Tabellen, Leistungsnachweis aktuell; alles auf GitHub.</td></tr>
+</table>
+
+<h2>2. Erreicht seit dem 20.10.</h2>
+<ul>
+<li>Programm und MQTT-Zugang auf den Raspberry Pi übertragen; Anmeldung per SSH-Schlüssel eingerichtet.</li>
+<li>MQTT-Broker auf dem Pi mit Benutzeranmeldung getestet: Laptop empfängt die Daten der Steuerungs-Simulation (BESTÄTIGT).</li>
+<li>Datenflussplan V3 (Team QM) übernommen; GPIO-Belegung von Team Hardware deckt sich mit dem Programm.</li>
+<li>Rollen geschärft: Dogukan = Terminal + Übertragung zum Pi, Hamza = Kommunikation, Melih = Schnittstellen mit Team QM.</li>
+<li>Zeitplan auf Vor-Ort-Termine umgestellt (nur dienstags 16–18 Uhr, siehe Abschnitt 3).</li>
+</ul>
+
+<h2>3. Zeitplan (kritischer Pfad) – an der Anlage nur dienstags 16–18 Uhr</h2>
+<table>
+<tr><th style="width:22%">Dienstag</th><th>Was</th></tr>
+<tr><td>03.11. + 10.11.</td><td>Team Hardware verkabelt Automation HAT Mini und Motor Driver HAT</td></tr>
+<tr><td>17.11.</td><td>Sichtprüfung, Foto, Übergabe an Team Software</td></tr>
+<tr><td><b>24.11.</b></td><td><b>Einspielen:</b> Eingänge messen, Ausgänge einzeln testen (Freigabe Prof. Kampker nötig)</td></tr>
+<tr><td>01.12.</td><td>Erster Sortierlauf: drei Farben + ein Fehlerfall</td></tr>
+<tr><td>08.12. + 15.12.</td><td>Dauertest</td></tr>
+<tr><td>05.01.</td><td>Feinschliff (Werte, Neustart/Netzausfall, Autostart)</td></tr>
+<tr><td>12.01.</td><td>Probeabnahme intern</td></tr>
+<tr><td>19.01. + 26.01.</td><td>Ersatz-Termine (= gesamter Puffer)</td></tr>
+<tr><td><b>02.02.</b></td><td><b>Abnahme</b></td></tr>
+</table>
+<p><b>Bewertung:</b> Die Abnahme ist machbar, der Puffer besteht aber nur aus zwei Ersatz-Dienstagen. Programm, Peakboard-Board und Dokumentation werden parallel von zu Hause erledigt. Zusätzliche Termine an der Anlage würden das Risiko deutlich senken.</p>
+
+<h2>4. Offene Fragen</h2>
+<table>
+<tr><th style="width:22%">An</th><th>Frage</th></tr>
+<tr><td>Team Hardware</td><td>Strom der Ventile (Platinen-Ausgang oder Relais)? Gemeinsame Masse 9 V / Pi? Eigenes 5-V/3-A-Netzteil für den Pi? Ist Team Hardware am 24.11. und 01.12. dabei?</td></tr>
+<tr><td>Team QM</td><td>Schnittstellenmatrix (M2) – Termin? Datenvertrag: Farbwörter deutsch (weiss/rot/blau), Topics <code>sortieranlage/…</code>, Broker auf dem Pi (VORSCHLAG).</td></tr>
+<tr><td>Prof. Kampker</td><td>Freigabe für den Ausgänge-Test am 24.11.? Zusätzliche Termine an der Anlage möglich? Peakboard Box oder Peakboard LINK (siehe 5)?</td></tr>
+</table>
+
+<h2>5. Peakboard: Box oder Peakboard LINK?</h2>
+<p>Peakboard LINK lädt das Board (.pbmx) in den Peakboard Hub (Cloud) und zeigt es per URL im Browser; der Hub ist 60 Tage kostenlos testbar.
+<b>Einschätzung:</b> Das Anlagennetz (TP-Link) hat kein Internet – ein in der Cloud laufendes Board erreicht den MQTT-Broker auf dem Pi nicht.
+Der 60-Tage-Test würde bei Start vor dem 04.12. vor der Abnahme enden. Der Projektauftrag sieht die Peakboard Box vor, die offline im Anlagennetz läuft.
+<b>Vorschlag:</b> Bei der Box bleiben; bis dahin Board im kostenlosen Peakboard Designer (Vorschau) mit den echten Pi-Daten bauen und testen. LINK nur als Zusatz, falls gewünscht und Internet verfügbar.</p>
+
+<h2>6. Entscheidungen (VORSCHLAG Team Software)</h2>
+<table>
+<tr><th style="width:8%">Nr</th><th style="width:46%">Frage</th><th>Vorschlag</th></tr>
+<tr><td>J7</td><td>Wie wird ein Fehler zurückgesetzt?</td><td>Klotz herausnehmen → nach 5 s automatisch BEREIT</td></tr>
+<tr><td>J8</td><td>Am Ende prüfen, ob der Ausgang frei ist?</td><td>ja</td></tr>
+<tr><td>J9</td><td>Immer nur ein Klotz auf dem Band?</td><td>ja</td></tr>
+<tr><td>D1–D3</td><td>Farbwörter / Topic-Anfang / Broker</td><td>deutsch · <code>sortieranlage/…</code> · auf dem Raspberry Pi (läuft seit 20.10.)</td></tr>
+</table>
+
+<h2>7. Aufgaben bis 10.11.</h2>
+<table>
+<tr><th style="width:22%">Wer</th><th>Aufgabe</th></tr>
+<tr><td>Alhasane (P3)</td><td>Verkabelung mit Team Hardware begleiten, Abgleich mit Anschlussplan, Fotos</td></tr>
+<tr><td>Dogukan (P6)</td><td>Pi per LAN-Kabel fertig einrichten (I2C, Autostart), danach Verbindungstest</td></tr>
+<tr><td>Marie (P4) + Jan (P2)</td><td>Peakboard-Board mit Testdaten im Designer bauen; Jan bewertet die Bildschirm-Texte</td></tr>
+<tr><td>Melih (P7)</td><td>Datenvertrag und Schnittstellenmatrix mit Team QM abschließen</td></tr>
+<tr><td>Hassan (P5)</td><td>Entscheidungen festhalten, Testkonzept, Doku-Gliederung beginnen</td></tr>
+<tr><td>Hamza (P8)</td><td>Fragen an Prof. Kampker klären, Risikoliste prüfen, Team erinnern</td></tr>
+</table>
+<p class="klein">Alle Unterlagen (Programm, Gantt, Anleitungen, Excel): https://github.com/Fehmilay/sortieranlage-teamsoftware</p>
+</body></html>

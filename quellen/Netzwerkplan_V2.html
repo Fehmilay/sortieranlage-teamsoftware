@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Netzwerkplan V2</title>
+<style>
+@page { size: 1900px 1480px; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1900px; height: 1480px; background: #fff; font-family: "Segoe UI", Arial, sans-serif; color: #1a1a1a; }
+.abs { position: absolute; }
+.kopf { left: 26px; top: 20px; width: 1848px; height: 70px; background: #1f4e79; color: #fff; border-radius: 10px;
+        font-size: 25px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.zone { border: 2px dashed; border-radius: 14px; }
+.zt { font-size: 17px; font-weight: 700; }
+.b { border: 2.5px solid #1f3d5c; border-radius: 11px; display: flex; flex-direction: column; justify-content: center;
+     text-align: center; font-size: 15px; line-height: 1.45; padding: 6px 10px; }
+.in > b:first-child { display: block; }
+.b b { font-size: 16.5px; }
+.rt { background: #c6e0b4; border-color: #548235; }
+.pi { background: #fff2cc; border-color: #bf9000; }
+.pb { background: #dbe9f6; }
+.lap { background: #fbe5d6; border-color: #c55a11; }
+.grau { background: #ececec; border-color: #7f7f7f; }
+.ext { background: #f2f2f2; border-color: #999; border-style: dashed; }
+.id { display: inline-block; background: #1f4e79; color: #fff; border-radius: 9px; font-size: 13px; font-weight: 700; padding: 1px 7px; }
+.ido { background: #c55a11; } .idg { background: #548235; } .idv { background: #7030a0; } .idk { background: #595959; }
+.lbl { font-size: 13.5px; background: #fff; padding: 0 3px; line-height: 1.25; }
+code { font-family: Consolas, monospace; font-size: 13.5px; }
+table { border-collapse: collapse; font-size: 13.5px; }
+th { background: #1f4e79; color: #fff; padding: 5px 6px; text-align: left; }
+td { border: 1px solid #bfbfbf; padding: 4px 6px; vertical-align: top; }
+tr:nth-child(even) td { background: #f5f8fc; }
+.ok { color: #1e7b34; font-weight: 700; } .vo { color: #b26b00; font-weight: 700; } .of { color: #c00000; font-weight: 700; }
+.bsp { border: 2px solid #999; border-radius: 10px; padding: 8px 12px; font-size: 14px; line-height: 1.45; background: #fafafa; }
+.fuss { font-size: 13.5px; color: #333; text-align: center; width: 1900px; left: 0; line-height: 1.55; }
+</style></head><body>
+
+<div class="abs kopf">Netzwerkplan V2 – lokales TP-Link-Anlagennetz 192.168.1.0/24 (Stand 03.11.2026, Werte vor Ort gemessen)</div>
+
+<!-- Zonen -->
+<div class="abs zone" style="left:20px;top:105px;width:300px;height:930px;border-color:#999;background:#fafafa"></div>
+<div class="abs zt" style="left:36px;top:111px;color:#666;width:270px">HSNR-Netz / Internet<br><span style="font-weight:400;font-size:14px">außerhalb – für den Betrieb NICHT nötig</span></div>
+<div class="abs zone" style="left:345px;top:105px;width:1535px;height:930px;border-color:#548235;background:#f7fbf4"></div>
+<div class="abs zt" style="left:361px;top:111px;color:#548235">Anlagennetz (Produktionsnetz) · TP-Link · Subnetz 192.168.1.0/24 · Gateway 192.168.1.1 · Adressen per DHCP</div>
+<div class="abs" style="left:322px;top:420px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:14px;font-weight:700;color:#c00000">NETZGRENZE</div>
+
+<div class="abs b ext" style="left:40px;top:380px;width:260px;height:160px"><div class="in"><b>Router „Kleutges“ / HSNR</b>Uplink mit Internet<br>(nur für Updates und Uhrzeit)<br>IP: <span class="of">OFFEN</span></div></div>
+
+<!-- Geräte -->
+<div class="abs b lap" style="left:390px;top:160px;width:360px;height:160px"><div class="in"><b>Laptop Team Software</b>Windows · VS Code · PowerShell<br>WLAN „TP-Link_25F4“ · <b style="display:inline">192.168.1.187</b> (DHCP)<br>SSH/SCP zum Pi · MQTT-Test</div></div>
+<div class="abs b lap" style="left:1300px;top:160px;width:380px;height:160px"><div class="in"><b>Laptop mit Peakboard Designer</b>(Hochschul-Laptop)<br>WLAN · IP <span class="of">OFFEN</span><br>Board bauen, testen, auf die Box laden</div></div>
+<div class="abs b rt" style="left:800px;top:380px;width:420px;height:210px"><div class="in"><b>TP-Link-Router</b>WLAN „TP-Link_25F4“ (Passwort bei Prof. Kampker)<br><b style="display:inline">192.168.1.1</b> · DHCP-Server · Gateway<br>gelbe Buchsen LAN 1–4 = Anlagennetz<br>blaue Buchse WAN = Uplink nach außen<br>Modell laut Kursfolie: TL-WR1502X</div></div>
+<div class="abs b pi" style="left:390px;top:650px;width:420px;height:230px"><div class="in"><b>Raspberry Pi 4 „hsnrpi1“</b>Debian 13 · Benutzer <code>admin</code><br>wlan0: <b style="display:inline">192.168.1.180</b> (DHCP, heute benutzt)<br>eth0: 192.168.1.103 (wenn LAN-Kabel steckt)<br>MAC dc:a6:32:cc:d2:00<br>Dienste: <b style="display:inline">SSH TCP 22</b> · <b style="display:inline">MQTT TCP 1883</b> (Mosquitto, nur mit Login)</div></div>
+<div class="abs b pb" style="left:1300px;top:650px;width:420px;height:190px"><div class="in"><b>Peakboard Box</b>LAN-Kabel an gelbe TP-Link-Buchse<br>IP <span class="of">OFFEN</span> (im Netz gesehen: 192.168.1.81 – prüfen)<br>MQTT-Client → Pi :1883 (Login)<br>HDMI-Ausgang zum Bildschirm</div></div>
+<div class="abs b grau" style="left:1300px;top:900px;width:420px;height:95px"><div class="in"><b>Bildschirm</b>HDMI an der Peakboard Box · kein Netzwerk-Teilnehmer</div></div>
+<div class="abs b grau" style="left:390px;top:920px;width:420px;height:95px"><div class="in"><b>Sortierstrecke (9 V)</b>kein Netzwerk: Sensoren/Aktoren über GPIO + I2C<br>(Automation HAT Mini, Motor Driver HAT)</div></div>
+
+<svg class="abs" style="left:0;top:0" width="1900" height="1040">
+  <defs>
+    <marker id="mv" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7030a0"/></marker>
+    <marker id="mg" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#548235"/></marker>
+    <marker id="mo" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c55a11"/></marker>
+    <marker id="mk" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+  </defs>
+  <!-- physische Verbindungen (blau, beidseitig) -->
+  <g stroke="#1f4e79" stroke-width="4" fill="none">
+    <line x1="640" y1="320" x2="860" y2="380"/>
+    <line x1="1420" y1="320" x2="1160" y2="380"/>
+    <line x1="700" y1="650" x2="880" y2="590"/>
+    <line x1="1420" y1="650" x2="1140" y2="590"/>
+  </g>
+  <line x1="300" y1="460" x2="800" y2="460" stroke="#999" stroke-width="4" stroke-dasharray="10 7"/>
+  <line x1="1510" y1="840" x2="1510" y2="896" stroke="#444" stroke-width="3" marker-end="url(#mk)"/>
+  <line x1="600" y1="880" x2="600" y2="916" stroke="#c55a11" stroke-width="3"/>
+  <!-- logische Verbindungen (gestrichelt) -->
+  <path d="M450,320 L450,646" stroke="#7030a0" stroke-width="3" fill="none" stroke-dasharray="9 6" marker-end="url(#mv)"/>
+  <path d="M1300,780 L814,780" stroke="#548235" stroke-width="3" fill="none" stroke-dasharray="9 6" marker-end="url(#mg)"/>
+  <path d="M1330,320 C1290,640 1000,660 814,735" stroke="#548235" stroke-width="3" fill="none" stroke-dasharray="9 6" marker-end="url(#mg)"/>
+  <path d="M1650,320 L1650,646" stroke="#c55a11" stroke-width="3" fill="none" stroke-dasharray="9 6" marker-end="url(#mo)"/>
+</svg>
+
+<div class="abs" style="left:700px;top:322px"><span class="id">N1</span> <span class="lbl">WLAN</span></div>
+<div class="abs" style="left:1205px;top:322px"><span class="id">N2</span> <span class="lbl">WLAN</span></div>
+<div class="abs" style="left:760px;top:604px"><span class="id">N3</span> <span class="lbl">WLAN (heute) · LAN empfohlen</span></div>
+<div class="abs" style="left:1230px;top:604px"><span class="id">N4</span> <span class="lbl">LAN</span></div>
+<div class="abs" style="left:470px;top:432px"><span class="id idk">N5</span> <span class="lbl">WAN-Uplink (optional)</span></div>
+<div class="abs" style="left:1520px;top:856px"><span class="id idg">S11</span> <span class="lbl">HDMI</span></div>
+<div class="abs" style="left:610px;top:886px"><span class="lbl" style="color:#c55a11">GPIO / I2C (lokal, S01–S07)</span></div>
+<div class="abs" style="left:458px;top:470px"><span class="id idv">S12</span> <span class="lbl" style="color:#7030a0">SSH / SCP → Pi :22</span></div>
+<div class="abs" style="left:900px;top:788px"><span class="id idg">S10</span> <span class="lbl" style="color:#548235">MQTT: Box abonniert beim Pi :1883</span></div>
+<div class="abs" style="left:1000px;top:668px"><span class="id idg">S14</span> <span class="lbl" style="color:#548235">MQTT-Testdaten :1883</span></div>
+<div class="abs" style="left:1660px;top:470px"><span class="id ido">S13</span><br><span class="lbl" style="color:#c55a11">Board<br>hochladen<br>Port <b>OFFEN</b></span></div>
+
+<!-- Tabelle -->
+<div class="abs zt" style="left:26px;top:1050px;color:#1f4e79">Geräte im Netz · Status: <span class="ok">BESTÄTIGT</span> (gemessen 20.10./03.11.) · <span class="vo">VORSCHLAG</span> · <span class="of">OFFEN</span></div>
+<table class="abs" style="left:26px;top:1078px;width:1848px">
+<tr><th style="width:250px">Gerät</th><th style="width:260px">Rolle</th><th style="width:260px">Verbindung (ID)</th><th style="width:300px">Adresse</th><th style="width:330px">Ports / Dienste</th><th>Status</th></tr>
+<tr><td>TP-Link-Router</td><td>Netz der Anlage, DHCP, Gateway</td><td>N1–N4 (WLAN/LAN), N5 Uplink</td><td>192.168.1.1 · Subnetz /24</td><td>DHCP · WLAN „TP-Link_25F4“</td><td><span class="ok">BESTÄTIGT</span> · feste IPs für Pi und Box <span class="of">OFFEN</span> (DHCP-Reservierung)</td></tr>
+<tr><td>Raspberry Pi 4 „hsnrpi1“</td><td>Steuerung + MQTT-Broker</td><td>N3 (WLAN; LAN empfohlen)</td><td>192.168.1.180 (wlan0) · 192.168.1.103 (eth0)</td><td>SSH 22 · MQTT 1883 mit Login (kein anonymer Zugang)</td><td><span class="ok">BESTÄTIGT</span> (03.11.)</td></tr>
+<tr><td>Peakboard Box</td><td>Dashboard, MQTT-Client</td><td>N4 (LAN) · S11 HDMI</td><td><span class="of">OFFEN</span> (evtl. 192.168.1.81)</td><td>MQTT-Client → Pi :1883 · Upload-Port <span class="of">OFFEN</span></td><td><span class="vo">VORSCHLAG</span></td></tr>
+<tr><td>Laptop Team Software</td><td>Einrichtung, Wartung, Tests</td><td>N1 (WLAN)</td><td>192.168.1.187 (DHCP)</td><td>SSH/SCP → Pi :22 · MQTT-Test → :1883</td><td><span class="ok">BESTÄTIGT</span></td></tr>
+<tr><td>Laptop Peakboard Designer</td><td>Board bauen und hochladen</td><td>N2 (WLAN)</td><td><span class="of">OFFEN</span></td><td>MQTT → :1883 · Upload zur Box</td><td><span class="vo">VORSCHLAG</span></td></tr>
+<tr><td>Router „Kleutges“ / HSNR</td><td>Uplink (Internet)</td><td>N5 (WAN-Buchse)</td><td><span class="of">OFFEN</span></td><td>nur Updates, Uhrzeit (NTP)</td><td>Internet am 03.11. <span class="ok">vorhanden</span> · nicht nötig für Betrieb</td></tr>
+<tr><td>Bildschirm</td><td>Anzeige</td><td>S11 HDMI</td><td>– (kein Netz)</td><td>–</td><td><span class="vo">VORSCHLAG</span></td></tr>
+</table>
+
+<div class="abs bsp" style="left:26px;top:1335px;width:1848px;height:84px"><b>Drei Betriebsfragen (Kursfolie 7):</b> <b>A Ohne Internet:</b> Laptop, Pi und Broker reden lokal miteinander – <span class="ok">BESTÄTIGT</span> (Test 20.10./03.11.). · <b>B Mit Uplink:</b> Internet über Router „Kleutges“ ändert im Anlagennetz nichts (Adressen bleiben 192.168.1.x) – <span class="ok">BESTÄTIGT</span> 03.11. · <b>C Sicherheit:</b> SSH nur mit Schlüssel/Passwort, MQTT nur mit Benutzer + Passwort, Passwörter nicht in Dokumenten; Steuerung läuft weiter, wenn Netz oder Peakboard ausfällt.</div>
+
+<div class="abs fuss" style="top:1428px">
+Blau = Kabel/WLAN · gestrichelt = Datenverbindung über das Netz (IDs wie im Datenflussplan V4) · Offen für Team Netzwerk: feste IPs, IP der Box, Upload-Port Peakboard, IP Uplink<br>
+<span style="color:#666">Team Software · Projektmanagement (IoT und Digitalisierung) WS 26/27 · Hochschule Niederrhein · Netzwerkplan V2 · Stand 03.11.2026</span>
+</div>
+</body></html>

@@ -5,7 +5,7 @@ Unser Programm auf dem Pi schickt Nachrichten an das **Postamt** (MQTT-Broker Mo
 Die **Peakboard Box** holt sie dort ab (abonniert) und zeigt sie auf dem Bildschirm. Pi und Box sprechen nie direkt
 miteinander (Kursfolien „HSNR MQTT Raspberry Peakboard“, Moodle).
 
-- Broker-Adresse an der Anlage: **IP des Pi** (13.10.: 192.168.1.103 – kann sich ändern, wenn der TP-Link an einen anderen Router
+- Broker-Adresse an der Anlage: **IP des Pi** (20.10. per WLAN: 192.168.1.180, per LAN-Kabel 192.168.1.103 – kann sich ändern, wenn der TP-Link an einen anderen Router
   angeschlossen wird → `piverbindungtest1.bat` zeigt die aktuelle IP).
 - Port 1883, QoS 0. **Mit Anmeldung** (BESTÄTIGT 16.10.2026, Prof. Kampker): Mosquitto verlangt Benutzer/Passwort. Der Zugang steht
   bewusst NICHT in den Unterlagen – bei Rushit erfragen. Die Steuerung liest ihn auf dem Pi aus `~/.sortieranlage_mqtt`
@@ -46,7 +46,7 @@ ein Klotz, bei jedem 8. Klotz eine Störung. Das Fenster zeigt, was im Designer 
 
 ## Peakboard Designer – Schritte (laut Kursfolie 7, Bezeichnungen je nach Version leicht anders)
 1. **Data → Add data source → MQTT**.
-2. Broker: IP des Pi (bzw. Test-Postamt), Port 1883, keine Anmeldung.
+2. Broker: IP des Pi (bzw. Test-Postamt), Port 1883. An der Anlage MIT Anmeldung (Benutzer/Passwort bei Rushit), Test-Postamt zuhause ohne Anmeldung.
 3. Subscriptions: die Topics aus Tabelle A eintragen, QoS 0, Message type: Text.
 4. **Enable listener** → prüfen, dass Werte ankommen (Vorschau).
 5. Anzeigeelemente auf die Werte binden (siehe Bildschirm-Entwurf).
