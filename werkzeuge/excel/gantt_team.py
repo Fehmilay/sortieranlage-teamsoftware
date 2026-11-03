@@ -57,37 +57,59 @@ AUFGABEN = [
     ("H3", "2 Team Hardware (P3 hält Kontakt)", "9-V-Netzteil klären und bereitlegen (macht Team Hardware)", "P3", 3, [], D(2026, 10, 16), "fertig", "P3-1"),
     ("H4", "2 Team Hardware (P3 hält Kontakt)", "Anschlussfragen beantworten lassen: Spannungen, ohne Zusatzbauteile? (Team Hardware)", "P3", 3, [], D(2026, 10, 16), "fertig", "P3-0"),
     ("H5", "2 Team Hardware (P3 hält Kontakt)", "Anschlussplan bestätigen oder ändern (Team Hardware + P3, Vorlage F)", "P3", 1, ["H4"], None, "fertig", "P3-0"),
-    ("H6", "2 Team Hardware (P3 hält Kontakt)", "Hardware anschließen: Platinen auf den Pi, Kabel an die Klemmen (Team Hardware)", "P3", 1, ["H2", "H3", "H5"], D(2026, 11, 4), "offen", "H-1"),
-    ("H7", "2 Team Hardware (P3 hält Kontakt)", "Sichtprüfung, Foto, Übergabe an Team Software (Team Hardware + P3)", "P3", 1, ["H6"], None, "offen", "H-1"),
+    ("H6", "2 Team Hardware (P3 hält Kontakt)", "VOR ORT: Verkabelung Automation HAT Mini + Motor Driver HAT (begonnen 03.11., Team Hardware, 2 Dienstage)", "P3", 2, ["H2", "H3", "H5"], D(2026, 11, 3), "läuft", "H-1"),
+    ("H7", "2 Team Hardware (P3 hält Kontakt)", "VOR ORT: Sichtprüfung, Foto, Übergabe an Team Software (Team Hardware + P3)", "P3", 1, ["H6"], None, "offen", "H-1"),
     ("N1", "3 Pi und Netzwerk", "Internet für die Anlage über den Router von Kleutges", "P6", 1, [], D(2026, 10, 19), "fertig", "P6-2"),
-    ("N2", "3 Pi und Netzwerk", "Pi einrichten mit PI_EINRICHTEN (ein Doppelklick)", "P6", 1, ["V1", "N1"], D(2026, 11, 4), "läuft", "P6-3"),
-    ("E1", "4 Einspielen auf echter Hardware", "Eingänge prüfen und messen – nichts bewegt sich (T1–T4)", "P2", 1, ["H7", "N2"], None, "offen", "P2-4"),
+    ("N2", "3 Pi und Netzwerk", "VOR ORT: Pi per LAN-Kabel + eigenem Netzteil fertig einrichten (PI_EINRICHTEN)", "P6", 1, ["N1"], D(2026, 11, 3), "läuft", "P6-3"),
+    ("E1", "4 Einspielen auf echter Hardware", "VOR ORT: Einspielen – Eingänge prüfen und messen, nichts bewegt sich (T1–T4)", "P2", 1, ["H7", "N2"], None, "offen", "P2-4"),
     ("E2", "4 Einspielen auf echter Hardware", "Programmteile für die Entscheidungen J7–J9", "KI", 2, ["V7"], None, "offen", "J14"),
-    ("E3", "4 Einspielen auf echter Hardware", "Ausgänge einzeln testen – NUR mit Freigabe von Prof. Kampker (T5, T6)", "P3", 1, ["E1"], None, "offen", "P3-3"),
-    ("E4", "4 Einspielen auf echter Hardware", "Einspieltag leiten: erster Sortiervorgang, mehrere Farben, ein Fehlerfall", "P6", 2, ["E3", "E2"], None, "offen", "P6-6"),
+    ("E3", "4 Einspielen auf echter Hardware", "VOR ORT: Ausgänge einzeln testen – NUR mit Freigabe von Prof. Kampker (gleicher Termin wie E1)", "P3", 1, ["E1"], None, "offen", "P3-3"),
+    ("E4", "4 Einspielen auf echter Hardware", "VOR ORT: Einspieltag – erster Sortiervorgang, mehrere Farben, ein Fehlerfall", "P6", 1, ["E3", "E2"], None, "offen", "P6-6"),
     ("B1", "5 Peakboard (parallel)", "Peakboard Designer startklar machen", "P4", 2, [], D(2026, 11, 3), "läuft", "P4-5"),
     ("B2", "5 Peakboard (parallel)", "Testdaten für Peakboard laufen lassen", "P6", 1, ["B1"], None, "offen", "P6-5"),
     ("B3", "5 Peakboard (parallel)", "Board mit Testdaten bauen (Datenquelle, Kacheln, Farben)", "P4", 4, ["B2"], None, "offen", "P4-6, P4-7"),
     ("B4", "5 Peakboard (parallel)", "Texte und Farben für den Bildschirm festlegen (Vorlage H)", "P2", 1, [], D(2026, 11, 3), "offen", "P2-6"),
     ("B5", "5 Peakboard (parallel)", "Board mit Testdaten prüfen", "P2", 1, ["B3", "B4"], None, "offen", "P2-5"),
-    ("B6", "5 Peakboard (parallel)", "Peakboard Box und Bildschirm aufbauen", "P4", 1, [], D(2026, 11, 10), "offen", "P3-4"),
-    ("B7", "5 Peakboard (parallel)", "Board auf die Peakboard Box laden", "P4", 1, ["B5", "B6", "N2"], None, "offen", "P4-8"),
-    ("B8", "5 Peakboard (parallel)", "Peakboard-Abnahmetest (7 Punkte, Vorlage I)", "P5", 2, ["B7", "E4"], None, "offen", "P5-3"),
-    ("T1", "6 Testen und Verbessern", "Dauertest leiten: viele Klötze, alle Farben, alle Fehlerfälle (To-Dos 6.1–6.4)", "P5", 15, ["E4"], None, "offen", "–"),
-    ("T2", "6 Testen und Verbessern", "Feinschliff: Werte nachstellen, Neustart/Netzausfall testen, Autostart im Echtbetrieb", "P6", 10, ["T1"], None, "offen", "–"),
-    ("A1", "7 Doku und Abnahme", "Doku für ein anderes Team schreiben: Starten, Bedienen, Fehler beheben", "P5", 11, ["T2"], None, "offen", "–"),
-    ("A2", "7 Doku und Abnahme", "Probeabnahme intern leiten (alles einmal wie bei der echten Abnahme)", "P5", 3, ["A1", "B8"], D(2027, 1, 4), "offen", "–"),
-    ("A3", "7 Doku und Abnahme", "Nacharbeiten + Puffer (Fehler aus der Probeabnahme beheben)", "P6", None, ["A2"], None, "offen", "–"),
-    ("A4", "7 Doku und Abnahme", "ABNAHME beim Auftraggeber (Prof. Kampker)", "alle", 1, ["A3"], DEADLINE, "offen", "–"),
+    ("B6", "5 Peakboard (parallel)", "VOR ORT: Peakboard Box + Bildschirm aufbauen (oder Peakboard LINK im Browser)", "P4", 1, [], D(2026, 11, 10), "offen", "P3-4"),
+    ("B7", "5 Peakboard (parallel)", "VOR ORT: Board auf die Peakboard Box laden", "P4", 1, ["B5", "B6", "N2"], None, "offen", "P4-8"),
+    ("B8", "5 Peakboard (parallel)", "VOR ORT: Peakboard-Abnahmetest (7 Punkte, Vorlage I)", "P5", 1, ["B7", "E4"], None, "offen", "P5-3"),
+    ("T1", "6 Testen und Verbessern", "VOR ORT: Dauertest leiten – 2 Dienstage, viele Klötze, alle Farben, alle Fehlerfälle", "P5", 2, ["E4"], None, "offen", "–"),
+    ("T2", "6 Testen und Verbessern", "VOR ORT: Feinschliff – Werte nachstellen, Neustart/Netzausfall, Autostart", "P6", 1, ["T1"], None, "offen", "–"),
+    ("A1", "7 Doku und Abnahme", "Doku für ein anderes Team schreiben (von zu Hause, parallel zum Testen)", "P5", 15, ["E4"], None, "offen", "–"),
+    ("A2", "7 Doku und Abnahme", "VOR ORT: Probeabnahme intern (alles einmal wie bei der echten Abnahme)", "P5", 1, ["A1", "B8", "T2"], None, "offen", "–"),
+    ("A3", "7 Doku und Abnahme", "Nacharbeiten + Puffer (übrige Dienstage vor der Abnahme)", "P6", None, ["A2"], None, "offen", "–"),
+    ("A4", "7 Doku und Abnahme", "VOR ORT: ABNAHME beim Auftraggeber (Prof. Kampker)", "alle", 1, ["A3"], DEADLINE, "offen", "–"),
 ]
 
 # ---------------------------------------------------------------- Netzplan (kritischer Pfad)
+# Team Hardware arbeitet nur dienstags 16–18 Uhr (Regelmeeting-Termin) → alles „VOR ORT“ findet nur dienstags statt.
+# Dauer von VOR-ORT-Aufgaben = Anzahl Dienstags-Termine (ein Dienstag = 5 Arbeitstage weiter, auch über die Weihnachtspause).
 A = {a[0]: dict(nr=a[0], phase=a[1], text=a[2], wer=a[3], name=TEAM[a[3]], dauer=a[4], vor=a[5], nichtvor=a[6], status=a[7], karte=a[8]) for a in AUFGABEN}
+SELBE_SITZUNG = {("E3", "E1")}                         # darf am selben Dienstag direkt nach dem Vorgänger laufen
+DI = [i for i, t in enumerate(AT) if t.weekday() == 1]
+
+
+def vor_ort(a):
+    return a["text"].startswith("VOR ORT")
+
+
+def di_ab(i):                                          # erster Dienstag mit Index >= i
+    return next(d for d in DI if d >= i)
+
+
+def di_bis(i):                                         # letzter Dienstag mit Index <= i
+    return max(d for d in DI if d <= i)
+
+
 for nr in A:                                           # Vorwärtsrechnung
     a = A[nr]
     es = erster_at(a["nichtvor"]) if a["nichtvor"] else 0
     for v in a["vor"]:
-        es = max(es, A[v]["ef"] + 1)
+        es = max(es, A[v]["ef"] + (0 if (nr, v) in SELBE_SITZUNG else 1))
+    if vor_ort(a):
+        es = di_ab(es)
+        a["es"], a["ef"] = es, es + 5 * (a["dauer"] - 1)
+        continue
     a["es"] = es
     if a["dauer"] is None:                             # Puffer-Aufgabe füllt bis zum Tag vor der Abnahme
         a["dauer"] = IDX[DEADLINE] - es
@@ -95,8 +117,11 @@ for nr in A:                                           # Vorwärtsrechnung
 nach = {nr: [m for m in A if nr in A[m]["vor"]] for nr in A}
 for nr in reversed(list(A)):                           # Rückwärtsrechnung
     a = A[nr]
-    a["lf"] = min((A[m]["ls"] - 1 for m in nach[nr]), default=IDX[DEADLINE])
-    a["ls"] = a["lf"] - a["dauer"] + 1
+    a["lf"] = min((A[m]["ls"] - (0 if (m, nr) in SELBE_SITZUNG else 1) for m in nach[nr]), default=IDX[DEADLINE])
+    if vor_ort(a):
+        a["ls"] = di_bis(a["lf"] - 5 * (a["dauer"] - 1))
+    else:
+        a["ls"] = a["lf"] - a["dauer"] + 1
     a["puffer"] = a["ls"] - a["es"]
 for a in A.values():
     a["kritisch"] = a["puffer"] == 0 and a["status"] != "fertig"
@@ -111,7 +136,8 @@ ERKLAERUNG = [
     ("Kritischer Pfad", "Die Kette von Aufgaben, die direkt hintereinander hängen und KEINEN Puffer haben: Ist eine rote Aufgabe auch nur einen Tag zu spät, "
                         "wird ALLES danach zu spät – bis zur Abnahme. Bei uns: Team Hardware beantwortet die Anschlussfragen → bestätigt den Plan → schließt an "
                         "→ wir messen → testen die Ausgänge → erster Sortiervorgang → Dauertest → Feinschliff → Doku → Probeabnahme → Abnahme."),
-    ("Puffer", "So viele Arbeitstage darf sich eine BLAUE Aufgabe verspäten, ohne dass etwas Schlimmes passiert. Rote Aufgaben haben 0 Tage Puffer."),
+    ("Puffer", "So viele Arbeitstage darf sich eine BLAUE Aufgabe verspäten, ohne dass etwas Schlimmes passiert. Rote Aufgaben haben 0 Tage Puffer. Bei VOR-ORT-Aufgaben sind 5 Arbeitstage = 1 Dienstag."),
+    ("Nur dienstags vor Ort", "Team Hardware arbeitet nur dienstags 16–18 Uhr (Regelmeeting). Alles mit „VOR ORT“ passiert deshalb nur an Dienstagen. Fällt ein Dienstag aus, rutscht alles danach eine ganze Woche. Alles andere (Programm, Peakboard-Board, Doku) machen wir von zu Hause."),
     ("Wichtigste Erkenntnis", "Am Anfang hängt alles an Team Hardware. Deshalb fragt P3 als „Draht zu Team Hardware“ zweimal pro Woche nach "
                               "(Liste „Was wir von Team Hardware brauchen“ weiter unten) und trägt den Stand hier ein."),
     ("So arbeitest du damit", "1) Montags schaut jeder auf seine Zeilen (Spalte „Wer“). 2) Spalte „Status“ setzen: offen / läuft / fertig / verspätet "
@@ -126,13 +152,13 @@ ERKLAERUNG = [
 HW = [  # was wir von Team Hardware brauchen (P3 fragt nach) – Stand 03.11.2026
     ("HW1", "Bestätigung: Bestellung ist raus + Liefertermin", "ohne Teile kein Anschluss", "ERLEDIGT (Teile am 20.10. da)"),
     ("HW2", "Welches 9-V-Netzteil nehmen wir? (steht nicht auf der Bestellliste)", "ohne Strom läuft nichts", "ERLEDIGT (reicht laut Team Hardware)"),
-    ("HW3", "Restliche Anschlussfragen: Strom der Ventile, gemeinsame Masse, eigenes 5-V/3-A-Netzteil für den Pi", "ROT – davon hängt der Anschluss ab", "Di 03.11."),
+    ("HW3", "Restliche Anschlussfragen: Strom der Ventile, gemeinsame Masse, eigenes 5-V/3-A-Netzteil für den Pi", "ROT – davon hängt der Anschluss ab", "Di 03.11. (16–18 Uhr)"),
     ("HW4", "Anschlussplan bestätigt (GPIO-Übersicht)", "ROT – danach wird verkabelt", "ERLEDIGT (20.10.)"),
-    ("HW5", "Hardware angeschlossen + Foto + Sichtprüfung", "ROT – danach können wir messen", "Mi 04.11."),
-    ("HW6", "Zusage: jemand von Team Hardware ist beim Messen (Do 05.11.) und beim Ausgänge-Test (Fr 06.11.) dabei", "Fehler an Kabeln findet nur Team Hardware", "Di 03.11."),
-    ("HW7", "Was ist Motor M2? (das alte Programm schaltet ihn 3 Sekunden)", "sonst fehlt evtl. ein Teil der Anlage", "Fr 06.11."),
-    ("HW8", "Pneumatik in Ordnung? Kompressor, Schläuche dicht, Ventile gehen", "sonst klemmt das Ausschleusen", "Fr 06.11."),
-    ("HW9", "Hilfe bei Fehlersuche an Kabeln während der Testphase", "Dauertest braucht stabile Verkabelung", "ab 11.11. (laufend)"),
+    ("HW5", "Verkabelung fertig + Foto + Sichtprüfung (begonnen 03.11.)", "ROT – danach können wir messen", "Di 10.11., Übergabe Di 17.11."),
+    ("HW6", "Zusage: Team Hardware ist am Di 24.11. (Messen + Ausgänge-Test) und Di 01.12. (erster Sortierlauf) dabei", "Fehler an Kabeln findet nur Team Hardware", "Di 10.11."),
+    ("HW7", "Was ist Motor M2? (das alte Programm schaltet ihn 3 Sekunden)", "sonst fehlt evtl. ein Teil der Anlage", "Di 10.11."),
+    ("HW8", "Pneumatik in Ordnung? Kompressor, Schläuche dicht, Ventile gehen", "sonst klemmt das Ausschleusen", "Di 10.11."),
+    ("HW9", "Hilfe bei Fehlersuche an Kabeln während der Testphase", "Dauertest braucht stabile Verkabelung", "Di 08.12. und 15.12."),
     ("HW10", "Verdrahtungsplan als Foto/Skizze für die Doku (To-Do 5.3)", "die Doku muss ein anderes Team befähigen", "Fr 20.11."),
 ]
 NACHRICHT_P3 = [
@@ -179,7 +205,7 @@ def html(einfach=False):
     css = ("" if einfach else "<style>@page{size:A3 landscape;margin:10mm} body{font-family:'Segoe UI',Arial,sans-serif;font-size:10pt} "
            "h1{background:#1f4e79;color:#fff;padding:8px 12px;border-radius:5px;font-size:16pt} h2{color:#1f4e79;margin-top:14px} "
            "td,th{vertical-align:top} th{background:#dbe9f6} .neu{page-break-before:always}</style>")
-    teile = [f"<h1>Gantt-Plan Sortieranlage – mit kritischem Pfad · Stand 03.11.2026 (KW 44 war frei, Plan angepasst)</h1>",
+    teile = [f"<h1>Gantt-Plan Sortieranlage – mit kritischem Pfad · Stand 03.11.2026 (vor Ort nur dienstags 16–18 Uhr)</h1>",
              f"<p><b>Kritischer Pfad (rot):</b> {' → '.join(KRIT)}. Die Abnahme ist am 02.02.2027. Weihnachtspause 21.12.–01.01. ist nicht eingeplant. AT = Arbeitstage.</p>",
              tab, '<h2 class="neu">Erklärung für alle (ganz einfach)</h2>', erkl,
              "<h2>Was wir von Team Hardware brauchen – P3 fragt nach (Montag + Donnerstag)</h2>", hw,
@@ -247,7 +273,7 @@ if len(sys.argv) > 4:
         rows.append(f'<row r="{r}"' + (f' ht="{ht}" customHeight="1"' if ht else "") + f'>{"".join(zellen)}</row>')
 
     letzte_spalte = col(K0 + N - 1)
-    zeile(1, [c("A1", "GANTT-Plan Sortieranlage ab 15.10.2026 – mit kritischem Pfad (ab jetzt arbeiten wir danach)", TITLE)], 28)
+    zeile(1, [c("A1", "GANTT-Plan Sortieranlage – kritischer Pfad · Stand 03.11.2026 · VOR ORT nur dienstags 16–18 Uhr", TITLE)], 28)
     merges.append("A1:L1")
     zeile(2, [c("A2", "ROT = kritischer Pfad (kein Puffer – jede Verspätung verschiebt die Abnahme) · BLAU = Aufgabe mit Puffer · GRÜN = fertig · "
                       "GELB = heute · GRAU = Wochenende/Pause · ORANGE = Regelmeeting. Erklärung für alle: unter der Tabelle.", SUB)], 32)
