@@ -7,8 +7,8 @@ Jede Woche: neue Datei woche.py schreiben (alte als woche_kwNN.py aufheben), Dri
 WOCHE = "KW 45"
 STAND_DATUM = "Di 03.11.2026"
 BIS = "Dienstag 10.11.2026 (Regelmeeting)"
-ZIEL = ("Ziel bis Di 10.11.2026 – wenn alle ihre Aufgaben schaffen: Team Hardware hat fertig verkabelt (03.11. + 10.11.), das Peakboard-Board zeigt die Testdaten des Pi, "
-        "die M2-Abgaben sind geprüft. Danach: Übergabe Di 17.11., Einspielen Di 24.11., erster Sortierlauf Di 01.12.")
+ZIEL = ("Ziel bis Di 17.11.2026 – wenn alle ihre Aufgaben schaffen: Team Hardware hat Lichtschranken und Farbsensor richtig angeschlossen (9 V, gemeinsame Masse), "
+        "der Eingangstest ist bestanden und das Peakboard-Board zeigt die Live-Daten des Pi. Danach: Übergabe Di 17.11., Einspielen Di 24.11., erster Sortierlauf Di 01.12.")
 TODO_SHEET_URL = "https://docs.google.com/spreadsheets/d/1bXOgwx0ie3KiWtJpJybUZtEKyVMtDpv4ElG2MelW34Q"   # Wochen-Tabelle KW 45 im Drive
 M2_SHEET_URL = "https://docs.google.com/spreadsheets/d/10pr6kpdF5EGmnDSl98uHcxw267b1XnRR1LsLByVBOV8"     # zweite Tabelle „M2-Abgaben“ (Risiken, Schnittstellenmatrix, Testkonzept, Doku, Entscheidungen)
 M2_REITER = {"Risiken", "Schnittstellenmatrix", "Testkonzept", "Doku-Gliederung", "Entscheidungen"}
