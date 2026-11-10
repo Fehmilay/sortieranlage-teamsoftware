@@ -7,7 +7,7 @@ anbei erhalten Sie den Leistungsnachweis (Stand 13.10.2026) für das Projekt Mod
 Für das nächste Meeting möchten wir folgende Punkte klären: Kapazität der I/O-Module (Eingänge und Relais des Automation HAT) im Verhältnis zum Bedarf der Sortierstrecke, Verbindungsart und IP-Adressen von Raspberry Pi und Peakboard Box im TP-Link-Netz, Ort des MQTT-Brokers sowie der Projektordner auf dem Raspberry Pi.
 
 Mit freundlichen Grüßen
-Rushit Vlasi
+Kubilay Gönüleglendiren
 Team Software
 
 Anlage: Leistungsnachweis_gesamt_bis_13-10-2026_aktualisiert.xlsx (und Datenflussplan_13-10-2026.pdf)

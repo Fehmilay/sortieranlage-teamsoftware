@@ -33,7 +33,7 @@ def erster_at(t):
 
 
 # (nr, phase, aufgabe, wer, dauer_AT, vorgaenger, nicht_vor, status, karte)
-TEAM = {"P1": "Rushit Vlasi (Leitung)", "P2": "Jan", "P3": "Alhasane", "P4": "Marie",
+TEAM = {"P1": "Kubilay Gönüleglendiren (Leitung)", "P2": "Jan", "P3": "Alhasane", "P4": "Marie",
         "P5": "Hassan", "P6": "Dogukan", "P7": "Melih", "P8": "Hamza", "KI": "Claude (KI-Assistent)", "alle": "ganzes Team"}
 ROLLEN = {"P1": "Leitung – koordiniert, keine eigenen Gantt-Aufgaben", "P2": "Sensoren / Eingänge",
           "P3": "Aktoren / Ausgänge + Draht zu Team Hardware", "P4": "Daten / Peakboard", "P5": "Testen, Doku, Abläufe",
@@ -142,10 +142,10 @@ ERKLAERUNG = [
                               "(Liste „Was wir von Team Hardware brauchen“ weiter unten) und trägt den Stand hier ein."),
     ("So arbeitest du damit", "1) Montags schaut jeder auf seine Zeilen (Spalte „Wer“). 2) Spalte „Status“ setzen: offen / läuft / fertig / verspätet "
                               "(Zelle anklicken, Pfeil, auswählen). 3) Wird etwas später fertig: das Ende-Datum ändern – der Balken wandert von selbst. "
-                              "4) Ist eine ROTE Aufgabe in Gefahr: SOFORT Rushit (Leitung) schreiben. 5) Jeden Dienstag im Regelmeeting gehen wir das Diagramm "
+                              "4) Ist eine ROTE Aufgabe in Gefahr: SOFORT Kubilay (Leitung) schreiben. 5) Jeden Dienstag im Regelmeeting gehen wir das Diagramm "
                               "gemeinsam durch; Claude rechnet den kritischen Pfad danach neu."),
     ("Karte", "Die Spalte „Karte“ sagt, auf welcher Arbeitskarte (Blatt ARBEITSKARTEN) die Schritt-für-Schritt-Anleitung steht."),
-    ("Wer macht was", "Jede Aufgabe hat GENAU EINE verantwortliche Person (Spalte „Kürzel“ / „Name“). Rushit leitet und koordiniert, hat aber keine eigenen Aufgaben. "
+    ("Wer macht was", "Jede Aufgabe hat GENAU EINE verantwortliche Person (Spalte „Kürzel“ / „Name“). Kubilay leitet und koordiniert, hat aber keine eigenen Aufgaben. "
                       "„KI“ = Claude erledigt es (Programm, Excel). Bei Team-Hardware-Aufgaben ist P3 verantwortlich dafür, dass sie erledigt werden."),
 ]
 

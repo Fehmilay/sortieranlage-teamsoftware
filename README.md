@@ -25,15 +25,15 @@ Bildschirm anzeigt. Abnahme: **02.02.2027**.
 | 2 | **Schritt-für-Schritt-Anleitungen** zu jeder Aufgabe (Karte P2-3, P6-1 …) | [Arbeitskarten (PDF)](Arbeitskarten/Arbeitskarten_Schritt_fuer_Schritt_Stand_15-10-2026.pdf) |
 | 3 | **Zeitplan** – wer macht was bis wann, rot = darf sich nicht verspäten | [Gantt-Plan (PDF)](Gantt/Gantt_Plan_ab_15-10-2026_mit_kritischem_Pfad.pdf) |
 | 4 | **Alles in einer Datei** (Leistungsnachweis, Gantt, Arbeitskarten, LIES MICH, Listen 2.1–2.4) | [Excel herunterladen](Leistungsnachweis_gesamt_bis_13-10-2026_aktualisiert.xlsx) → Datei öffnen → oben rechts „TO-DOs fürs Team“ anklicken |
-| 5 | **Fragen?** Erst den GitHub-Link mit deiner Frage in ChatGPT einfügen (Kasten oben). Sonst in die gelbe Spalte G der To-do-Tabelle oder an Hamza – er sammelt die Fragen für Rushit. | |
+| 5 | **Fragen?** Erst den GitHub-Link mit deiner Frage in ChatGPT einfügen (Kasten oben). Sonst in die gelbe Spalte G der To-do-Tabelle oder an Hamza – er sammelt die Fragen für Kubilay. | |
 
-**Team:** Rushit (P1, Leitung – koordiniert, hält den Draht zu Claude) · Jan (P2) Sensoren · Alhasane (P3) Aktoren + Draht zu Team Hardware ·
+**Team:** Kubilay (P1, Leitung – koordiniert, hält den Draht zu Claude) · Jan (P2) Sensoren · Alhasane (P3) Aktoren + Draht zu Team Hardware ·
 Marie (P4) Daten/Peakboard · Hassan (P5) Testen/Doku · Dogukan (P6) **alles im Terminal + Datenübertragung zum Pi** ·
 Melih (P7) Schnittstellen + Abstimmung mit Team Netzwerk/QM · Hamza (P8) **rechte Hand der Leitung: Kommunikation** + Risiken.
 
 **Ganzen Ordner herunterladen:** oben auf den grünen Knopf **„Code“** → **„Download ZIP“** → ZIP entpacken (Rechtsklick → „Alle extrahieren“).
 
-**Zugangsdaten** (Pi, MQTT, Peakboard Box) stehen absichtlich **nicht** hier – die Datei `.env` bekommst du von Rushit.
+**Zugangsdaten** (Pi, MQTT, Peakboard Box) stehen absichtlich **nicht** hier – die Datei `.env` bekommst du von Kubilay.
 Nie Passwörter in die Gruppe, ins Drive oder hier hochladen.
 
 ---

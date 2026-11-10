@@ -1,7 +1,7 @@
 """Aufgaben der laufenden Woche (KW 45: Di 03.11. – Di 10.11.2026; KW 44 war frei) – EINE Quelle für
   - den To-do-Block auf Seite 1 der Excel (todo_team.py) und
   - die Wochen-Tabelle im Drive mit eigenem Reiter pro Aufgabe zum Ausfüllen (woche_drive.py).
-Regel (Rushit, 20.10.): JEDE Aufgabe liefert ihr Ergebnis in einen festen Reiter – damit Claude weiterarbeiten kann.
+Regel (Kubilay, 20.10.): JEDE Aufgabe liefert ihr Ergebnis in einen festen Reiter – damit Claude weiterarbeiten kann.
 Jede Woche: neue Datei woche.py schreiben (alte als woche_kwNN.py aufheben), Drive-Tabelle neu hochladen, alte nach „99 ALT“.
 """
 WOCHE = "KW 45"
@@ -18,7 +18,7 @@ KOPF = ["Wer", "Bis", "Was tun (einfach erklärt)", "Ergebnis eintragen in",
 ANLEITUNG = ("FRAGEN? Kopier den GitHub-Link https://github.com/Fehmilay/sortieranlage-teamsoftware in ChatGPT (oder Claude) und stell deine Frage dazu – dort liegt das ganze Projekt. "
              "So geht's: 1) Such deinen Namen in Spalte A. 2) Mach die Aufgabe. 3) Trag das ERGEBNIS in den Reiter ein, der in Spalte D steht "
              "(Reiter = die Laschen ganz unten am Bildschirm). 4) Hier in Spalte E den Status wählen. 5) Fragen in Spalte G. "
-             "WICHTIG: An der Anlage arbeiten wir nur dienstags 16–18 Uhr (dann ist Team Hardware da). Alles andere von zu Hause. In KW 43 ist hier nichts angekommen – ohne Einträge kann Claude nicht weitermachen. Rushit koordiniert nur (rechte Hand: Hamza).")
+             "WICHTIG: An der Anlage arbeiten wir nur dienstags 16–18 Uhr (dann ist Team Hardware da). Alles andere von zu Hause. In KW 43 ist hier nichts angekommen – ohne Einträge kann Claude nicht weitermachen. Kubilay koordiniert nur (rechte Hand: Hamza).")
 
 WER_KURZ = {"P2": "Jan (P2)", "P3": "Alhasane (P3)", "P4": "Marie (P4)", "P5": "Hassan (P5)", "P6": "Dogukan (P6)",
             "P7": "Melih (P7)", "P8": "Hamza (P8)", "AL": "ALLE"}
@@ -45,7 +45,7 @@ TODOS = [
         ("W8", "Di 10.11.", "Eingänge-Messung vorbereiten: Karte P2-4 lesen und den Reiter ansehen. Gemessen wird am Di 24.11. an der Anlage – es bewegt sich NICHTS.", "R:Messprotokoll Eingaenge"),
     ]),
     ("P4 – Marie (Daten + Peakboard)", [
-        ("W9", "Mi 04.11.", "Peakboard Designer auf Rushits Laptop: Projekt anlegen und Datenquelle MQTT einrichten (Karten P4-5, P4-6). Von zu Hause geht das mit PEAKBOARD_TESTDATEN (öffentlicher Test-Broker), an der Anlage mit 192.168.1.180:1883.", "R:Peakboard-Stand"),
+        ("W9", "Mi 04.11.", "Peakboard Designer auf Kubilays Laptop: Projekt anlegen und Datenquelle MQTT einrichten (Karten P4-5, P4-6). Von zu Hause geht das mit PEAKBOARD_TESTDATEN (öffentlicher Test-Broker), an der Anlage mit 192.168.1.180:1883.", "R:Peakboard-Stand"),
         ("W10", "Mo 09.11.", "Board mit den Testdaten nach deiner Bildschirmskizze bauen (Karte P4-7). Screenshot in „03 Bilder“.", "R:Peakboard-Stand"),
     ]),
     ("P7 – Melih (Schnittstellen + Abstimmung mit Team QM/Netzwerk)", [
@@ -60,11 +60,11 @@ TODOS = [
     ]),
     ("P8 – Hamza (rechte Hand der Leitung: Kommunikation + Risiken)", [
         ("W16", "Mi 04.11.", "Antworten von Prof. Kampker aus dem Meeting eintragen; was offen blieb, per Mail nachfragen (Vorlage A).", "R:Antworten Prof"),
-        ("W17", "laufend", "Mo + Do in der Gruppe fragen, wer festhängt; Fragen aus Spalte G sammeln und an Rushit geben; Termine mit Team Hardware und Team QM mit abstimmen.",
+        ("W17", "laufend", "Mo + Do in der Gruppe fragen, wer festhängt; Fragen aus Spalte G sammeln und an Kubilay geben; Termine mit Team Hardware und Team QM mit abstimmen.",
          "R:TO-DO"),
         ("W18", "Fr 06.11.", "Risikoliste prüfen (Pflicht-Abgabe M2, noch offen): stimmt jede Zeile, fehlt etwas?", "R:Risiken"),
     ]),
-    ("ALLE (außer Rushit)", [
+    ("ALLE (außer Kubilay)", [
         ("W19", "Di 10.11.", "Vor dem Regelmeeting: eigene Zeilen auf „erledigt“ setzen, Ergebnisse in die Reiter, Fragen in Spalte G.", "R:TO-DO"),
     ]),
 ]
@@ -105,7 +105,7 @@ REITER = [
       ["M1", "Bandmotor (9 V, max. 650 mA)", "Motor Driver HAT – Motor A", "ja – GPIO-Übersicht Team Hardware 20.10.", "", ""]],
      [10, 32, 32, 20, 24, 28], [3, 4, 5]),
     ("Antworten Prof", "Antworten von Prof. Kampker – trägt Hamza ein",
-     "Passwörter NIE hier eintragen – nur „erhalten: ja“. Das Passwort selbst persönlich an Rushit.",
+     "Passwörter NIE hier eintragen – nur „erhalten: ja“. Das Passwort selbst persönlich an Kubilay.",
      ["Nr", "Frage", "Antwort", "Datum"],
      [["P1", "Freigabe für den Ausgänge-Test am Di 24.11.?", "", ""],
       ["P2", "Freigabe für den Einspieltag (erster Sortierlauf) am Di 01.12.?", "", ""],
@@ -164,9 +164,9 @@ REITER = [
     ("Peakboard-Stand", "Peakboard – Stand zum Abhaken (Marie, Jan)",
      "Jeder hakt seine Zeile ab. Screenshots in den Drive-Ordner „03 Bilder + Skizzen“. Testdaten kommen schon vom Pi (192.168.1.180:1883, mit Login).",
      ["Nr", "Schritt", "Wer", "Erledigt? (ja / nein)", "Ergebnis / Notiz"],
-     [["B1", "Peakboard Designer auf Rushits Laptop installiert und angemeldet", "Marie + Jan", "", ""],
+     [["B1", "Peakboard Designer auf Kubilays Laptop installiert und angemeldet", "Marie + Jan", "", ""],
       ["B2", "Projekt „Sortieranlage Team Software“ angelegt (1920 × 1080)", "Marie", "", ""],
-      ["B3", "Datenquelle MQTT angelegt (192.168.1.180, Port 1883, Zugang bei Rushit) – Testdaten kommen an", "Marie", "", ""],
+      ["B3", "Datenquelle MQTT angelegt (192.168.1.180, Port 1883, Zugang bei Kubilay) – Testdaten kommen an", "Marie", "", ""],
       ["B4", "Kacheln nach Bildschirmskizze gebaut (Zustand, Stückzahl, Farbe, Zähler, Störung)", "Marie", "", ""],
       ["B5", "Screenshot im Ordner „03 Bilder“", "Marie", "", ""],
       ["B6", "Peakboard Box oder Peakboard LINK im Browser? – klärt Hamza mit Prof. Kampker (Reiter Antworten Prof, P4)", "Hamza", "", ""]],
@@ -179,10 +179,10 @@ REITER = [
       ["R3", "Platine voll belegt – keine Reserve, falls ein Anschluss ausfällt", "niedrig", "mittel", "Ersatz-Platine früh klären", "Team Hardware", "", ""],
       ["R4", "Verbindung zum Pi reißt ab / Pi startet neu (am 20.10. zweimal passiert)", "hoch", "hoch – Einrichtung nicht möglich", "Pi per LAN-Kabel + eigenes 5-V/3-A-Netzteil", "Dogukan", "", ""],
       ["R5", "Farbwerte der echten Klötze passen nicht zu den Startwerten", "mittel", "mittel – falsche Rutsche", "Messprotokoll am 24.11., Claude passt die Grenzen an", "Jan + Claude", "", ""],
-      ["R6", "Peakboard Designer nur auf Rushits Laptop", "hoch", "mittel – Board nur dort baubar", "feste Termine mit Marie, Peakboard LINK prüfen", "Marie", "", ""],
+      ["R6", "Peakboard Designer nur auf Kubilays Laptop", "hoch", "mittel – Board nur dort baubar", "feste Termine mit Marie, Peakboard LINK prüfen", "Marie", "", ""],
       ["R7", "IP-Adressen ändern sich (anderer Router)", "mittel", "niedrig", "Skripte finden den Pi über seinen Namen", "Dogukan", "", ""],
-      ["R8", "Team trägt Ergebnisse nicht ein (KW 43: nichts angekommen)", "hoch", "mittel – Claude kann nicht weiterarbeiten", "Hamza erinnert Mo + Do, Rushit fragt im Meeting nach", "Hamza", "", ""],
-      ["R9", "Programm liegt nur auf Rushits Laptop", "niedrig", "hoch, falls der Laptop fehlt", "Alles liegt auf GitHub (immer aktuell)", "Dogukan", "", ""],
+      ["R8", "Team trägt Ergebnisse nicht ein (KW 43: nichts angekommen)", "hoch", "mittel – Claude kann nicht weiterarbeiten", "Hamza erinnert Mo + Do, Kubilay fragt im Meeting nach", "Hamza", "", ""],
+      ["R9", "Programm liegt nur auf Kubilays Laptop", "niedrig", "hoch, falls der Laptop fehlt", "Alles liegt auf GitHub (immer aktuell)", "Dogukan", "", ""],
       ["R10", "Ausfall von Teammitgliedern (Krankheit, Prüfungen)", "mittel", "mittel", "Stand steht immer in der Wochen-Tabelle, Vertretung absprechen", "alle", "", ""],
       ["R11", "Doku für ein anderes Team wird zu spät fertig", "mittel", "hoch – Abnahmekriterium", "Gliederung ab jetzt parallel (Reiter Doku-Gliederung)", "Hassan", "", ""]],
      [6, 40, 14, 22, 40, 20, 12, 26], [6, 7]),

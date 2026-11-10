@@ -27,7 +27,7 @@ if (-not $ziel) { Write-Host "FEHLER: Unterordner '04 Excel + PDFs' fehlt." -For
 $dateien = @(
     @{ von = "Leistungsnachweis_gesamt_bis_13-10-2026_aktualisiert.xlsx"; nach = "Leistungsnachweis_gesamt_bis_13-10-2026_aktualisiert.xlsx" }
 )
-$pdf = Get-ChildItem (Join-Path $projekt "abgabe") -Filter "Leistungsnachweis_Rushit_Vlasi_Stand_*.pdf" -ErrorAction SilentlyContinue |
+$pdf = Get-ChildItem (Join-Path $projekt "abgabe") -Filter "Leistungsnachweis_*Stand_*.pdf" -ErrorAction SilentlyContinue |
        Sort-Object LastWriteTime | Select-Object -Last 1
 if ($pdf) { $dateien += @{ von = "abgabe\$($pdf.Name)"; nach = $pdf.Name } }
 

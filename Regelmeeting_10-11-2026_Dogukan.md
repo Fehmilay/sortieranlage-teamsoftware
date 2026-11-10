@@ -1,8 +1,8 @@
-# Regelmeeting Di 10.11.2026, 16–18 Uhr – Zettel für Dogukan (vertritt Rushit)
+# Regelmeeting Di 10.11.2026, 16–18 Uhr – Zettel für Dogukan (vertritt Kubilay)
 
 ## Das sagst du (ca. 1 Minute)
 
-> „Ich vertrete heute Rushit. Stand Team Software: Der Raspberry Pi ist fertig eingerichtet, das Postamt (MQTT) läuft, und die Peakboard-Anzeige ist gebaut – Rushit und Marie haben einen Live-Test vorbereitet, den zeigen wir gleich: Peakboard zeigt die Daten vom Pi live.
+> „Ich vertrete heute Kubilay. Stand Team Software: Der Raspberry Pi ist fertig eingerichtet, das Postamt (MQTT) läuft, und die Peakboard-Anzeige ist gebaut – Kubilay und Marie haben einen Live-Test vorbereitet, den zeigen wir gleich: Peakboard zeigt die Daten vom Pi live.
 > Beim Eingangstest letzte Woche hat der Pi beide Platinen erkannt und der Zähltaster funktioniert. Die zwei Lichtschranken und der Farbsensor liefern noch keine richtigen Werte. Wahrscheinliche Ursachen: 9 V an den Lampen, gemeinsame Masse zwischen 9-V-Netzteil und Platine, Beschaltung der Lichtschranken. Das muss Team Hardware heute prüfen – danach messen wir sofort noch einmal.
 > Zeitplan: heute Verkabelung fertig, 17.11. Übergabe, 24.11. Einspielen, 01.12. erster Sortierlauf, Abnahme 02.02. Wir brauchen heute: Team Hardware für die Fehlersuche, von Herrn Kampker die Freigabe für den Ausgänge-Test am 24.11., und die Info, ob wir die Peakboard Box nutzen oder Peakboard im Browser.“
 

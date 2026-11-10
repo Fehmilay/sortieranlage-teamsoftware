@@ -12,7 +12,7 @@ EINLEITUNG = [
 
 # Karte: (nr, titel, bis, dauer, brauchst, schritte, fertig, problem, nicht)
 PERSONEN = [
-    ("Softwareleitung (Rushit)", [
+    ("Softwareleitung (Kubilay)", [
         ("S1", "Prof. Kampker Bescheid geben und Freigaben holen", "Mo 19.10. (per Mail) oder Di 20.10. im Meeting", "10 min",
          "Vorlage A (Nachricht)",
          ["Vorlage A unten komplett markieren und kopieren (Strg + C).",
@@ -193,7 +193,7 @@ PERSONEN = [
         ("P4-2", "Peakboard Designer klären", "Di 20.10.", "15 min", "–",
          ["Prof. Kampker fragen: „Wer hat Zugang zum Peakboard Designer, und auf welchem Laptop ist er installiert?“",
           "Falls du ihn hast: Programm öffnen → neues Board anlegen.",
-          "Datenquelle hinzufügen → „MQTT“ → Server 192.168.1.103, Port 1883, Benutzer und Passwort = MQTT-Zugang von Prof. Kampker (bei Rushit erfragen) (die Bezeichnungen können je nach Version leicht abweichen).",
+          "Datenquelle hinzufügen → „MQTT“ → Server 192.168.1.103, Port 1883, Benutzer und Passwort = MQTT-Zugang von Prof. Kampker (bei Kubilay erfragen) (die Bezeichnungen können je nach Version leicht abweichen).",
           "Die Topics aus deiner Liste 2.4 eintragen. Hilfe: Datei „peakboard/MQTT_Schnittstelle.md“ im Projektordner."],
          "Klar ist, wer den Designer bedient.", "Verbindung klappt nicht → erst muss PI_EINRICHTEN gelaufen sein (S2).", "–"),
         ("P4-3", "Nachrichtenformat vorschlagen (J12)", "Di 20.10.", "5 min", "–",
@@ -242,7 +242,7 @@ VORLAGEN = [
         "4) Wer gibt den ersten Test mit Motor und Ventilen frei – Sie persönlich vor Ort?",
         "5) Welche IP-Adresse hat die Peakboard Box (bzw. dürfen wir in die Geräteliste des TP-Link-Routers schauen), und wer hat Zugang zum Peakboard Designer?",
         "Vielen Dank und viele Grüße",
-        "Rushit Vlasi, Softwareleitung Team Software"]),
+        "Kubilay Gönüleglendiren, Softwareleitung Team Software"]),
     ("B", "Drei Entscheidungen fürs Meeting (für P1-1) – mit Empfehlung", [
         "J7 – Wie geht es nach einem Fehler weiter? EMPFEHLUNG: automatisch, sobald der Klotz entnommen ist und alle Lichtschranken 5 Sekunden frei sind; "
         "bis dahin zeigt der Bildschirm den Fehler. Grund: Am Automation HAT Mini ist kein Eingang mehr frei für einen Taster, und ein Knopf am Peakboard "

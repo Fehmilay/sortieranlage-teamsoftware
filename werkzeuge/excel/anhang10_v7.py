@@ -104,7 +104,7 @@ class Blatt:
 a = Blatt([16, 64, 12, 34, 16, 16])
 a.titel("Anhang 10 – Arbeitsaufträge M2 und Pflichtaufgaben Richtung Pre-Production (Stand 15.10.2026)")
 a.notiz("Neu hier? Zuerst das Blatt „LIES MICH - Einfach erklaert“ lesen – dort steht alles in einfachen Worten, inklusive Ablauf für nächste Woche.")
-a.unter("To-Dos 2.1–2.4 aus Anhang 4, verteilt am 13.10.2026, am 15.10. neu verteilt auf P2–P6 (P5 Hassan, P6 Dogukan; Rushit leitet ohne eigene Aufgaben – maßgeblich ist das Gantt-Blatt); Pflichtaufgaben J1–J14 und Messaufgaben T1–T10 ergänzt am 15.10.2026. Für Einsteiger geschrieben. Die Arbeitsblätter "
+a.unter("To-Dos 2.1–2.4 aus Anhang 4, verteilt am 13.10.2026, am 15.10. neu verteilt auf P2–P6 (P5 Hassan, P6 Dogukan; Kubilay leitet ohne eigene Aufgaben – maßgeblich ist das Gantt-Blatt); Pflichtaufgaben J1–J14 und Messaufgaben T1–T10 ergänzt am 15.10.2026. Für Einsteiger geschrieben. Die Arbeitsblätter "
         "„M2 2.1 …“ bis „M2 2.4 …“ in dieser Mappe sind vorbefüllt: gefüllte Zellen = Vorschlag zum Prüfen, leere Zellen = eure Aufgabe. "
         "Status: BESTÄTIGT = belegt · VORSCHLAG = Team-Entwurf · OFFEN = unbekannt.")
 a.label("Ziel der Woche", "Am 20.10. wissen wir für jedes Bauteil der Sortierstrecke, welches Signal es liefert bzw. was es tun soll, "
@@ -204,7 +204,7 @@ for i, z in enumerate([
          "P3", "Vorlaufzeit Kompressor, Ventilzeit (KOMPRESSOR_VORLAUF_S, VENTIL_PULS_S)", "nach Freigabe Aktoren", "Offen"],
         ["T7", "Zeiten messen (Stoppuhr oder Logdatei): Wie lange fährt ein Werkstück vom Farbsensor bis I3? Wie lange dauert es höchstens zwischen zwei Impulsen?",
          "P5 Hassan", "Zeitlimits für Fehler (TIMEOUT_BIS_AUSWURF_S, TIMEOUT_IMPULS_S)", "nach Freigabe Band", "Offen"],
-        ["T8", "Erster Start der Steuerung mit echter Hardware – zuerst nur Eingänge. Läuft die HAT-Bibliothek mit unserem Code? Fehlermeldungen an Claude (über Rushit).",
+        ["T8", "Erster Start der Steuerung mit echter Hardware – zuerst nur Eingänge. Läuft die HAT-Bibliothek mit unserem Code? Fehlermeldungen an Claude (über Kubilay).",
          "P6 Dogukan", "Code-Anpassung falls nötig (inputs.py / outputs.py)", "nach J3", "Offen"],
         ["T9", "Fehlerfall für die Abnahme vorführen (z. B. Band festhalten → Meldung „band_blockiert“ auf dem Peakboard).", "P5 Hassan",
          "Abnahme-Nachweis (Testprotokoll)", "nach erstem vollständigen Zyklus", "Offen"],

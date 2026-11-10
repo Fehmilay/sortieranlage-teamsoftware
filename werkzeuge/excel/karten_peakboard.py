@@ -56,7 +56,7 @@ P4_5 = ("P4-5", "Peakboard Designer startklar machen", "Fr 16.10.", "30 min", "W
         "Das leere Projekt ist offen.", "Anmeldung klappt nicht → Prof. Kampker fragen oder help.peakboard.com.", "–")
 P4_6 = ("P4-6", "Datenquelle MQTT anlegen", "Sa 17.10.", "30 min", "Foto mit den Einstellungen aus S10 (Testdaten laufen)",
         ["Im Designer: Data → Add data source → MQTT.",
-         "Server wie im grünen Kasten (an der Anlage: IP des Pi; zuhause: test.mosquitto.org bzw. broker.hivemq.com). Port 1883. Benutzer und Passwort: an der Anlage den MQTT-Zugang von Prof. Kampker eintragen (steht aus Sicherheitsgründen NICHT in den Unterlagen – bei Rushit erfragen); zuhause beim öffentlichen Test-Postamt leer lassen.",
+         "Server wie im grünen Kasten (an der Anlage: IP des Pi; zuhause: test.mosquitto.org bzw. broker.hivemq.com). Port 1883. Benutzer und Passwort: an der Anlage den MQTT-Zugang von Prof. Kampker eintragen (steht aus Sicherheitsgründen NICHT in den Unterlagen – bei Kubilay erfragen); zuhause beim öffentlichen Test-Postamt leer lassen.",
          "Subscriptions: jedes Topic aus dem grünen Kasten einzeln hinzufügen (…/wert/zustand, …/wert/zyklen usw.). QoS 0, Message type: Text.",
          "„Enable listener“ einschalten und auf Vorschau/Aktualisieren klicken: die Werte müssen sich alle paar Sekunden ändern.",
          "Datenquelle speichern."],
@@ -80,7 +80,7 @@ P4_8 = ("P4-8", "Board auf die Peakboard Box laden", "wenn S2 erledigt ist und d
         "IP der Box (P4-1), Zugangsdaten der Box (Prof. Kampker)",
         ["An der Anlage: Laptop ins WLAN der Anlage.",
          "In der Datenquelle MQTT als Server die IP des Pi eintragen (NICHT das Test-Postamt von zuhause).",
-         "Im Designer die Box hinzufügen (IP der Box + Box-Benutzer/-Passwort von Prof. Kampker – bei Rushit erfragen, NICHT aufschreiben oder in die Gruppe posten).",
+         "Im Designer die Box hinzufügen (IP der Box + Box-Benutzer/-Passwort von Prof. Kampker – bei Kubilay erfragen, NICHT aufschreiben oder in die Gruppe posten).",
          "Board auf die Box hochladen.",
          "Am Bildschirm prüfen: Das Board erscheint und zeigt Werte (an der Anlage Testdaten aus S10 oder echte Werte)."],
         "Das Board läuft auf dem Bildschirm an der Anlage.", "Box nicht gefunden → im selben Netz? IP richtig (P4-1)?",
@@ -147,7 +147,7 @@ PEAKBOARD_ERKLAERUNG = [
 
 def anwenden():
     p = dict(K.PERSONEN)
-    sl = p["Softwareleitung (Rushit)"]
+    sl = p["Softwareleitung (Kubilay)"]
     i = [k[0] for k in sl].index("S3")
     sl[i] = (sl[i][0], "OPTIONAL: Pi kurz über Handy-Hotspot ins Internet (nur falls S9 nicht geht und Prof. Kampker Ja sagt)") + sl[i][2:]
     sl.insert(i, S9)

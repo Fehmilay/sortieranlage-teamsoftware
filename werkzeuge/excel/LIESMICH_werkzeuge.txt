@@ -1,7 +1,7 @@
 Werkzeuge, mit denen Claude die Excel-Blätter erzeugt (XML direkt im xlsx, weil openpyxl fehlt und Bilder gefährden würde).
 Alle Skripte legen vorher eine Sicherung an (2. Argument). Aufrufe (im Ordner werkzeuge\excel, weil die Skripte sich gegenseitig importieren):
 
-Stand 15.10.2026 nachmittags – Team: P1 Rushit (Leitung, keine Gantt-Aufgaben), P2, P3, P4, P5 Hassan, P6 Dogukan.
+Stand 15.10.2026 nachmittags – Team: P1 Kubilay (Leitung, keine Gantt-Aufgaben), P2, P3, P4, P5 Hassan, P6 Dogukan.
 Namen von P2–P4: in gantt_team.py (TEAM) und karten_team.py (TEAM) eintragen ODER direkt im Gantt-Blatt in der Team-Tabelle.
 
   python gantt_team.py <projekt>\quellen\Gantt.html <drive.html> <xlsx> <backup.xlsx>

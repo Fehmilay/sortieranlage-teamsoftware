@@ -49,12 +49,12 @@ DRIVE = {
 # (Person, [(Nr, Bis, Was tun, Ziel)])
 TODOS = [
     ("P6 – Dogukan (Pi, Netzwerk, Organisation)", [
-        ("T1", "Mo 19.10.", "Mail an Prof. Kampker (Vorlage A, Karte P6-1). MQTT- und Box-Zugang haben wir schon (bei Rushit). Nur noch fragen: "
+        ("T1", "Mo 19.10.", "Mail an Prof. Kampker (Vorlage A, Karte P6-1). MQTT- und Box-Zugang haben wir schon (bei Kubilay). Nur noch fragen: "
                             "Freigabe für den Ausgänge-Test am Di 27.10.? WLAN-Passwort der Anlage? IP-Adresse der Peakboard Box? Wer hat den Peakboard Designer?", "KARTEN"),
         ("T2", "Di 20.10.", "„Wie spielen wir den Code auf den Pi?“ – LIES MICH (Abschnitt 4) und Karte P6-3 (PI_EINRICHTEN) durchlesen. "
                             "Rückmeldung: Ist der Ablauf klar? Was fehlt dir noch?", "LIESMICH"),
         ("T3", "Mo 19.10.", "Internet für die Anlage über den Router von Kleutges einrichten (Karte P6-2) – nur an der Anlage möglich.", "KARTEN"),
-        ("T4", "Di 20.10.", "Testdaten für Peakboard laufen lassen: PEAKBOARD_TESTDATEN.bat (Karte P6-5) – geht auch zuhause. Ordner vorher von Rushit holen.", "GH_TD"),
+        ("T4", "Di 20.10.", "Testdaten für Peakboard laufen lassen: PEAKBOARD_TESTDATEN.bat (Karte P6-5) – geht auch zuhause. Ordner vorher von Kubilay holen.", "GH_TD"),
     ]),
     ("P5 – Hassan (Testen, Doku, Abläufe)", [
         ("T5", "Di 20.10.", "Liste 2.3 Ablaufmodell lesen (15–20 min): Tabelle ist schon ausgefüllt, 6 Zeilen = 6 Schritte eines Klotzes. Nur die Spalten „Zustand“, „Was passiert hier?“ und „Nächster Zustand“ lesen – wie eine Geschichte. Kürzel (I1, M1 …) muss man nicht verstehen. Letzte Spalte: „passt“ oder Frage. Gemeinsam anschauen im Regelmeeting (Karte P5-6).", "M23"),
@@ -76,21 +76,21 @@ TODOS = [
     ("P4 – Marie (Daten / Peakboard)", [
         ("T14", "Mo 19.10.", "Liste 2.4 Datenpunkte fertig machen (Karte P4-4).", "M24"),
         ("T15", "sofort", "Abstimmung vom Fr 16.10. (Karte P4-9): Hat sie stattgefunden? Wenn nein: bis Mo 19.10. nachholen (20 min online). Ergebnis rechts eintragen.", "KARTEN"),
-        ("T16", "Mo 19.10.", "ZUSAMMEN MIT JAN den Peakboard Designer startklar machen (Karte P4-5): Prof. Kampker fragen, mit welchem Konto wir uns anmelden; Designer installieren (Windows-Laptop); leeres Projekt „Sortieranlage Team Software“ anlegen. Den MQTT-Zugang bekommst du von Rushit.", "KARTEN"),
+        ("T16", "Mo 19.10.", "ZUSAMMEN MIT JAN den Peakboard Designer startklar machen (Karte P4-5): Prof. Kampker fragen, mit welchem Konto wir uns anmelden; Designer installieren (Windows-Laptop); leeres Projekt „Sortieranlage Team Software“ anlegen. Den MQTT-Zugang bekommst du von Kubilay.", "KARTEN"),
         ("T17", "Di 20.10.", "Peakboard-Beschreibung auf GitHub lesen. Rückmeldung: Welches Nachrichten-Format (A, B oder C) nehmen wir fürs Board?", "GH_PB"),
     ]),
-    ("ALLE (außer Rushit)", [
-        ("T18", "Di 20.10.", "Vor dem Regelmeeting: eigene Zeilen auf „erledigt“ setzen, Fragen rechts eintragen. Rushit gibt sie an Claude weiter – "
+    ("ALLE (außer Kubilay)", [
+        ("T18", "Di 20.10.", "Vor dem Regelmeeting: eigene Zeilen auf „erledigt“ setzen, Fragen rechts eintragen. Kubilay gibt sie an Claude weiter – "
                              "die Antwort steht danach hier.", "GANTT"),
     ]),
 ]
 WER_KURZ = {"P2": "Jan (P2)", "P3": "Alhasane (P3)", "P4": "Marie (P4)", "P5": "Hassan (P5)", "P6": "Dogukan (P6)", "AL": "ALLE"}
 # Stand der Rückmeldungen (Claude überträgt hier, was im Drive eingetragen wurde): Nr -> (Status, Erledigt am, Rückmeldung)
 STAND = {   # übertragen aus der Drive-Tabelle am 20.10.2026
-    "T1": ("offen", "", "Dogukan hat keinen Drive-Zugang – bekommt die Aufgabe direkt von Rushit."),
-    "T2": ("offen", "", "Dogukan bekommt die Aufgabe direkt von Rushit."),
-    "T3": ("offen", "", "Dogukan bekommt die Aufgabe direkt von Rushit."),
-    "T4": ("offen", "", "Dogukan bekommt die Aufgabe direkt von Rushit."),
+    "T1": ("offen", "", "Dogukan hat keinen Drive-Zugang – bekommt die Aufgabe direkt von Kubilay."),
+    "T2": ("offen", "", "Dogukan bekommt die Aufgabe direkt von Kubilay."),
+    "T3": ("offen", "", "Dogukan bekommt die Aufgabe direkt von Kubilay."),
+    "T4": ("offen", "", "Dogukan bekommt die Aufgabe direkt von Kubilay."),
     "T5": ("erledigt", "19.10.", "Ablaufmodell gelesen – gemeinsame Durchsicht im Regelmeeting 20.10."),
     "T6": ("in Arbeit", "", ""),
     "T7": ("erledigt", "18.10.", ""),
@@ -113,7 +113,7 @@ KOPF = ["Wer", "Bis", "Was tun (einfach erklärt) – Anleitung steht in der gen
 STATUS_LISTE = '"offen,in Arbeit,erledigt,Frage/Problem"'
 ANLEITUNG = ("So geht's: 1) Such deinen Namen in Spalte A. 2) Klick in Spalte D auf den Link – dann öffnet sich genau das Blatt bzw. die Datei. "
              "3) Die Schritte stehen in der genannten Arbeitskarte. 4) In Spalte E den Status wählen (Zelle anklicken → Pfeil). "
-             "5) Gelbe Felder: Datum und Rückmeldung bzw. Frage eintragen. Rushit (Leitung) hat diese Woche keine eigenen Aufgaben "
+             "5) Gelbe Felder: Datum und Rückmeldung bzw. Frage eintragen. Kubilay (Leitung) hat diese Woche keine eigenen Aufgaben "
              "und hält den Draht zu Claude: Fragen aus Spalte G werden beantwortet und hier aktualisiert.")
 
 

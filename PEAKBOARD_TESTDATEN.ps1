@@ -79,7 +79,7 @@ Write-Host ""
 Write-Host "  ============ DAS IM PEAKBOARD DESIGNER EINTRAGEN ============" -ForegroundColor Green
 Write-Host "  Datenquelle: MQTT"
 Write-Host "  Server:      $server"
-if ($Ort -eq "Anlage") { Write-Host "  Port:        1883      Benutzer/Passwort: MQTT-Zugang von Prof. Kampker (steht NICHT in den Unterlagen - bei Rushit erfragen)" }
+if ($Ort -eq "Anlage") { Write-Host "  Port:        1883      Benutzer/Passwort: MQTT-Zugang von Prof. Kampker (steht NICHT in den Unterlagen - bei Kubilay erfragen)" }
 else { Write-Host "  Port:        1883      Benutzer/Passwort: leer lassen" }
 Write-Host "  Topics (jeweils einfacher Text, kein JSON):"
 foreach ($w in "zustand", "zyklen", "farbe_letzte", "anzahl_weiss", "anzahl_rot", "anzahl_blau", "fehler_aktiv", "fehler_text", "modus") {

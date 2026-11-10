@@ -4,7 +4,7 @@ import re
 import karten_daten as K
 
 TEAM = {
-    "P1": "Rushit Vlasi (Leitung)",
+    "P1": "Kubilay Gönüleglendiren (Leitung)",
     "P2": "Jan",
     "P3": "Alhasane",
     "P4": "Marie",
@@ -23,8 +23,8 @@ TEXTE = [  # gezielte Textanpassungen in Karten-Schritten
     ("mit Softwareleitung und P4 durchgehen", "mit Dogukan (P6) und P4 durchgehen"),
     ("Board gestalten (zusammen mit P1)", "Board gestalten (Texte und Farben kommen von P2)"),
     ("Ergebnis an P4 (für das Board) und in die Gruppe.", "Ergebnis an P4 (für das Board) und in die Gruppe."),
-    ("SOFORT der Softwareleitung schreiben", "SOFORT Rushit (Leitung) schreiben"),
-    ("dann Softwareleitung informieren (die spricht Prof. Kampker an).", "dann Rushit (Leitung) informieren – Rushit spricht dann Prof. Kampker an."),
+    ("SOFORT der Softwareleitung schreiben", "SOFORT Kubilay (Leitung) schreiben"),
+    ("dann Softwareleitung informieren (die spricht Prof. Kampker an).", "dann Kubilay (Leitung) informieren – Kubilay spricht dann Prof. Kampker an."),
     ("„M2 2.3 Ablaufmodell (P1)“", "„M2 2.3 Ablaufmodell (P1)“ (alter Dateiname – ist jetzt Hassans Liste)"),
     ("PI_EINRICHTEN (Softwareleitung)", "PI_EINRICHTEN (Dogukan, P6)"),
     ("E-Mail-Adressen von P1–P4", "E-Mail-Adressen von P2–P6 (inkl. Hassan und Dogukan)"),
@@ -33,7 +33,7 @@ TEXTE = [  # gezielte Textanpassungen in Karten-Schritten
     ("„Python ist nicht installiert“ → den Laptop mit den Projektdateien nehmen.",
      "„Python ist nicht installiert“ → Python von python.org installieren (beim Installieren den Haken „Add Python to PATH“ setzen)."),
 ]
-ORDNER_SCHRITT = ("Einmalig vorher: den Ordner „projektmanagement“ von Rushit bekommen (USB-Stick oder ZIP) und auf den eigenen Desktop kopieren – "
+ORDNER_SCHRITT = ("Einmalig vorher: den Ordner „projektmanagement“ von Kubilay bekommen (USB-Stick oder ZIP) und auf den eigenen Desktop kopieren – "
                   "alle .bat-Dateien liegen darin.")
 
 
@@ -78,8 +78,8 @@ def umverteilen():
     K.VORLAGEN = [(b, _text(t), [_text(z) for z in zeilen]) for b, t, zeilen in K.VORLAGEN]
     K.EINLEITUNG = [
         "Jede Person hat eigene Karten. Eine Karte = eine Aufgabe. Einfach Schritt für Schritt abarbeiten und abhaken.",
-        "Team: P1 Rushit (Leitung, koordiniert – keine eigenen Gantt-Aufgaben) · P2 Jan · P3 Alhasane · P4 Marie · P5 Hassan · P6 Dogukan.",
-        "Unklar? NICHT raten – Frage in die Gruppe oder an Rushit. Fertig? „Erledigt + Datum“ in die Gruppe schreiben und im Gantt den Status auf „fertig“ setzen.",
+        "Team: P1 Kubilay (Leitung, koordiniert – keine eigenen Gantt-Aufgaben) · P2 Jan · P3 Alhasane · P4 Marie · P5 Hassan · P6 Dogukan.",
+        "Unklar? NICHT raten – Frage in die Gruppe oder an Kubilay. Fertig? „Erledigt + Datum“ in die Gruppe schreiben und im Gantt den Status auf „fertig“ setzen.",
         "Alles, was Programm, Excel und Drive-Dateien betrifft, erledigt Claude (KI-Assistent der Leitung). Hier steht nur, was Menschen tun müssen.",
         "Texte zum Kopieren (Nachrichten, Testplan, Messprotokoll, Bildschirm-Texte, Checkliste, Schild) stehen am Ende unter VORLAGEN A–I.",
     ]

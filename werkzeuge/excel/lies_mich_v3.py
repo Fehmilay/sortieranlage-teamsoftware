@@ -91,7 +91,7 @@ for i, z in enumerate([
         ["ARBEITSKARTEN (grüner Reiter)", "Zu jeder Gantt-Aufgabe die Schritt-für-Schritt-Anleitung", "Ja – deine Karten", "Excel + Drive + PDF"],
         ["Anhang 10", "Alle Aufgaben mit Schritten: J = jetzt erledigen, T = beim Testen messen", "Ja – deine Zeilen", "Excel + Drive"],
         ["M2 2.1 – 2.4", "Je eine Liste zum Ausfüllen für Jan (P2), Alhasane (P3), Hassan (P5), Marie (P4)", "Ja – deine Liste", "Excel + Drive"],
-        ["Leistungsnachweis (Blatt 1)", "Unsere Arbeitszeiten für Prof. Kampker", "Nur Rushit (Leitung)", "Excel"],
+        ["Leistungsnachweis (Blatt 1)", "Unsere Arbeitszeiten für Prof. Kampker", "Nur Kubilay (Leitung)", "Excel"],
         ["Anhang 7", "Technik-Details: Netzwerk, Anschlüsse, Verbindungstest", "Nur bei Bedarf", "Excel"],
         ["Anhang 1 – 9, KI-Kontext", "Frühere Termine, Notizen, Kursmaterial, Zusammenfassung für KI-Assistenten", "Nein", "Excel"],
         ["PI_EINRICHTEN.bat", "Ein Doppelklick spielt alles auf den Pi und richtet ihn ein (kein Internet nötig)", "Dogukan (P6)", "Projektordner"],
@@ -101,14 +101,14 @@ for i, z in enumerate([
 
 b.abschnitt("7. Wer macht was – Team und Rollen (Stand 17.10.2026)")
 for lab, txt in [
-        ("P1 – Rushit", "Leitung: koordiniert, beantwortet Fragen, spricht mit Prof. Kampker – hat bewusst KEINE eigenen Aufgaben im Gantt."),
+        ("P1 – Kubilay", "Leitung: koordiniert, beantwortet Fragen, spricht mit Prof. Kampker – hat bewusst KEINE eigenen Aufgaben im Gantt."),
         ("P2 – Jan", "Sensoren: Liste 2.1, Fragen ans Hardware-Team, am Einspieltag Sensoren messen, Peakboard-Texte/-Farben und Board prüfen."),
         ("P3 – Alhasane", "Aktoren + Draht zu Team Hardware: fragt Montag und Donnerstag nach (Liste HW1–HW10), Ausgänge testen, Peakboard Box aufbauen."),
         ("P4 – Marie", "Daten/Peakboard: Liste 2.4, Designer, Datenquelle, Board bauen und auf die Box laden, Abstimmung am Freitag."),
         ("P5 – Hassan", "Testen und Doku: Ablaufmodell 2.3, Entscheidungen J7–J9 vorstellen, Testplan, Dauertest, Doku, Probeabnahme, Peakboard-Abnahmetest."),
         ("P6 – Dogukan", "Pi, Netzwerk, Organisation: Freigaben bei Prof. Kampker, Internet, PI_EINRICHTEN, Testdaten, Einspieltag leiten, Feinschliff, Nacharbeiten."),
         ("Team Hardware", "Bestellung, Netzteil, Anschlussfragen, Anschluss nach Plan – P3 hält den Kontakt."),
-        ("Claude (KI)", "Programm, Excel, Drive-Dateien, Auswertung der Berichte – über Rushit.")]:
+        ("Claude (KI)", "Programm, Excel, Drive-Dateien, Auswertung der Berichte – über Kubilay.")]:
     b.label(lab, txt)
 
 b.abschnitt("8. Mini-Wörterbuch")

@@ -23,7 +23,7 @@ miteinander, immer nur über das Postamt.
 | Datenquelle | **MQTT** |
 | Server | **192.168.1.180** |
 | Port | **1883** (QoS 0, Message type: Text) |
-| Benutzer + Passwort | **bekommt ihr persönlich von Rushit**. Sie stehen absichtlich nirgends im Drive, in GitHub oder in ChatGPT. |
+| Benutzer + Passwort | **bekommt ihr persönlich von Kubilay**. Sie stehen absichtlich nirgends im Drive, in GitHub oder in ChatGPT. |
 
 ## 4. Diese Topics abonnieren
 Jeder Wert hat ein eigenes Topic. Die Nachricht ist nur der Text oder die Zahl, kein JSON. Gesendet wird mit „retain“, das Peakboard
@@ -50,7 +50,7 @@ geöffnet**, genau das bitte zuerst testen.
 3. Vorschau bzw. Start: Die Werte müssen sich ändern. So soll es aussehen: `Sortieranlage_Board_Vorschau.png`.
 
 **Weg B (falls A nicht klappt), ca. 45 min:**
-1. **Data → Add data source → MQTT**, Server 192.168.1.180, Port 1883, Benutzer und Passwort von Rushit.
+1. **Data → Add data source → MQTT**, Server 192.168.1.180, Port 1883, Benutzer und Passwort von Kubilay.
 2. Unter Subscriptions die Topics aus Abschnitt 4 eintragen, QoS 0, Message type: Text.
 3. **Enable listener**, dann in der Vorschau prüfen, ob Werte ankommen.
 4. Kacheln anlegen und binden (Abschnitt 9).
@@ -64,12 +64,12 @@ Kommt bei Weg A eine Fehlermeldung, bitte einen Screenshot davon in „03 Bilder
 
 ## 7. Peakboard Box
 Im Netz hängt ein Gerät mit der Adresse **192.168.1.81**. Bitte am Bildschirm der Box nachschauen, ob das ihre Adresse ist.
-Das Board kommt erst auf die Box, wenn es im Designer läuft. Den Zugang zur Box gibt es ebenfalls bei Rushit.
+Das Board kommt erst auf die Box, wenn es im Designer läuft. Den Zugang zur Box gibt es ebenfalls bei Kubilay.
 
 ## 8. Vor dem Gehen
 - Ergebnisse in die ★ KW-45-Tabelle im Drive eintragen: Öffnet die Datei (ja/nein)? Kommen Werte an (ja/nein)? Gab es eine
   Fehlermeldung? Was zeigt die Box als Adresse?
-- **Den Pi nicht einfach ausstecken**, das kann die Speicherkarte beschädigen. Rushit Bescheid geben („Pi aus“). Dann wird er
+- **Den Pi nicht einfach ausstecken**, das kann die Speicherkarte beschädigen. Kubilay Bescheid geben („Pi aus“). Dann wird er
   sauber heruntergefahren, und nach 30 Sekunden darf der Stecker raus.
 
 ## 9. Bildschirm-Entwurf (1920 × 1080, VORSCHLAG)
@@ -88,4 +88,4 @@ AUSSCHLEUSEN → „Sortiert aus“ (grün) · PRUEFEN → „Prüft“ (grün) 
 ## 10. Mehr Details
 `MQTT_Schnittstelle.md` (ganze Schnittstelle) · `BOARD_DATEI_LIESMICH.md` (Board-Datei, was noch unsicher ist).
 Frage? Den Link https://github.com/Fehmilay/sortieranlage-teamsoftware in ChatGPT/Claude einfügen und die Frage dazuschreiben,
-oder Hamza bzw. Rushit fragen.
+oder Hamza bzw. Kubilay fragen.

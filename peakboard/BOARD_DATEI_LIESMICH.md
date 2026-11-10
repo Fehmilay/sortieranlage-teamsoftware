@@ -9,11 +9,11 @@ und die Fehlermeldung als Screenshot in „03 Bilder + Skizzen“ legen.
 ## So testen (Marie, Windows-Laptop mit Peakboard Designer)
 1. `Sortieranlage_Board.pbmx` von GitHub herunterladen (Datei anklicken → „Download raw file“) und im Designer öffnen.
 2. Links unter **Data** die Verbindung **„Postamt Pi (Mosquitto)“** öffnen: Server `192.168.1.180`, Port `1883`.
-   **Benutzer und Passwort selbst eintragen** (bekommt ihr persönlich von Rushit – stehen absichtlich nicht in der Datei).
+   **Benutzer und Passwort selbst eintragen** (bekommt ihr persönlich von Kubilay – stehen absichtlich nicht in der Datei).
 3. Laptop ins WLAN der Anlage (TP-Link), Testdaten starten (`PEAKBOARD_TESTDATEN.bat`, Option 1 = an der Anlage).
 4. Vorschau/Start im Designer: Zahlen und Zustand müssen sich ändern, bei jedem 8. Klotz wird das Banner unten rot.
 5. Ergebnis in die Wochen-Tabelle, Reiter **Peakboard-Stand** („öffnet: ja/nein“, „Werte kommen: ja/nein“, Fehlermeldung).
-6. Wenn alles passt: Board auf die Peakboard Box hochladen (Zugang der Box ebenfalls bei Rushit).
+6. Wenn alles passt: Board auf die Peakboard Box hochladen (Zugang der Box ebenfalls bei Kubilay).
 
 ## Heimtest – ohne Anlage, von zu Hause (Stand 03.11.2026)
 `peakboard/Sortieranlage_Board_Heimtest.pbmx` ist dasselbe Board, hört aber auf das öffentliche Test-Postamt
