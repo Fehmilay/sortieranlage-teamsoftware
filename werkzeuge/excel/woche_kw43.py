@@ -1,7 +1,7 @@
 """Aufgaben der laufenden Woche (KW 43: Mi 21.10. – Di 27.10.2026) – EINE Quelle für
   - den To-do-Block auf Seite 1 der Excel (todo_team.py) und
   - die Wochen-Tabelle im Drive mit eigenem Reiter pro Aufgabe zum Ausfüllen (woche_drive.py).
-Regel (Rushit, 20.10.): JEDE Aufgabe liefert ihr Ergebnis in einen festen Reiter – damit Claude weiterarbeiten kann.
+Regel (Kubilay, 20.10.): JEDE Aufgabe liefert ihr Ergebnis in einen festen Reiter – damit Claude weiterarbeiten kann.
 Jede Woche: neue Datei woche.py schreiben (alte als woche_kwNN.py aufheben), Drive-Tabelle neu hochladen, alte nach „99 ALT“.
 """
 WOCHE = "KW 43"
@@ -15,8 +15,8 @@ KOPF = ["Wer", "Bis", "Was tun (einfach erklärt)", "Ergebnis eintragen in",
         "Status (Pfeil)", "Erledigt am", "Frage an Claude / Bemerkung"]
 ANLEITUNG = ("FRAGEN? Kopier den GitHub-Link https://github.com/Fehmilay/sortieranlage-teamsoftware in ChatGPT (oder Claude) und stell deine Frage dazu – dort liegt das ganze Projekt. "
              "So geht's: 1) Such deinen Namen in Spalte A. 2) Mach die Aufgabe. 3) Trag das ERGEBNIS in den Reiter ein, der in Spalte D steht "
-             "(Reiter = die Laschen ganz unten am Bildschirm). 4) Hier in Spalte E den Status wählen. 5) Fragen in Spalte G – Rushit gibt sie an Claude weiter, "
-             "die Antwort steht danach hier. Rushit koordiniert nur (rechte Hand für Kommunikation: Hamza).")
+             "(Reiter = die Laschen ganz unten am Bildschirm). 4) Hier in Spalte E den Status wählen. 5) Fragen in Spalte G – Kubilay gibt sie an Claude weiter, "
+             "die Antwort steht danach hier. Kubilay koordiniert nur (rechte Hand für Kommunikation: Hamza).")
 
 WER_KURZ = {"P2": "Jan (P2)", "P3": "Alhasane (P3)", "P4": "Marie (P4)", "P5": "Hassan (P5)", "P6": "Dogukan (P6)",
             "P7": "Melih (P7)", "P8": "Hamza (P8)", "AL": "ALLE"}
@@ -24,7 +24,7 @@ WER_KURZ = {"P2": "Jan (P2)", "P3": "Alhasane (P3)", "P4": "Marie (P4)", "P5": "
 # (Person, [(Nr, Bis, Was tun, Reiter)])
 TODOS = [
     ("P6 – Dogukan (zuständig für alles im Terminal + Datenübertragung zum Pi)", [
-        ("W1", "Mi 21.10.", "An der Anlage mit Rushits Laptop (da ist alles drauf): Doppelklick auf PI_EINRICHTEN (Karte P6-3). WICHTIG: Laptop vorher ins WLAN der Anlage – der Test am 20.10. ist nur daran gescheitert. Jede Zeile im Reiter abhaken.",
+        ("W1", "Mi 21.10.", "An der Anlage mit Kubilays Laptop (da ist alles drauf): Doppelklick auf PI_EINRICHTEN (Karte P6-3). WICHTIG: Laptop vorher ins WLAN der Anlage – der Test am 20.10. ist nur daran gescheitert. Jede Zeile im Reiter abhaken.",
          "R:Pi-Einrichtung"),
         ("W2", "laufend", "Du machst ab jetzt alles im Terminal und jede Datenübertragung Laptop → Pi (PI_EINRICHTEN, piverbindungtest2, später Programm starten). "
                           "Berichte landen automatisch im Ordner pi_berichte und kommen über GitHub zum Team. Probleme in den Reiter schreiben.", "R:Pi-Einrichtung"),
@@ -41,14 +41,14 @@ TODOS = [
         ("W7", "Mo 26.10.", "Eingänge messen – es bewegt sich NICHTS (Karte P2-4). Werte vom Laptop-Bildschirm abschreiben.", "R:Messprotokoll Eingaenge"),
     ]),
     ("P4 – Marie (Daten + Peakboard)", [
-        ("W8", "Mi 21.10.", "Peakboard Designer läuft laut Regelmeeting auf Rushits Laptop (wird dort installiert). Mit Jan dort das Projekt und die Datenquelle MQTT anlegen (Karten P4-5, P4-6). Abhaken im Reiter.", "R:Peakboard-Stand"),
+        ("W8", "Mi 21.10.", "Peakboard Designer läuft laut Regelmeeting auf Kubilays Laptop (wird dort installiert). Mit Jan dort das Projekt und die Datenquelle MQTT anlegen (Karten P4-5, P4-6). Abhaken im Reiter.", "R:Peakboard-Stand"),
         ("W9", "Mo 26.10.", "Board mit Testdaten bauen nach deiner Bildschirmskizze (Karte P4-7). Screenshot in Ordner „03 Bilder“.", "R:Peakboard-Stand"),
     ]),
     ("P8 – Hamza (rechte Hand der Leitung: Kommunikation + Risiken)", [
         ("W17", "Mi 21.10.", "Mail an Prof. Kampker (Vorlage A, Karte P6-1): Freigabe Ausgänge-Test 27.10., WLAN der Anlage, "
                              "Peakboard-Konto für den Designer, Freigabe Einspieltag 28./29.10. Antworten in den Reiter.", "R:Antworten Prof"),
         ("W10", "Fr 23.10.", "Risikoliste prüfen (Pflicht-Abgabe M2, Teil 4 „offene Entscheidungen / Risiken“): Stimmt jede Zeile? Fehlt ein Risiko? Spalten „geprüft“ und „Ergänzung“.", "R:Risiken"),
-        ("W11", "laufend", "Rechte Hand von Rushit für die Kommunikation: Mo + Do kurz in die Gruppe fragen, wer festhängt; Fragen aus Spalte G einsammeln und an Rushit geben; Termine mit Team Hardware (Schläger) und Team QM (Haj Hamoud) mit abstimmen.", "R:TO-DO"),
+        ("W11", "laufend", "Rechte Hand von Kubilay für die Kommunikation: Mo + Do kurz in die Gruppe fragen, wer festhängt; Fragen aus Spalte G einsammeln und an Kubilay geben; Termine mit Team Hardware (Schläger) und Team QM (Haj Hamoud) mit abstimmen.", "R:TO-DO"),
     ]),
     ("P7 – Melih (Schnittstellen + Abstimmung mit Team Netzwerk)", [
         ("W12", "Fr 23.10.", "Schnittstellenmatrix (Pflicht-Abgabe M2): Team QM (Haj Hamoud) erstellt sie laut Regelmeeting. Unsere Zeilen im Reiter prüfen und an Team QM geben – Spalten „geprüft“ und „Korrektur“.",
@@ -60,7 +60,7 @@ TODOS = [
         ("W14", "Mi 21.10.", "Was im Regelmeeting zu J7–J9 entschieden wurde in den Reiter schreiben.", "R:Entscheidungen"),
         ("W15", "Fr 23.10.", "Testkonzept prüfen und ergänzen (Pflicht-Abgabe M2): Wer testet wann? Fehlt ein Test?", "R:Testkonzept"),
     ]),
-    ("ALLE (außer Rushit)", [
+    ("ALLE (außer Kubilay)", [
         ("W16", "Di 27.10.", "Vor dem Regelmeeting: eigene Zeilen auf „erledigt“ setzen und Fragen in Spalte G.", "R:TO-DO"),
     ]),
 ]
@@ -72,7 +72,7 @@ REITER = [
     ("Hardware-Antworten", "Antworten von Team Hardware – trägt Alhasane (P3) ein",
      "Kontakt bei Team Hardware: Schläger (laut Protokoll 13.10.). Gelbe Spalten ausfüllen. Werte aus den Kursfolien: Motor M1 9 V max. 650 mA, Kompressor 9 V max. 200 mA, Farbsensor 0–9 V.",
      ["Nr", "Frage an Team Hardware", "Warum wichtig", "Antwort von Team Hardware", "Datum"],
-     [["HW1", "Sind alle bestellten Teile da?", "ohne Teile kein Anschluss", "Ja – laut Rushit am 20.10. eingetroffen", "20.10."],
+     [["HW1", "Sind alle bestellten Teile da?", "ohne Teile kein Anschluss", "Ja – laut Kubilay am 20.10. eingetroffen", "20.10."],
       ["HW2", "Welches 9-V-Netzteil (wie viel Ampere)?", "Motor + Ventile + Kompressor brauchen genug Strom", "vorhanden und reicht laut Team Hardware (Regelmeeting 20.10.)", "20.10."],
       ["HW3", "Wie viel Strom zieht ein Ventil (O5–O7)? Schalten die Ausgänge der Automation HAT Mini das direkt?", "sonst kann die Platine kaputtgehen", "", ""],
       ["HW4", "Welche Spannung liefern die Lichtschranken (I1, I3) und der Zähltaster (C1)? Passen sie an die Eingänge der Platine?", "sonst liest der Pi falsch", "", ""],
@@ -100,7 +100,7 @@ REITER = [
       ["M1", "Bandmotor (9 V, max. 650 mA)", "Motor Driver HAT – Motor A", "ja – GPIO-Übersicht Team Hardware 20.10.", "", ""]],
      [10, 32, 32, 20, 24, 28], [3, 4, 5]),
     ("Antworten Prof", "Antworten von Prof. Kampker – trägt Hamza ein",
-     "Passwörter NIE hier eintragen – nur „erhalten: ja“. Das Passwort selbst persönlich an Rushit.",
+     "Passwörter NIE hier eintragen – nur „erhalten: ja“. Das Passwort selbst persönlich an Kubilay.",
      ["Nr", "Frage", "Antwort", "Datum"],
      [["P1", "Freigabe für den Ausgänge-Test am Di 27.10.?", "", ""],
       ["P2", "WLAN der Anlage (Name + Passwort) – erhalten?", "", ""],
@@ -109,7 +109,7 @@ REITER = [
       ["P5", "Freigabe für den Einspieltag (erster Sortierlauf) am 28./29.10.?", "", ""]],
      [6, 56, 46, 10], [2, 3]),
     ("Pi-Einrichtung", "Pi einrichten mit PI_EINRICHTEN – trägt Dogukan ein",
-     "Mit Rushits Laptop an der Anlage. Bei jedem Schritt eintragen: OK oder FEHLER + was auf dem Bildschirm stand. Der Bericht landet automatisch im Ordner pi_berichte.",
+     "Mit Kubilays Laptop an der Anlage. Bei jedem Schritt eintragen: OK oder FEHLER + was auf dem Bildschirm stand. Der Bericht landet automatisch im Ordner pi_berichte.",
      ["Schritt", "Was tun", "OK / FEHLER", "Was stand auf dem Bildschirm?"],
      [["1", "Laptop ins WLAN der Anlage, Pi eingeschaltet (1–2 Minuten warten)", "", ""],
       ["2", "Doppelklick auf PI_EINRICHTEN.bat – bei Frage nach dem Pi-Passwort: einmal eintippen", "", ""],
@@ -146,7 +146,7 @@ REITER = [
     ("Peakboard-Stand", "Peakboard – Stand zum Abhaken (Marie, Jan, Hamza)",
      "Jeder hakt seine Zeile ab. Screenshots in den Drive-Ordner „03 Bilder + Skizzen“.",
      ["Nr", "Schritt", "Wer", "Erledigt? (ja / nein)", "Ergebnis / Notiz"],
-     [["B1", "Peakboard Designer auf Rushits Laptop installiert und angemeldet", "Rushit / Marie + Jan", "", ""],
+     [["B1", "Peakboard Designer auf Kubilays Laptop installiert und angemeldet", "Kubilay / Marie + Jan", "", ""],
       ["B2", "Projekt „Sortieranlage Team Software“ angelegt (1920 × 1080)", "Marie", "", ""],
       ["B3", "Datenquelle MQTT angelegt – Testdaten kommen an", "Marie", "", ""],
       ["B4", "Kacheln nach Bildschirmskizze gebaut (Zustand, Stückzahl, Farbe, Zähler, Störung)", "Marie + Hamza", "", ""],
@@ -164,8 +164,8 @@ REITER = [
       ["R5", "Farbwerte der echten Klötze passen nicht zu den Startwerten", "mittel", "mittel – falsche Rutsche", "Messprotokoll am 26.10., Claude passt die Grenzen an", "Jan + Claude", "", ""],
       ["R6", "Peakboard Designer nur auf dem Hochschul-Laptop", "hoch", "mittel – Board nur in der VL baubar", "Termine in der VL fest einplanen, Konto bei Prof. Kampker klären", "Marie", "", ""],
       ["R7", "IP-Adressen ändern sich (anderer Router)", "mittel", "niedrig", "Skripte finden den Pi über seinen Namen", "Dogukan", "", ""],
-      ["R8", "MQTT-Anmeldung klappt am echten Pi nicht", "niedrig", "mittel – keine Anzeige", "Test K3 am 21.10., Zugang bei Rushit", "Dogukan", "", ""],
-      ["R9", "Programm liegt nur auf Rushits Laptop", "niedrig", "hoch, falls der Laptop fehlt", "Alles liegt auf GitHub (immer aktuell) – Dogukan kann es auf jeden Laptop holen", "Dogukan", "", ""],
+      ["R8", "MQTT-Anmeldung klappt am echten Pi nicht", "niedrig", "mittel – keine Anzeige", "Test K3 am 21.10., Zugang bei Kubilay", "Dogukan", "", ""],
+      ["R9", "Programm liegt nur auf Kubilays Laptop", "niedrig", "hoch, falls der Laptop fehlt", "Alles liegt auf GitHub (immer aktuell) – Dogukan kann es auf jeden Laptop holen", "Dogukan", "", ""],
       ["R10", "Ausfall von Teammitgliedern (Krankheit, Prüfungen)", "mittel", "mittel", "Stand steht immer in der Wochen-Tabelle, Vertretung absprechen", "alle", "", ""],
       ["R11", "Doku für ein anderes Team wird zu spät fertig", "mittel", "hoch – Abnahmekriterium", "ab 04.12. eingeplant, Gliederung schon vorher", "Hassan", "", ""]],
      [6, 40, 14, 22, 40, 20, 12, 26], [6, 7]),

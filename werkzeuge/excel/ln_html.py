@@ -52,7 +52,7 @@ if not summe:                                          # Summe ist eine Formel o
     summe = str(round(sum(float(z_.get("E", "0") or 0) for z_ in eintraege), 2)).rstrip("0").rstrip(".")
 zahl = lambda s: s.replace(".", ",") if re.match(r"^\d+(\.\d+)?$", s) else s
 html = ['<html><head><meta charset="utf-8"></head><body>',
-        "<h1>Leistungsnachweis Hochschule Niederrhein</h1>"]
+        "<h1>Leistungsnachweis Hochschule Niederrhein – Kubilay Gönüleglendiren</h1>"]
 for z_ in kopf:
     if z_:
         html.append("<p>" + " ".join(f"<b>{escape(v)}</b>" if k == "A" else escape(v) for k, v in sorted(z_.items())) + "</p>")
